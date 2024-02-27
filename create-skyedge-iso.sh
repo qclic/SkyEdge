@@ -25,7 +25,9 @@ edit_iso() {
       isodir/isolinux/isolinux.cfg \
       isodir/EFI/BOOT/grub.cfg \
       ${tmpdir}/EFI/BOOT/grub.cfg
-    umount -v ${tmpdir}
+    while ! umount -v ${tmpdir}; do
+        sleep 3
+    done
 
     rm -rfv ${tmpdir}
 }
