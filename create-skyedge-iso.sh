@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# dnf -y install isomd5sum syslinux genisoimage
 openeuler_iso_url="https://mirrors.tuna.tsinghua.edu.cn/openeuler/openEuler-22.03-LTS-SP3/ISO/x86_64/openEuler-22.03-LTS-SP3-x86_64-dvd.iso"
 name="SkyEdge"
 version="1.0"
