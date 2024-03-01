@@ -1,6 +1,6 @@
-1.支持超融合架构，横向扩展计算、存储、网络资源；
-2.支持VDI；
-3.支持容器；
-4.支持GPU；
-5.支持ARM、龙芯等架构；
-6.支持AI；
+1. Support hyper-converged architecture, horizontally expand computing, storage, and network resources;
+2. Support VDI;
+3. Support containers;
+4. GPU support;
+5. Support ARM, Loongarch and other architectures;
+6. Support for AI;
