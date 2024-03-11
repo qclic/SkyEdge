@@ -36,6 +36,8 @@ edit_iso() {
 
     rm -rfv ${tmpdir}
 
+    cp -av files/rpms isodir/others
+
     rm -rf isodir/repodata
     createrepo -g $(pwd)/files/normal.xml isodir/
 

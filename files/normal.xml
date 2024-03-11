@@ -202,6 +202,19 @@
       <packagereq type="mandatory">stratovirt</packagereq>
     </packagelist>
   </group>
+  <group>
+    <id>others</id>
+    <name>others</name>
+    <name xml:lang="zh_CN">其他</name>
+    <description>Other rpms needed.</description>
+    <description xml:lang="zh_CN">其他需要的rpm包</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="mandatory">cockpit-cockpit-machines</packagereq>
+      <packagereq type="mandatory">cockpit-podman</packagereq>
+    </packagelist>
+  </group>
   <environment>
     <id>virtualization-host-environment</id>
     <name>Virtualization Host</name>
@@ -213,6 +226,7 @@
       <groupid>base</groupid>
       <groupid>core</groupid>
       <groupid>virtualization-hypervisor</groupid>
+      <groupid>others</groupid>
     </grouplist>
   </environment>
   <langpacks>
