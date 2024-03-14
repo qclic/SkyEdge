@@ -3,21 +3,21 @@
 
 set -e
 
-openeuler_iso_url="https://mirrors.tuna.tsinghua.edu.cn/openeuler/openEuler-22.03-LTS-SP3/ISO/x86_64/openEuler-22.03-LTS-SP3-x86_64-dvd.iso"
+openeuler_iso_url="https://repo.openeuler.org/openEuler-23.09/ISO/x86_64/openEuler-23.09-x86_64-dvd.iso"
 name="SkyEdge"
 version="1.0"
 timestamp="$(date +%Y%m%d%H%M)"
-label="${name}"
+label="$name"
 
 download_iso() {
-    if [ ! -f openEuler-22.03-LTS-SP3-x86_64-dvd.iso ]; then
+    if [ ! -f openEuler-23.09-x86_64-dvd.iso ]; then
         wget ${openeuler_iso_url}
     fi
 }
 
 edit_iso() {
     tmpdir=$(mktemp -d -p .)
-    mount -v openEuler-22.03-LTS-SP3-x86_64-dvd.iso ${tmpdir}
+    mount -v openEuler-23.09-x86_64-dvd.iso ${tmpdir}
     rm -rf isodir
     cp -a ${tmpdir} isodir
     umount -v ${tmpdir}
@@ -26,7 +26,7 @@ edit_iso() {
     mount -v isodir/images/efiboot.img ${tmpdir}
     sed -i \
       -e "s/openEuler/${name}/g" \
-      -e "s/22.03-LTS-SP3/${version}/g" \
+      -e "s/23.09/${version}/g" \
       -e "s/hd:LABEL=[^ :]*/hd:LABEL=${label}/g" \
       -e "/stage2/ s%$% inst.ks=hd:LABEL=${label}:/ks/ks.cfg%" \
       ${cfgs}
@@ -36,10 +36,11 @@ edit_iso() {
 
     rm -rfv ${tmpdir}
 
+    rm -fv isodir/Packages/cockpit-*.rpm
     cp -av files/rpms isodir/others
 
     rm -rf isodir/repodata
-    createrepo -g $(pwd)/files/normal.xml isodir/
+    createrepo -g $(pwd)/files/comps.xml isodir/
 
     mkdir -p isodir/ks
     cp -v files/ks.cfg isodir/ks/
