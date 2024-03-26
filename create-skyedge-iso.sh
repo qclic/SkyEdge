@@ -3,21 +3,22 @@
 
 set -e
 
-openeuler_iso_url="https://repo.openeuler.org/openEuler-23.09/ISO/x86_64/openEuler-23.09-x86_64-dvd.iso"
+openeuler_iso_url="https://repo.openeuler.org/openEuler-22.03-LTS/ISO/x86_64/openEuler-22.03-LTS-x86_64-dvd.iso"
 name="SkyEdge"
 version="1.0"
 timestamp="$(date +%Y%m%d%H%M)"
 label="$name"
+iso_ori="openEuler-22.03-LTS-x86_64-dvd.iso"
 
 download_iso() {
-    if [ ! -f openEuler-23.09-x86_64-dvd.iso ]; then
+    if [ ! -f ${iso_ori} ]; then
         wget ${openeuler_iso_url}
     fi
 }
 
 edit_iso() {
     tmpdir=$(mktemp -d -p .)
-    mount -v openEuler-23.09-x86_64-dvd.iso ${tmpdir}
+    mount -v ${iso_ori} ${tmpdir}
     rm -rf isodir
     cp -a ${tmpdir} isodir
     umount -v ${tmpdir}
@@ -26,7 +27,7 @@ edit_iso() {
     mount -v isodir/images/efiboot.img ${tmpdir}
     sed -i \
       -e "s/openEuler/${name}/g" \
-      -e "s/23.09/${version}/g" \
+      -e "s/22.03-LTS/${version}/g" \
       -e "s/hd:LABEL=[^ :]*/hd:LABEL=${label}/g" \
       -e "/stage2/ s%$% inst.ks=hd:LABEL=${label}:/ks/ks.cfg%" \
       ${cfgs}
@@ -36,7 +37,6 @@ edit_iso() {
 
     rm -rfv ${tmpdir}
 
-    rm -fv isodir/Packages/cockpit-*.rpm
     cp -av files/rpms isodir/others
 
     rm -rf isodir/repodata
@@ -52,7 +52,9 @@ edit_iso() {
 
 product_img() {
     mkdir -pv product/usr/share/anaconda/pixmaps/
+    mkdir -pv product/etc/anaconda/product.d/
     cp -v logo/sidebar-logo.png product/usr/share/anaconda/pixmaps/
+    cp -v files/skyedge.conf product/etc/anaconda/product.d/
     pushd product
     cat > .buildstamp << EOF
 [Main]
@@ -61,7 +63,6 @@ Version=${version}
 BugURL=your distribution provided bug reporting tool
 IsFinal=True
 UUID=${timestamp}.x86_64
-Variant=Server
 [Compose]
 Lorax=33.6-1
 EOF

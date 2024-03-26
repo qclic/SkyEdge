@@ -31,6 +31,7 @@
       <packagereq type="mandatory">psacct</packagereq>
       <packagereq type="mandatory">quota</packagereq>
       <packagereq type="mandatory">openEuler-release</packagereq>
+      <packagereq type="mandatory">openEuler-performance</packagereq>
       <packagereq type="mandatory">openEuler-latest-release</packagereq>
       <packagereq type="mandatory">sudo</packagereq>
       <packagereq type="mandatory">symlinks</packagereq>
@@ -42,6 +43,7 @@
       <packagereq type="default">bpftool</packagereq>
       <packagereq type="default">bzip2</packagereq>
       <packagereq type="default">chrony</packagereq>
+      <packagereq type="default">cockpit</packagereq>
       <packagereq type="default">cryptsetup</packagereq>
       <packagereq type="default">dos2unix</packagereq>
       <packagereq type="default">dosfstools</packagereq>
@@ -71,6 +73,7 @@
       <packagereq type="default">xfsdump</packagereq>
       <packagereq type="default">zip</packagereq>
       <packagereq type="optional">cifs-utils</packagereq>
+      <packagereq type="optional">cockpit-doc</packagereq>
       <packagereq type="optional">ima-evm-utils</packagereq>
       <packagereq type="optional">nfs-utils</packagereq>
       <packagereq type="optional">traceroute</packagereq>
@@ -114,6 +117,7 @@
       <packagereq type="mandatory">openssh-server</packagereq>
       <packagereq type="mandatory">openssh-clients</packagereq>
       <packagereq type="mandatory">openEuler-release</packagereq>
+      <packagereq type="mandatory">openEuler-performance</packagereq>
       <packagereq type="mandatory">openEuler-latest-release</packagereq>
       <packagereq type="mandatory">parted</packagereq>
       <packagereq type="mandatory">passwd</packagereq>
@@ -204,18 +208,17 @@
     <id>others</id>
     <name>others</name>
     <name xml:lang="zh_CN">其他</name>
-    <description>Other rpms needed.</description>
-    <description xml:lang="zh_CN">其他需要的rpm包</description>
+    <description>Others.</description>
+    <description xml:lang="zh_CN">其他。</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="mandatory">cockpit</packagereq>
       <packagereq type="mandatory">cockpit-machines</packagereq>
       <packagereq type="mandatory">cockpit-podman</packagereq>
-      <packagereq type="mandatory">cockpit-kdump</packagereq>
-      <packagereq type="mandatory">cockpit-selinux</packagereq>
       <packagereq type="mandatory">cockpit-networkmanager</packagereq>
+      <packagereq type="mandatory">cockpit-selinux</packagereq>
       <packagereq type="mandatory">cockpit-storaged</packagereq>
+      <packagereq type="mandatory">cockpit-kdump</packagereq>
     </packagelist>
   </group>
   <environment>
@@ -228,8 +231,8 @@
     <grouplist>
       <groupid>base</groupid>
       <groupid>core</groupid>
-      <groupid>virtualization-hypervisor</groupid>
       <groupid>others</groupid>
+      <groupid>virtualization-hypervisor</groupid>
     </grouplist>
   </environment>
   <langpacks>
