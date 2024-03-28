@@ -1,0 +1,67 @@
+#!/bin/sh
+
+# Usage:
+#    containers/flatpak/prepare [location] [checksum]
+#
+# Prepares the flatpak manifest file.
+#
+# If a [location] parameter is given, them it refers to an (existing)
+# tarball which will be used as a basis for creating the flatpak
+# metadata.  It can be a URL or a path to a local file.  If none is given, run
+# `make dist` and use the result.
+#
+# If [location] is a local path, then [checksum] can be left blank and will be
+# calculated.  If [location] is a URL then the checksum must be provided.
+#
+# If the FLATPAK_ID environment variable is set, it overrides the
+# default value of org.cockpit_project.CockpitClient.
+#
+# The output is written to the current working directory, and the filename is
+# printed to stdout.
+
+set -eu
+
+FLATPAK_ID="${FLATPAK_ID:-org.cockpit_project.CockpitClient}"
+
+ARCHIVE_LOCATION="${1:-}"
+ARCHIVE_SHA256="${2:-}"
+
+if test -z "${ARCHIVE_LOCATION}"; then
+    ARCHIVE_LOCATION="$("${0%/*}/../../tools/make-dist" IGNORE_UNUSED_PATTERNS=1 WEBPACK_PACKAGES=static)"
+fi
+
+case "${ARCHIVE_LOCATION}" in
+    http?://*)
+        ARCHIVE_TYPE="url"
+        FLATPAK_BRANCH=stable
+        ;;
+    /*)
+        ARCHIVE_TYPE="path"
+        FLATPAK_BRANCH=devel
+        ;;
+    *)
+        echo 'If specified, archive must be an https URL or an absolute local pathname' >&2
+        exit 1
+        ;;
+esac
+
+if test -z "${ARCHIVE_SHA256}"; then
+    if test -f "${ARCHIVE_LOCATION}"; then
+        ARCHIVE_SHA256="$(sha256sum "${ARCHIVE_LOCATION}" | cut -f1 -d' ')"
+    else
+        echo 'Archive must exist locally, or checksum must be explicitly given.' >&2
+        exit 1
+    fi
+fi
+
+printf "  %-8s %s\n" GEN "${FLATPAK_ID}.yml" >&2
+sed \
+    -e "s|@FLATPAK_ID@|${FLATPAK_ID}|" \
+    -e "s|@FLATPAK_BRANCH@|${FLATPAK_BRANCH}|" \
+    -e "s|@ARCHIVE_TYPE@|${ARCHIVE_TYPE}|" \
+    -e "s|@ARCHIVE_LOCATION@|${ARCHIVE_LOCATION}|" \
+    -e "s|@ARCHIVE_SHA256@|${ARCHIVE_SHA256}|" \
+    "${0%/*}/cockpit-client.yml.in" > "${FLATPAK_ID}.yml.tmp"
+mv "${FLATPAK_ID}.yml.tmp" "${FLATPAK_ID}.yml"
+touch "${FLATPAK_ID}.releases.xml"
+echo "${FLATPAK_ID}.yml"

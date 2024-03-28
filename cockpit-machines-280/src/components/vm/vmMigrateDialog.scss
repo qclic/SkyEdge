@@ -1,0 +1,13 @@
+.footer-warning {
+    color: var(--pf-global--danger-color--100);
+    margin-bottom: var(--pf-global--spacer--sm);
+}
+
+.popover-headline {
+    margin-bottom: var(--pf-global--spacer--xs);
+}
+
+// Add some padding to avoid scrollbar being shown
+#migrate-modal form {
+    padding-bottom: var(--pf-global--spacer--xs);
+}

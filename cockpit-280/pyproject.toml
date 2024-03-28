@@ -1,0 +1,35 @@
+[tool.mypy]
+mypy_path = 'src'
+
+[tool.pylint]
+max-line-length = 118
+disable = [
+  "C0114",  # Missing module docstring
+  "C0115",  # Missing class docstring
+  "R0902",  # Too many instance attributes
+  "R0903",  # Too few public methods
+  "R0913",  # Too many arguments
+  "R1705",  # Unnecessary "else" after "return"
+  "W1113",  # Keyword argument before variable positional arguments  (PEP-570 is Python 3.8)
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["test/pytest"]
+log_cli = true
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+concurrency = ["multiprocessing"]
+source_pkgs = ["cockpit"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_lines = [
+  "pragma: no cover",  # default
+  "raise NotImplementedError",
+]

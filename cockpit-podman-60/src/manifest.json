@@ -1,0 +1,13 @@
+{
+    "menu": {
+        "index": {
+            "label": "Podman containers",
+            "order": 50,
+            "keywords": [
+                {
+                    "matches": ["podman", "container", "image"]
+                }
+            ]
+        }
+    }
+}

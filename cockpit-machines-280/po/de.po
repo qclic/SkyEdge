@@ -1,0 +1,3339 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Peter <pvolpe@redhat.com>, 2015. #zanata
+# Michael Hofer <mail@michaelhofer.ch>, 2016. #zanata
+# cockpit <cockpituous@gmail.com>, 2016. #zanata
+# Paul Ritter <paul-ritter@gmx.net>, 2017. #zanata
+# cockpit <cockpituous@gmail.com>, 2017. #zanata
+# Fabian Affolter <fab@fedoraproject.org>, 2018. #zanata
+# Ludek Janda <ljanda@redhat.com>, 2018. #zanata
+# cockpit <cockpituous@gmail.com>, 2018. #zanata
+# Fabian Affolter <fab@fedoraproject.org>, 2019. #zanata
+# Martin Pitt <mpitt@redhat.com>, 2019. #zanata, 2020.
+# Michael Hofer <mail@michaelhofer.ch>, 2019. #zanata
+# Stefan Lehmann <stefan.lehmann@mailbox.org>, 2019. #zanata
+# Jens Maucher <jens.maucher@online.de>, 2020.
+# Mike Wille <mike@wille.io>, 2020.
+# Julian Metza <julian.metza@asmi.de>, 2020.
+# Anonymous <noreply@weblate.org>, 2020.
+# Jonas Becker <jonasbecker1.jb@gmail.com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-15 03:04+0000\n"
+"PO-Revision-Date: 2022-10-17 12:19+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"Language-Team: German <https://translate.fedoraproject.org/projects/cockpit-"
+"machines/main/de/>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Generator: Weblate 4.14.1\n"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:812
+msgid "$0 $1 available at default location"
+msgstr "$0 $1 am Standardort verfügbar"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:238
+#: src/components/create-vm-dialog/createVmDialog.jsx:763
+msgid "$0 $1 available on host"
+msgstr "$0 $1 auf dem Host verfügbar"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:62
+msgid "$0 CPU configuration"
+msgstr "$0 CPU-Konfiguration"
+
+#: src/components/aggregateStatusCards.jsx:77
+msgid "$0 Network"
+msgid_plural "$0 Networks"
+msgstr[0] "$0 Netzwerk"
+msgstr[1] "$0 Netzwerke"
+
+#: src/components/aggregateStatusCards.jsx:52
+msgid "$0 Storage pool"
+msgid_plural "$0 Storage pools"
+msgstr[0] "$0 Storage Pool"
+msgstr[1] "$0 Storage Pools"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1172
+msgid "$0 does not support unattended installation."
+msgstr "$0 unterstützt keine unbeaufsichtigte Installation."
+
+#: src/components/vm/consoles/desktopConsole.jsx:61
+msgid ""
+"$0 is available for most operating systems. To install it, search for it in "
+"GNOME Software or run the following:"
+msgstr ""
+"$0 ist für die meisten Betriebssysteme verfügbar. Um es zu installieren, "
+"suchen Sie es in der GNOME-Software oder führen Sie Folgendes aus:"
+
+#: src/components/vm/overview/memoryModal.jsx:150
+msgid "$0 memory adjustment"
+msgstr "$0 Speicher-Anpassung"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:105
+msgid "$0 network"
+msgstr "$0 Netzwerk"
+
+# ctx::sourcefile::/rhn/systems/details/virtualization/VirtualGuestsList.do
+#: src/components/vm/vmUsageCard.jsx:49
+msgid "$0 vCPU"
+msgid_plural "$0 vCPUs"
+msgstr[0] "$0  vCPU"
+msgstr[1] "$0 vCPUs"
+
+#: src/components/vm/overview/vcpuModal.jsx:259
+msgid "$0 vCPU details"
+msgstr "$0 vCPU-Details"
+
+#: src/components/vm/nics/nicEdit.jsx:172
+msgid "$0 virtual network interface settings"
+msgstr "$0 Virtuelle Netzwerkschnittstelle hinzufügen"
+
+#: src/components/vm/vmMigrateDialog.jsx:76
+msgid ""
+"A copy of the VM will run on the destination and will disappear when it is "
+"shut off. Meanwhile, the origin host keeps its copy of the VM configuration."
+msgstr ""
+"Eine Kopie der VM wird auf dem Zielhost ausgeführt und verschwindet, wenn "
+"dieser ausgeschaltet wird. In der Zwischenzeit behält der ursprüngliche Host "
+"seine Kopie der VM-Konfiguration."
+
+#: src/components/vm/disks/vmDisksCard.jsx:184
+#: src/components/vm/disks/diskEdit.jsx:113
+msgid "Access"
+msgstr "Zugriff"
+
+#: src/components/storagePools/storagePool.jsx:170
+#: src/components/networks/network.jsx:166
+msgid "Activate"
+msgstr "Aktivieren"
+
+#: src/components/storagePools/storagePoolVolumesTab.jsx:113
+msgid "Activate the storage pool to administer volumes"
+msgstr ""
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:226
+#: src/components/vm/nics/nicAdd.jsx:207
+#: src/components/vm/disks/diskAdd.jsx:853
+#: src/components/networks/networkOverviewTab.jsx:236
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: src/components/networks/networkOverviewTab.jsx:232
+msgid "Add a DHCP static host entry"
+msgstr ""
+
+#: src/components/vm/disks/vmDisksCard.jsx:74
+#: src/components/vm/disks/diskAdd.jsx:843
+msgid "Add disk"
+msgstr "Datenträger hinzufügen"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:242
+#: src/components/vm/hostdevs/hostDevCard.jsx:153
+msgid "Add host device"
+msgstr "Host-Gerät hinzufügen"
+
+#: src/components/vm/nics/vmNicsCard.jsx:81
+msgid "Add network interface"
+msgstr "Netzwerkschnittstelle hinzufügen"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:114
+msgid "Add shared directory"
+msgstr "Geteiltes Verzeichnis hinzufügen"
+
+#: src/components/vm/nics/nicAdd.jsx:196
+msgid "Add virtual network interface"
+msgstr "Virtuelle Netzwerkschnittstelle hinzufügen"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:118
+msgid "Adding shared directories is possible only when the guest is shut off"
+msgstr ""
+"Geteiltes Verzeichnis kann nur hinzugefügt werden wenn Gast ausgeschaltet ist"
+
+#: src/components/vm/disks/vmDisksCard.jsx:188
+msgid "Additional"
+msgstr "Mehr"
+
+#: src/components/vm/nics/vmNicsCard.jsx:286
+#: src/components/vm/consoles/desktopConsole.jsx:47
+#: src/components/networks/networkOverviewTab.jsx:142
+#: src/components/networks/networkOverviewTab.jsx:162
+msgid "Address"
+msgstr "Adresse"
+
+#: src/components/networks/createNetworkDialog.jsx:80
+#: src/components/networks/createNetworkDialog.jsx:87
+#: src/components/networks/createNetworkDialog.jsx:108
+#: src/components/networks/createNetworkDialog.jsx:115
+msgid "Address not within subnet"
+msgstr "Adresse befindet sich nicht im Subnetz"
+
+#: src/components/vms/hostvmslist.jsx:65 src/components/vms/hostvmslist.jsx:82
+msgid "All"
+msgstr "Alle"
+
+#: src/components/vm/vmMigrateDialog.jsx:204
+msgid ""
+"All VM activity, including storage, will be temporary. This will result in "
+"data loss on the destination host."
+msgstr ""
+"Alle VM-Aktivitäten, einschließlich der Speicherung, sind temporär. Dies "
+"führt zu einem Datenverlust auf dem Zielhost."
+
+#: src/components/vm/disks/diskAdd.jsx:244
+msgid ""
+"Allowed characters: basic Latin alphabet, numbers, and limited punctuation "
+"(-, _, +, .)"
+msgstr ""
+"Erlaubte Zeichen: lateinisches Grundalphabet, Zahlen und begrenzte "
+"Satzzeichen (-, _, +, .)"
+
+#: src/components/storagePools/storagePoolDelete.jsx:176
+msgid "Also delete all volumes inside this pool:"
+msgstr ""
+
+#: src/components/vm/nics/nicAdd.jsx:89 src/components/vm/disks/diskAdd.jsx:137
+msgid "Always attach"
+msgstr "Immer verbinden"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:66
+#: src/components/vm/overview/vcpuModal.jsx:263
+msgid "Apply"
+msgstr "Anwenden"
+
+#: src/components/vm/disks/diskAdd.jsx:77
+msgid "Attaching it will make this disk shareable for every VM using it."
+msgstr ""
+"Durch das Einhängen der Platte wird Sie für jede VM die sie verwendet, "
+"freigegeben."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1171
+msgid ""
+"Automated installs are only available when downloading an image or using "
+"cloud-init."
+msgstr ""
+
+#: src/components/networks/createNetworkDialog.jsx:167
+msgid "Automatic"
+msgstr "Automatisch"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1285
+msgid "Automation"
+msgstr "Automatisierung"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:71
+#: src/components/vm/overview/vmOverviewCard.jsx:229
+#: src/components/networks/networkOverviewTab.jsx:119
+msgid "Autostart"
+msgstr "Autostart"
+
+#: src/helpers.js:232
+msgid "Blocked"
+msgstr "Gesperrt"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:221
+msgid "Boot order"
+msgstr "Boot-Reihenfolge"
+
+#: src/components/vm/overview/bootOrder.jsx:255
+msgid "Boot order settings could not be saved"
+msgstr "Boot-Reihenfolge konnte nicht gespeichert werden"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:92
+#: src/components/vm/hostdevs/hostDevCard.jsx:104
+#: src/components/vm/hostdevs/hostDevCard.jsx:112
+#: src/components/vm/hostdevs/hostDevCard.jsx:252
+#: src/components/vm/disks/vmDisksCard.jsx:182
+#: src/components/vm/disks/diskAdd.jsx:224
+#: src/components/vm/disks/diskEdit.jsx:88
+#: src/components/vm/overview/bootOrder.jsx:118
+#: src/components/vm/overview/bootOrder.jsx:130
+#: src/components/vm/overview/bootOrder.jsx:148
+#: src/components/vm/overview/bootOrder.jsx:151
+#: src/components/vm/overview/bootOrder.jsx:165
+msgid "Bus"
+msgstr "Bus"
+
+#: src/components/vm/disks/diskAdd.jsx:352
+msgid "CD/DVD disc"
+msgstr "CD/DVD"
+
+#: src/components/vm/vmUsageCard.jsx:71
+msgid "CPU"
+msgstr "Prozessor"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:28
+msgid "CPU configuration could not be saved"
+msgstr "CPU-Einstellungen konnten nicht gespeichert werden"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:216
+msgid "CPU type"
+msgstr "Prozessor-Typ"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:105
+#: src/components/vm/disks/diskAdd.jsx:213
+#: src/components/vm/disks/diskEdit.jsx:58
+msgid "Cache"
+msgstr "Cache"
+
+#: src/components/storagePools/storagePoolDelete.jsx:203
+#: src/components/storagePools/storageVolumeCreate.jsx:107
+#: src/components/storagePools/createStoragePoolDialog.jsx:449
+#: src/components/create-vm-dialog/createVmDialog.jsx:1345
+#: src/components/common/deleteResource.jsx:80
+#: src/components/vm/hostdevs/hostDevAdd.jsx:232
+#: src/components/vm/vmMigrateDialog.jsx:218
+#: src/components/vm/nics/nicAdd.jsx:210 src/components/vm/nics/nicEdit.jsx:179
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:174
+#: src/components/vm/vmCloneDialog.jsx:79
+#: src/components/vm/disks/diskAdd.jsx:856
+#: src/components/vm/disks/mediaEject.jsx:110
+#: src/components/vm/disks/diskEdit.jsx:268
+#: src/components/vm/vmRenameDialog.jsx:67
+#: src/components/vm/deleteDialog.jsx:178
+#: src/components/vm/overview/firmware.jsx:72
+#: src/components/vm/overview/memoryModal.jsx:157
+#: src/components/vm/overview/cpuTypeModal.jsx:69
+#: src/components/vm/overview/bootOrder.jsx:329
+#: src/components/vm/overview/vcpuModal.jsx:266
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:149
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:75
+#: src/components/networks/networkOverviewTab.jsx:239
+#: src/components/networks/createNetworkDialog.jsx:426
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/components/vm/disks/vmDisksCard.jsx:180
+msgid "Capacity"
+msgstr "Kapazität"
+
+#: src/components/vm/overview/bootOrder.jsx:322
+msgid "Change boot order"
+msgstr "Boot-Reihenfolge ändern"
+
+#: src/components/vm/overview/firmware.jsx:65
+msgid "Change firmware"
+msgstr "Firmware ändern"
+
+#: src/components/common/warningInactive.jsx:11
+#: src/components/vm/nics/nicEdit.jsx:166
+#: src/components/vm/disks/diskEdit.jsx:253
+#: src/components/vm/overview/vcpuModal.jsx:186
+msgid "Changes will take effect after shutting down the VM"
+msgstr "Änderungen werden nach dem Herunterfahren der VM wirksam"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:512
+msgid "Checking token validity..."
+msgstr "Token-Gültigkeit wird geprüft ..."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:455
+#: src/components/create-vm-dialog/createVmDialog.jsx:456
+msgid "Choose an operating system"
+msgstr "Betriebssystem auswählen"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:194
+msgid "Class"
+msgstr "Klasse"
+
+#: src/components/vm/consoles/desktopConsole.jsx:58
+msgid ""
+"Clicking \"Launch remote viewer\" will download a .vv file and launch $0."
+msgstr ""
+"Klick auf\"Remote Viewer starten\" lädt eine .vv-Datei herunter und startet "
+"$0."
+
+#: src/components/vm/vmCloneDialog.jsx:76 src/components/vm/vmActions.jsx:302
+msgid "Clone"
+msgstr "Klonen"
+
+#: src/components/common/stateIcon.jsx:54
+msgid "Close"
+msgstr "Schließen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:360
+msgid "Cloud base image"
+msgstr "Cloud-Basis-Image"
+
+#: src/components/common/deleteResource.jsx:86
+msgid "Confirm this action"
+msgstr "Aktion bestätigen"
+
+#: src/components/vm/consoles/serialConsole.jsx:93
+msgid "Connect"
+msgstr "Verbinden"
+
+#: src/components/vm/consoles/desktopConsole.jsx:46
+msgid "Connect with any viewer application for following protocols"
+msgstr "Mit einer Anwendung für die folgenen Protokolle verbinden"
+
+#: src/components/vm/consoles/vnc.jsx:169
+msgid "Connecting"
+msgstr "Verbinde"
+
+#: src/components/storagePools/storagePoolList.jsx:77
+#: src/components/vms/hostvmslist.jsx:139
+#: src/components/common/machinesConnectionSelector.jsx:33
+#: src/components/vm/overview/vmOverviewCard.jsx:187
+#: src/components/networks/networkList.jsx:75
+#: src/components/networks/createNetworkDialog.jsx:41
+msgid "Connection"
+msgstr "Verbindung"
+
+#: src/components/vm/vmDetailsPage.jsx:118
+#: src/components/vm/vmDetailsPage.jsx:151
+msgid "Console"
+msgstr "Konsole"
+
+#: src/components/vm/vmMigrateDialog.jsx:106
+#: src/components/vm/vmMigrateDialog.jsx:122
+msgid "Copy storage"
+msgstr "Speicher kopieren"
+
+#: src/components/vm/overview/vcpuModal.jsx:237
+msgid "Cores per socket"
+msgstr "Kerne pro Socket"
+
+#: src/components/vm/deleteDialog.jsx:151
+msgid "Could not delete $0"
+msgstr "$0 konnte nicht gelöscht werden"
+
+#: src/components/vm/deleteDialog.jsx:156
+msgid "Could not delete storage for $0"
+msgstr "Speicher für $0 konnte nicht gelöscht werden"
+
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:54
+msgid "Could not revert to snapshot"
+msgstr "Konnte den Schnappschuss nicht zurücksetzen"
+
+#: src/helpers.js:229
+msgid "Crashed"
+msgstr "Abgestürzt"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:104
+#: src/components/storagePools/createStoragePoolDialog.jsx:446
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:146
+#: src/components/networks/createNetworkDialog.jsx:423
+msgid "Create"
+msgstr "Erstellen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1391
+msgid "Create VM"
+msgstr "VM erstellen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1410
+msgid "Create VM by importing a disk image of an existing VM installation"
+msgstr ""
+"Erstellen einer VM durch Importieren eines Festplattenabbildes einer "
+"bestehenden VM-Installation"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1409
+msgid "Create VM from local or network installation medium"
+msgstr "Erstellen einer VM von einem lokalen oder Netzwerk-Installationsmedium"
+
+#: src/components/vm/vmCloneDialog.jsx:68
+msgid "Create a clone VM based on $0"
+msgstr "Eine Klon-VM basierend auf $0 erstellen"
+
+# translation auto-copied from project Drools Workbench, version 6.0.0,
+# document org.drools/drools-wb-guided-rule-editor-
+# client/org/drools/workbench/screens/guided/rule/client/resources/i18n/Constants,
+# author jdimanos
+#: src/components/create-vm-dialog/createVmDialog.jsx:1313
+msgid "Create and edit"
+msgstr "Erstellen und bearbeiten"
+
+# translation auto-copied from project Drools Workbench, version 6.0.0,
+# document org.drools/drools-wb-guided-rule-editor-
+# client/org/drools/workbench/screens/guided/rule/client/resources/i18n/Constants,
+# author jdimanos
+#: src/components/create-vm-dialog/createVmDialog.jsx:1339
+msgid "Create and run"
+msgstr "Erstellen und ausführen"
+
+# translation auto-copied from project Drools Workbench, version 6.0.0,
+# document org.drools/drools-wb-guided-rule-editor-
+# client/org/drools/workbench/screens/guided/rule/client/resources/i18n/Constants,
+# author jdimanos
+#: src/components/vm/disks/diskAdd.jsx:782
+msgid "Create new"
+msgstr "Neu erstellen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1327
+msgid "Create new virtual machine"
+msgstr "Neue Virtuelle Maschine erstellen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:849
+msgid "Create new volume"
+msgstr "Neuen Datenträger erstellen"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:47
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:142
+msgid "Create snapshot"
+msgstr "Snapshot erzeugen"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:442
+#: src/components/storagePools/createStoragePoolDialog.jsx:491
+msgid "Create storage pool"
+msgstr "Erstellen Sie einen Speicherpool"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:100
+msgid "Create storage volume"
+msgstr "Datenträger erstellen"
+
+#: src/components/networks/createNetworkDialog.jsx:416
+#: src/components/networks/createNetworkDialog.jsx:444
+msgid "Create virtual network"
+msgstr "Erstelle Virtuelles Netzwerk"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:145
+#: src/components/storagePools/storageVolumeCreate.jsx:156
+msgid "Create volume"
+msgstr "Volume erzeugen"
+
+#: src/components/vms/hostvmslist.jsx:51
+msgid "Creating VM"
+msgstr "VM erstellen"
+
+#: src/app.jsx:248
+msgid "Creating VM $0"
+msgstr "VM $0 erstellen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1147
+msgid "Creation of VM $0 failed"
+msgstr "Das Erstellen von VM $0 ist fehlgeschlagen"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:67
+msgid "Creation time"
+msgstr "Erstellungszeit"
+
+#: src/components/vm/consoles/vnc.jsx:135
+msgid "Ctrl+Alt+$0"
+msgstr "Strg + Alt +$0"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:74
+msgid "Current"
+msgstr "Aktuell"
+
+#: src/components/vm/overview/memoryModal.jsx:127
+msgid "Current allocation"
+msgstr "aktuelle Zuweisung"
+
+#: src/components/vm/overview/firmware.jsx:125
+msgid "Custom firmware: $0"
+msgstr "Benutzerdefinierte Firmware: $0"
+
+#: src/components/vm/disks/diskAdd.jsx:337
+#: src/components/vm/disks/diskAdd.jsx:746
+#: src/components/vm/disks/diskAdd.jsx:792
+msgid "Custom path"
+msgstr "Benutzerdefinierter Pfad"
+
+#: src/components/networks/networkOverviewTab.jsx:275
+msgid "DHCP Settings"
+msgstr "DHCP-Einstellungen"
+
+#: src/components/storagePools/storagePool.jsx:161
+#: src/components/networks/network.jsx:162
+msgid "Deactivate"
+msgstr "Deaktivieren"
+
+#: src/components/storagePools/storagePoolDelete.jsx:200
+#: src/components/storagePools/storagePoolDelete.jsx:236
+#: src/components/storagePools/storagePoolDelete.jsx:246
+#: src/components/common/deleteResource.jsx:77
+#: src/components/common/deleteResource.jsx:121
+#: src/components/common/deleteResource.jsx:130
+#: src/components/vm/deleteDialog.jsx:175 src/components/vm/vmActions.jsx:351
+#: src/components/vm/vmActions.jsx:359 src/components/networks/network.jsx:144
+#: src/components/networks/network.jsx:146
+msgid "Delete"
+msgstr "Löschen"
+
+#: src/components/vm/deleteDialog.jsx:170
+msgid "Delete $0 VM?"
+msgstr "$0 VM löschen?"
+
+#: src/components/storagePools/storagePoolDelete.jsx:192
+msgid "Delete $0 storage pool?"
+msgstr ""
+
+#: src/components/storagePools/storageVolumeDelete.jsx:62
+msgid "Delete $0 volume"
+msgid_plural "Delete $0 volumes"
+msgstr[0] "$0 Datenträger löschen"
+msgstr[1] "Datenträger $0 löschen"
+
+#: src/components/vm/deleteDialog.jsx:86
+msgid "Delete associated storage files:"
+msgstr "Verknüpfte Speicherdateien löschen:"
+
+#: src/components/networks/network.jsx:135
+msgid "Delete network?"
+msgstr "Netzwerk löschen?"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:168
+msgid "Delete snapshot?"
+msgstr "Schnappschuss löschen?"
+
+#: src/components/storagePools/storagePoolDelete.jsx:183
+msgid ""
+"Deleting an inactive storage pool will only undefine the pool. Its content "
+"will not be deleted."
+msgstr ""
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:71
+msgid "Deleting shared directories is possible only when the guest is shut off"
+msgstr ""
+"Das Löschen von gemeinsamen Verzeichnissen ist nur möglich, wenn der Gast "
+"ausgeschaltet ist"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:91
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:52
+msgid "Description"
+msgstr "Beschreibung"
+
+#: src/components/vm/consoles/consoles.jsx:114
+#, fuzzy
+msgid "Desktop viewer"
+msgstr "Desktop-Betrachter"
+
+#: src/components/vm/vmMigrateDialog.jsx:48
+msgid "Destination URI"
+msgstr "Ziel-URI"
+
+#: src/components/vm/vmMigrateDialog.jsx:156
+msgid "Destination URI must not be empty"
+msgstr "Ziel-URI darf nicht leer sein"
+
+#: src/components/storagePools/storagePoolDelete.jsx:96
+msgid ""
+"Detach the disks using this pool from any VMs before attempting deletion."
+msgstr ""
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1281
+msgid "Details"
+msgstr "Details"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:91
+#: src/components/vm/hostdevs/hostDevAdd.jsx:126
+#: src/components/vm/hostdevs/hostDevCard.jsx:103
+#: src/components/vm/hostdevs/hostDevCard.jsx:251
+#: src/components/vm/disks/vmDisksCard.jsx:168
+#: src/components/vm/disks/vmDiskColumns.jsx:44
+#: src/components/vm/disks/diskAdd.jsx:345
+#: src/components/vm/overview/bootOrder.jsx:110
+#: src/components/vm/overview/bootOrder.jsx:117
+#: src/components/vm/overview/bootOrder.jsx:149
+#: src/components/vm/overview/bootOrder.jsx:152
+#: src/components/networks/networkList.jsx:74
+#: src/components/networks/createNetworkDialog.jsx:161
+msgid "Device"
+msgstr "Gerät"
+
+#: src/components/networks/createNetworkDialog.jsx:168
+msgid "Devices"
+msgstr "Geräte"
+
+#: src/components/vm/consoles/serialConsole.jsx:92
+#: src/components/vm/consoles/vnc.jsx:171
+msgid "Disconnect"
+msgstr "Verbindung trennen"
+
+#: src/components/vm/consoles/vnc.jsx:170
+msgid "Disconnected"
+msgstr "Getrennt"
+
+#: src/components/vm/consoles/serialConsole.jsx:85
+msgid "Disconnected from serial console. Click the connect button."
+msgstr ""
+"Verbindung zur seriellen Konsole getrennt Klicken Sie auf die Schaltfläche "
+"'Neu verbinden'."
+
+#: src/components/vm/disks/vmDiskColumns.jsx:132
+msgid "Disk $0 could not be removed"
+msgstr "Festplatte $0 konnte nicht entfernt werden"
+
+#: src/components/vm/disks/diskAdd.jsx:720
+msgid "Disk failed to be attached"
+msgstr "Festplatte konnte nicht angeschlossen werden"
+
+#: src/components/vm/disks/diskAdd.jsx:632
+#: src/components/vm/disks/diskAdd.jsx:670
+msgid "Disk failed to be created"
+msgstr "Datenträger konnte nicht erstellt werden"
+
+#: src/components/vm/disks/diskAdd.jsx:256
+msgid "Disk identifier"
+msgstr "Festplattenbezeichner"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:372
+msgid "Disk image"
+msgstr "Festplattenabbild"
+
+#: src/components/vm/disks/diskAdd.jsx:350
+msgid "Disk image file"
+msgstr "Festplattenabbilddatei"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:220
+msgid "Disk image path must not be empty"
+msgstr "Festplattenabbildpfad darf nicht leer sein"
+
+#: src/components/vm/disks/diskAdd.jsx:706
+#: src/components/vm/disks/diskEdit.jsx:216
+msgid "Disk settings could not be saved"
+msgstr "Festplatten-Einstellungen konnten nicht gespeichert werden"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:116
+msgid "Disk-only snapshot"
+msgstr "Nur-Datenträger-Schnappschuss"
+
+#: src/components/vm/vmDetailsPage.jsx:166
+msgid "Disks"
+msgstr "Datenträger"
+
+#: src/components/vm/vmMigrateDialog.jsx:202
+msgid ""
+"Do not run this VM on the origin and destination hosts at the same time."
+msgstr ""
+"Führen Sie diese VM nicht gleichzeitig auf dem Ursprungs- und dem Zielhost "
+"aus."
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:118
+msgid "Domain has crashed"
+msgstr "Domain ist abgestürzt"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:117
+msgid "Domain is blocked on resource"
+msgstr "Domain ist durch Resource blockiert"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:358
+msgid "Download an OS"
+msgstr "Ein Betriebssystem herunterladen"
+
+#: src/app.jsx:255
+msgid "Download progress"
+msgstr ""
+
+#: src/app.jsx:248
+msgid "Downloading image for VM $0"
+msgstr "Abbild für VM $0 wird heruntergeladen"
+
+#: src/components/vms/hostvmslist.jsx:49
+msgid "Downloading: $0%"
+msgstr "Herunterladen: $0%"
+
+#: src/components/vm/vmMigrateDialog.jsx:64
+msgid "Duration"
+msgstr "Dauer"
+
+#: src/helpers.js:230
+msgid "Dying"
+msgstr "Sterbend"
+
+#: src/components/vm/nics/vmNicsCard.jsx:371
+#: src/components/vm/disks/diskEdit.jsx:164
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: src/components/vm/disks/diskEdit.jsx:261
+msgid "Edit $0 attributes"
+msgstr "$0 Attribute bearbeiten"
+
+#: src/components/vm/nics/vmNicsCard.jsx:359
+msgid "Editing network interfaces of transient guests is not allowed"
+msgstr ""
+"Die Bearbeitung von Netzwerkschnittstellen vorübergehender Gäste ist nicht "
+"erlaubt"
+
+#: src/components/vm/nics/vmNicsCard.jsx:365
+msgid "Editing transient network interfaces is not allowed"
+msgstr ""
+"Die Bearbeitung vorübergehender Netzwerkschnittstellen ist nicht erlaubt"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:164
+#: src/components/vm/disks/mediaEject.jsx:103
+msgid "Eject"
+msgstr ""
+
+#: src/components/vm/disks/mediaEject.jsx:99
+#, fuzzy
+#| msgid "Remove disk from VM?"
+msgid "Eject disc from VM?"
+msgstr "Festplatte aus VM entfernen?"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:241
+msgid "Emulated machine"
+msgstr "Emulierte Maschine"
+
+#: src/components/networks/createNetworkDialog.jsx:226
+msgid "End"
+msgstr "Ende"
+
+#: src/components/networks/createNetworkDialog.jsx:83
+#: src/components/networks/createNetworkDialog.jsx:111
+msgid "End should not be empty"
+msgstr "Das Ende sollte nicht leer sein"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1170
+msgid "Enter root and/or user information to enable unattended installation."
+msgstr ""
+"Geben Sie root- und/oder Benutzerinformationen ein, um eine unbeaufsichtigte "
+"Installation zu aktivieren."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:517
+msgid "Error checking token"
+msgstr "Fehler bei der Prüfung des Tokens"
+
+#: src/components/vm/vmMigrateDialog.jsx:54
+msgid "Example, $0"
+msgstr "Beispiel, $0"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:301
+msgid "Existing disk image on host's file system"
+msgstr "Existierenes Festplatten Abbild auf dem Host Dateisystem"
+
+#: src/components/vm/vmDetailsPage.jsx:159
+msgid "Expand"
+msgstr "Erweitern"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:248
+msgid "Extended attributes"
+msgstr "Erweiterte Attribute"
+
+#: src/components/common/stateIcon.jsx:58
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:201
+msgid "Failed to add shared directory"
+msgstr "Fehler beim Hinzufügen eines gemeinsamen Verzeichnisses"
+
+#: src/components/vm/overview/firmware.jsx:58
+msgid "Failed to change firmware"
+msgstr "Firmware konnte nicht geändert werden"
+
+#: src/components/vm/vmCloneDialog.jsx:61
+msgid "Failed to clone VM $0"
+msgstr "Fehler beim Klonen von VM $0"
+
+#: src/app.jsx:136
+msgid "Failed to fetch some resources"
+msgstr "Fehler beim Abrufen einiger Ressourcen"
+
+#: src/components/vm/nics/vmNicsCard.jsx:129
+msgid "Failed to fetch the IP addresses of the interfaces present in $0"
+msgstr "IP-Adresse der Schnittstellen in $0 können nicht bezogen werden"
+
+#: src/components/vm/vmRenameDialog.jsx:51
+msgid "Failed to rename VM $0"
+msgstr "Fehler beim Umbenennen von VM $0"
+
+#: src/components/networks/networkOverviewTab.jsx:246
+msgid "Failed to save network settings"
+msgstr "Fehler beim Speichern der Netzwerkeinstellungen"
+
+#: src/components/vm/consoles/vnc.jsx:130
+msgid "Failed to send key Ctrl+Alt+$0 to VM $1"
+msgstr "Senden der Tastenkombination Strg+Alt+$0 an die VM $1 fehlgeschlagen"
+
+#: src/components/vm/overview/vcpuModal.jsx:197
+msgid "Fewer than the maximum number of virtual CPUs should be enabled."
+msgstr ""
+"Es sollte weniger als die maximale Anzahl virtueller CPUs aktiviert sein."
+
+# translation auto-copied from project Customer Portal Translations, version
+# 006_DrupalPO, document interface, author hpeters
+#: src/components/vm/disks/vmDiskColumns.jsx:43
+#: src/components/vm/overview/bootOrder.jsx:109
+msgid "File"
+msgstr "Datei"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:62
+msgid "Filesystem $0 could not be removed"
+msgstr "Dateisystem $0 konnte nicht entfernt werden"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:58
+msgid "Filesystem directory"
+msgstr "Dateisystemverzeichnis"
+
+#: src/components/vms/hostvmslist.jsx:93
+msgid "Filter by name"
+msgstr "Nach Namen filtern"
+
+#: src/components/vm/overview/firmware.jsx:78
+#: src/components/vm/overview/vmOverviewCard.jsx:247
+msgid "Firmware"
+msgstr "Firmware"
+
+#: src/components/vm/disks/mediaEject.jsx:107
+#, fuzzy
+#| msgid "Force reboot"
+msgid "Force eject"
+msgstr "Neustart erzwingen"
+
+#: src/components/vm/vmActions.jsx:265
+msgid "Force reboot"
+msgstr "Neustart erzwingen"
+
+#: src/components/vm/vmActions.jsx:239
+msgid "Force shut down"
+msgstr "Herunterfahren erzwingen"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:70
+#: src/components/storagePools/createStoragePoolDialog.jsx:202
+msgid "Format"
+msgstr "Formatieren"
+
+#: src/components/networks/createNetworkDialog.jsx:142
+msgid "Forward mode"
+msgstr "Weiterleitungs-Modus"
+
+#: src/components/networks/networkList.jsx:76
+msgid "Forwarding mode"
+msgstr "Weiterleitungs-Modus"
+
+#: src/components/vm/vmMigrateDialog.jsx:107
+msgid ""
+"Full disk images and the domain's memory will be migrated. Only non-shared, "
+"writable disk images will be transferred. Unused storage will remain on the "
+"origin after migration."
+msgstr ""
+
+#: src/components/vm/overview/vmOverviewCard.jsx:183
+#: src/components/networks/networkOverviewTab.jsx:110
+msgid "General"
+msgstr "Allgemein"
+
+#: src/components/vm/nics/nicAdd.jsx:67
+msgid "Generate automatically"
+msgstr "Automatisch generieren"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:500
+msgid "Get a new RHSM token."
+msgstr ""
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:104
+#: src/components/create-vm-dialog/createVmDialog.jsx:798
+#: src/components/create-vm-dialog/createVmDialog.jsx:894
+#: src/components/vm/disks/vmDisksCard.jsx:48
+#: src/components/vm/overview/memorySelectRow.jsx:89
+msgid "GiB"
+msgstr "GiB"
+
+#: src/app.jsx:240 src/app.jsx:252
+msgid "Go to VMs list"
+msgstr "Zur VM-Liste gehen"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:243
+#: src/components/vm/disks/diskAdd.jsx:209
+msgid "Hide additional options"
+msgstr "Zusätzlichen Einstellungen verstecken"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:34
+#: src/components/storagePools/createStoragePoolDialog.jsx:122
+#: src/components/vm/disks/vmDiskColumns.jsx:48
+#: src/components/vm/overview/bootOrder.jsx:114
+msgid "Host"
+msgstr "Host"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:166
+msgid "Host device"
+msgstr "Host-Gerät"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:203
+msgid "Host device could not be attached"
+msgstr "Host-Gerät konnte nicht angehängt werden"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:262
+msgid "Host device will be removed from $0:"
+msgstr "Das Host-Gerät wird von $0 entfernt:"
+
+#: src/components/vm/vmDetailsPage.jsx:183
+msgid "Host devices"
+msgstr "Host-Geräte"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:127
+msgid "Host name"
+msgstr "Rechnername"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:123
+msgid "Host should not be empty"
+msgstr "Host sollte nicht leer sein"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:237
+msgid "Hypervisor details"
+msgstr "Hypervisor-Details"
+
+#: src/components/vm/disks/diskEdit.jsx:38
+msgid "ID"
+msgstr "ID"
+
+#: src/components/networks/networkOverviewTab.jsx:67
+msgid "IP"
+msgstr "IP"
+
+#: src/components/vm/nics/vmNicsCard.jsx:255
+#: src/components/networks/networkOverviewTab.jsx:255
+msgid "IP address"
+msgstr "IP-Adresse"
+
+#: src/components/networks/networkOverviewTab.jsx:256
+msgid "IP address must not be empty"
+msgstr "IP-Adresse darf nicht leer sein"
+
+#: src/components/networks/createNetworkDialog.jsx:183
+msgid "IP configuration"
+msgstr "IP-Konfiguration"
+
+#: src/components/networks/networkOverviewTab.jsx:138
+#: src/components/networks/createNetworkDialog.jsx:244
+msgid "IPv4 address"
+msgstr "IPv4-Adresse"
+
+#: src/components/networks/createNetworkDialog.jsx:68
+msgid "IPv4 address cannot be same as the network identifier"
+msgstr "IPv4-Adresse darf nicht mit der Netzwerkkennung übereinstimmen"
+
+#: src/components/networks/createNetworkDialog.jsx:72
+msgid "IPv4 address cannot be same as the network's broadcast address"
+msgstr ""
+
+#: src/components/networks/createNetworkDialog.jsx:191
+msgid "IPv4 and IPv6"
+msgstr "IPv4 und IPv6"
+
+#: src/components/networks/createNetworkDialog.jsx:62
+msgid "IPv4 network should not be empty"
+msgstr "IPv4-Netzwerk sollte nicht leer sein"
+
+#: src/components/networks/createNetworkDialog.jsx:189
+msgid "IPv4 only"
+msgstr "Nur IPv4"
+
+#: src/components/networks/networkOverviewTab.jsx:158
+#: src/components/networks/createNetworkDialog.jsx:276
+msgid "IPv6 address"
+msgstr "IPv6-Adresse"
+
+#: src/components/networks/createNetworkDialog.jsx:93
+msgid "IPv6 network should not be empty"
+msgstr "IPv6-Netzwerk sollte nicht leer sein"
+
+#: src/components/networks/createNetworkDialog.jsx:190
+msgid "IPv6 only"
+msgstr "Nur IPv6"
+
+#: src/components/vm/disks/diskAdd.jsx:249
+msgid "Identifier may be silently truncated to $0 characters "
+msgstr "Der Bezeichner kann stillschweigend auf $0 Zeichen gekürzt werden. "
+
+#: src/helpers.js:225
+msgid "Idle"
+msgstr "Untätig"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1391
+msgid "Import VM"
+msgstr "VM importieren"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1327
+msgid "Import a virtual machine"
+msgstr "Virtuelle Maschine importieren"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1313
+msgid "Import and edit"
+msgstr "Importieren und bearbeiten"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1339
+msgid "Import and run"
+msgstr "Importieren und ausführen"
+
+#: src/components/vm/disks/diskAdd.jsx:551
+msgid "Importing an image with a backing file is unsupported"
+msgstr ""
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:309
+msgid ""
+"In most configurations, macvtap does not work for host to guest network "
+"communication."
+msgstr ""
+"In den meisten Konfigurationen funktioniert macvtap nicht für die "
+"Kommunikation zwischen Host und Gast im Netzwerk."
+
+#: src/components/vm/nics/nicBody.jsx:102
+msgid ""
+"In the default 'vepa' mode, switching is offloaded to the external switch. "
+"If the switch is not VEPA-capable, communication between guest virtual "
+"machines, or between a guests and the host is not possible."
+msgstr ""
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:140
+msgid "Initiator"
+msgstr "Initiator"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:141
+msgid "Initiator IQN should not be empty"
+msgstr ""
+
+#: src/components/vm/disks/vmDiskColumns.jsx:158
+#: src/components/vm/disks/diskAdd.jsx:853
+#, fuzzy
+#| msgid "Ctrl+Insert"
+msgid "Insert"
+msgstr "Strg+Einfügen"
+
+#: src/components/vm/disks/diskAdd.jsx:843
+msgid "Insert disc media"
+msgstr ""
+
+#: src/components/vm/vmActions.jsx:291
+msgid "Install"
+msgstr "Installation"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:372
+msgid "Installation source"
+msgstr "Installationsquelle"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:222
+msgid "Installation source must not be empty"
+msgstr "Installationsquelle sollte nicht leer sein"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:350
+msgid "Installation type"
+msgstr "Installationstyp"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:136
+msgid "Interface"
+msgstr "Schnittstelle"
+
+#: src/components/vm/nics/nicBody.jsx:162
+msgid "Interface type"
+msgstr "Art der Schnittstelle"
+
+#: src/components/vm/nics/nicBody.jsx:164
+msgid "Interface type help"
+msgstr "Hilfe zum Schnittstellentyp"
+
+#: src/components/networks/createNetworkDialog.jsx:64
+#: src/components/networks/createNetworkDialog.jsx:78
+#: src/components/networks/createNetworkDialog.jsx:85
+msgid "Invalid IPv4 address"
+msgstr "Ungültige IPv4-Adresse"
+
+#: src/components/networks/createNetworkDialog.jsx:59
+msgid "Invalid IPv4 mask or prefix length"
+msgstr "Ungültige IPv4-Maske oder Prefix-Länge"
+
+#: src/components/networks/createNetworkDialog.jsx:95
+#: src/components/networks/createNetworkDialog.jsx:106
+#: src/components/networks/createNetworkDialog.jsx:113
+msgid "Invalid IPv6 address"
+msgstr "Ungültige IPv6-Adresse"
+
+#: src/components/networks/createNetworkDialog.jsx:100
+msgid "Invalid IPv6 prefix"
+msgstr "Ungültiger IPv6-Prefix"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:206
+msgid "Invalid filename"
+msgstr "Ungültiger Dateiname"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:108
+msgid "Isolated network"
+msgstr "Isoliertes Netzwerk"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:62
+msgid "LVM volume group"
+msgstr "LVM Speichergruppe (VG)"
+
+#: src/components/vm/consoles/desktopConsole.jsx:54
+msgid "Launch remote viewer"
+msgstr "Fernbetrachter starten"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:636
+msgid ""
+"Leave the password blank if you do not wish to have a root account created"
+msgstr ""
+"Lassen Sie das Passwort leer, wenn Sie kein Root-Konto erstellen möchten"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:733
+msgid ""
+"Leave the password blank if you do not wish to have a user account created"
+msgstr ""
+"Lassen Sie das Passwort leer, wenn Sie kein Benutzerkonto erstellen lassen "
+"möchten"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:749
+msgid "Leave the password blank if you do not wish to set a root password"
+msgstr ""
+"Lassen Sie das Passwort leer, wenn Sie kein Root-Passwort festlegen möchten"
+
+#: src/components/vm/overview/firmware.jsx:168
+msgid ""
+"Libvirt did not detect any UEFI/OVMF firmware image installed on the host"
+msgstr ""
+"Libvirt hat kein UEFI/OVMF Firmware-Abbild auf dem Host-System gefunden"
+
+#: src/components/vm/overview/firmware.jsx:162
+msgid "Libvirt or hypervisor does not support UEFI"
+msgstr "Libvirt oder der Hypervisor unterstützen UEFI nicht"
+
+#: src/components/vm/nics/vmNicsCard.jsx:362
+msgid "Loading available network devices"
+msgstr "Verfügbare Netzwerkgeräte werden geladen"
+
+#: src/components/libvirtSlate.jsx:32
+msgid "Loading resources"
+msgstr "Ressourcen werden geladen"
+
+#: src/components/vm/consoles/serialConsole.jsx:77
+msgid "Loading..."
+msgstr "Wird geladen ..."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:362
+msgid "Local install media (ISO image or distro install tree)"
+msgstr "Lokales Installationsmedium (ISO-Abbild oder Distro-Installationsbaum)"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:132
+msgid "Location"
+msgstr "Ort"
+
+#: src/components/vm/overview/bootOrder.jsx:124
+#: src/components/networks/networkOverviewTab.jsx:68
+msgid "MAC"
+msgstr "MAC"
+
+#: src/components/vm/nics/vmNicsCard.jsx:253
+#: src/components/vm/nics/nicAdd.jsx:63 src/components/vm/nics/nicEdit.jsx:42
+#: src/components/networks/networkOverviewTab.jsx:247
+msgid "MAC address"
+msgstr "MAC-Adresse"
+
+#: src/components/networks/networkOverviewTab.jsx:248
+msgid "MAC address must not be empty"
+msgstr "MAC-Adresse darf nicht leer sein"
+
+#: src/components/vm/disks/diskEdit.jsx:90
+msgid "Machine must be shut off before changing bus type"
+msgstr "Vor dem Wechsel des Bustyps muss die Maschine ausgeschaltet werden"
+
+#: src/components/vm/disks/diskEdit.jsx:60
+msgid "Machine must be shut off before changing cache mode"
+msgstr ""
+
+#: org.cockpit-project.machines.metainfo.xml:5
+msgid "Machines"
+msgstr "Maschinen"
+
+#: org.cockpit-project.machines.metainfo.xml:6
+msgid "Manage your virtual machines"
+msgstr "Verwalten Sie Ihre virtuellen Maschinen"
+
+#: src/manifest.json:0
+msgid "Managing virtual machines"
+msgstr "Virtuelle Maschinen verwalten"
+
+#: src/components/vm/consoles/desktopConsole.jsx:44
+msgid "Manual connection"
+msgstr "Manuelle Verbindung"
+
+#: src/components/networks/createNetworkDialog.jsx:252
+msgid "Mask or prefix length"
+msgstr "Masken- oder Präfixlänge"
+
+#: src/components/networks/createNetworkDialog.jsx:57
+msgid "Mask or prefix length should not be empty"
+msgstr "Masken- oder Präfixlänge sollte nicht leer sein"
+
+#: src/components/vm/overview/memoryModal.jsx:136
+msgid "Maximum allocation"
+msgstr "Maximale Zuweisung"
+
+#: src/components/vm/overview/memoryModal.jsx:101
+msgid "Maximum memory could not be saved"
+msgstr "Maximaler Speicher konnte nicht gespeichert werden"
+
+#: src/components/vm/overview/vcpuModal.jsx:212
+msgid "Maximum number of virtual CPUs allocated for the guest OS"
+msgstr "Maximale Anzahl der virtuellen CPUs, die dem Gast-BS zugewiesen werden"
+
+#: src/components/vm/overview/vcpuModal.jsx:211
+msgid ""
+"Maximum number of virtual CPUs allocated for the guest OS, which must be "
+"between 1 and $0"
+msgstr ""
+"Maximale Anzahl der für das Gastbetriebssystem zugewiesenen virtuellen CPUs, "
+"die zwischen 1 und 1 liegen muss $0"
+
+#: src/components/networks/networkOverviewTab.jsx:129
+msgid "Maximum transmission unit"
+msgstr "Maximale Übertragungseinheit"
+
+#: src/components/vm/disks/mediaEject.jsx:114
+#, fuzzy
+#| msgid "Network $0 could not be deleted"
+msgid "Media could not be ejected from $0"
+msgstr "Netzwerk $0 konnte nicht gelöscht werden"
+
+#: src/components/vm/disks/mediaEject.jsx:116
+#, fuzzy
+#| msgid "This disk will be removed from $0:"
+msgid "Media will be ejected from $0:"
+msgstr "Diese Festplatte wird aus $0 entfernt:"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:781
+#: src/components/vm/vmUsageCard.jsx:60
+#: src/components/vm/overview/vmOverviewCard.jsx:206
+msgid "Memory"
+msgstr "Speicher"
+
+#: src/components/vm/overview/memoryModal.jsx:98
+#: src/components/vm/overview/memoryModal.jsx:114
+msgid "Memory could not be saved"
+msgstr "Speicher konnte nicht gespeichert werden"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:229
+msgid "Memory must not be 0"
+msgstr "Speicher darf nicht 0 sein"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:102
+#: src/components/create-vm-dialog/createVmDialog.jsx:796
+#: src/components/create-vm-dialog/createVmDialog.jsx:892
+#: src/components/vm/overview/memorySelectRow.jsx:87
+msgid "MiB"
+msgstr "MiB"
+
+#: src/components/vm/vmMigrateDialog.jsx:215
+#: src/components/vm/vmActions.jsx:325
+msgid "Migrate"
+msgstr "Migrieren"
+
+#: src/components/vm/vmMigrateDialog.jsx:226
+msgid "Migrate VM to another host"
+msgstr "VM auf einen anderen Host migrieren"
+
+#: src/components/vm/vmMigrateDialog.jsx:181
+msgid "Migration failed"
+msgstr "Migration fehlgeschlagen"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:34
+#: src/components/vm/overview/cpuTypeModal.jsx:36
+msgid "Mode"
+msgstr "Modus"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:204
+#: src/components/vm/nics/nicBody.jsx:50
+msgid "Model"
+msgstr "Modell"
+
+#: src/components/vm/nics/vmNicsCard.jsx:241
+msgid "Model type"
+msgstr "Modelltyp"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:227
+msgid "More info for mount tag field"
+msgstr ""
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:207
+msgid "More info for source path field"
+msgstr "Mehr Informationen zum Feld Quellpfad"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:48
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:66
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:224
+msgid "Mount tag"
+msgstr ""
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:135
+msgid "Mount tag must not be empty"
+msgstr ""
+
+#: src/components/create-vm-dialog/pxe-helpers.js:93
+msgid "NAT to $0"
+msgstr "NAT auf $0"
+
+#: src/components/vm/nics/vmNicsCard.jsx:216
+msgid "NIC $0 of VM $1 failed to change state"
+msgstr ""
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:40
+#: src/components/storagePools/storagePoolVolumesTab.jsx:79
+#: src/components/storagePools/createStoragePoolDialog.jsx:44
+#: src/components/storagePools/storagePoolList.jsx:75
+#: src/components/create-vm-dialog/createVmDialog.jsx:258
+#: src/components/vms/hostvmslist.jsx:138
+#: src/components/vm/vmCloneDialog.jsx:89
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:81
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:39
+#: src/components/networks/networkList.jsx:73
+#: src/components/networks/createNetworkDialog.jsx:126
+msgid "Name"
+msgstr "Name"
+
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:97
+msgid "Name already exists"
+msgstr "Name existiert bereits"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:45
+msgid "Name contains invalid characters"
+msgstr "Name enthält ungültige Zeichen"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:64
+#: src/components/create-vm-dialog/createVmDialog.jsx:189
+#: src/components/vm/vmCloneDialog.jsx:41
+msgid "Name must not be empty"
+msgstr "Name darf nicht leer sein"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:45
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:99
+#: src/components/networks/createNetworkDialog.jsx:53
+msgid "Name should not be empty"
+msgstr "Name sollte nicht leer sein"
+
+#: src/components/networks/networkOverviewTab.jsx:47
+msgid "Name: "
+msgstr "Name: "
+
+#: src/components/networks/networkOverviewTab.jsx:147
+msgid "Netmask"
+msgstr "Netzmaske"
+
+#: src/components/networks/network.jsx:136
+msgid "Network $0 could not be deleted"
+msgstr "Netzwerk $0 konnte nicht gelöscht werden"
+
+#: src/components/networks/network.jsx:99
+msgid "Network $0 failed to get activated"
+msgstr "Netzwerk $0 konnte nicht aktiviert werden"
+
+#: src/components/networks/network.jsx:117
+msgid "Network $0 failed to get deactivated"
+msgstr "Netzwerk $0 konnte nicht deaktiviert werden"
+
+#: src/components/networks/network.jsx:137
+msgid "Network $0 will be permanently deleted."
+msgstr "Netzwerk $0 wird dauerhaft gelöscht."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:367
+msgid "Network boot (PXE)"
+msgstr ""
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:59
+msgid "Network file system"
+msgstr "Netzwerk-Dateisystem"
+
+#: src/components/vm/nics/vmNicsCard.jsx:387
+msgid "Network interface $0 could not be removed"
+msgstr "Netzwerkschnittstelle $0 konnte nicht entfernt werden"
+
+#: src/components/vm/nics/vmNicsCard.jsx:388
+msgid "Network interface $0 will be removed from $1"
+msgstr "Netzwerkschnittstelle $0 wird aus $1 entfernt"
+
+#: src/components/vm/nics/nicAdd.jsx:161 src/components/vm/nics/nicEdit.jsx:135
+msgid "Network interface settings could not be saved"
+msgstr "Netzwerkadaptereinstellungen konnten nicht gespeichert werden"
+
+#: src/components/vm/vmDetailsPage.jsx:174
+msgid "Network interfaces"
+msgstr "Netzwerkschnittstellen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:317
+msgid "Network selection does not support PXE."
+msgstr "Netzwerkauswahl unterstützt PXE nicht."
+
+#: src/components/networks/networkList.jsx:56
+#: src/components/networks/networkList.jsx:63
+#: src/components/networks/networkList.jsx:70
+msgid "Networks"
+msgstr "Netzwerke"
+
+#: src/components/vm/vmRenameDialog.jsx:77
+msgid "New name"
+msgstr "Neuer Name"
+
+#: src/components/vm/vmRenameDialog.jsx:79
+msgid "New name must not be empty"
+msgstr "Neuer Name darf nicht leer sein"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:43
+msgid "New volume name"
+msgstr "Neuer Volume-Name"
+
+#: src/components/vms/hostvmslist.jsx:143
+msgid "No VM is running or defined on this host"
+msgstr ""
+"Auf diesem Host ist weder eine VM definiert, noch wird eine VM ausgeführt"
+
+#: src/components/vm/overview/bootOrder.jsx:353
+msgid "No boot device found"
+msgstr "Kein Startgerät gefunden"
+
+#: src/components/vm/consoles/desktopConsole.jsx:45
+msgid "No connection available"
+msgstr "Keine Verbindung verfügbar"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:95
+msgid "No description"
+msgstr "Keine Beschreibung"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:91
+msgid "No directories shared between the host and this VM"
+msgstr "Keine gemeinsamen Verzeichnisse zwischen dem Host und dieser VM"
+
+#: src/components/vm/disks/vmDisksCard.jsx:248
+msgid "No disks defined for this VM"
+msgstr "Keine Festplatten für diese VM definiert"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:208
+msgid "No host device selected"
+msgstr "Kein Host-Gerät ausgewählt"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:321
+msgid "No host devices assigned to this VM"
+msgstr "Dieser VM sind keine Host-Geräte zugewiesen"
+
+#: src/components/vm/nics/nicBody.jsx:149
+msgid "No network devices"
+msgstr "Keine Netzwerkgeräte"
+
+#: src/components/vm/nics/vmNicsCard.jsx:454
+msgid "No network interfaces defined for this VM"
+msgstr "Keine Netzwerkschnittstellen für diese VM definiert"
+
+#: src/components/networks/networkList.jsx:80
+msgid "No network is defined on this host"
+msgstr "Kein Netzwerk auf diesem Host definiert"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:172
+msgid "No networks available"
+msgstr "Keine Netzwerke verfügbar"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:139
+msgid "No parent"
+msgstr "Kein Elternteil"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:210
+msgid "No snapshots defined for this VM"
+msgstr "Für diese VM sind keine Schnappschüsse definiert"
+
+#: src/helpers.js:233
+msgid "No state"
+msgstr "Kein Status"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:850
+msgid "No storage"
+msgstr "Kein Speicher"
+
+#: src/components/storagePools/storagePoolList.jsx:81
+msgid "No storage pool is defined on this host"
+msgstr "Auf diesem Host ist kein Speicherpool definiert"
+
+#: src/components/vm/disks/diskAdd.jsx:165
+msgid "No storage pools available"
+msgstr "Keine Speicherpools vorhanden"
+
+#: src/components/storagePools/storagePoolVolumesTab.jsx:113
+msgid "No storage volumes defined for this storage pool"
+msgstr "Für dieses Speicherpool sind keine Speichervolumes definiert"
+
+#: src/components/vm/nics/nicBody.jsx:147
+msgid "No virtual networks"
+msgstr "Keine virtuellen Netzwerke"
+
+#: src/components/storagePools/storagePoolDelete.jsx:182
+msgid "No volumes exist in this storage pool."
+msgstr ""
+
+#: src/components/networks/network.jsx:143
+msgid ""
+"Non-persistent network cannot be deleted. It ceases to exists when it's "
+"deactivated."
+msgstr ""
+"Ein nicht persistentes Netz kann nicht gelöscht werden. Es hört auf zu "
+"existieren, wenn es deaktiviert wird."
+
+#: src/components/storagePools/storagePoolDelete.jsx:225
+msgid ""
+"Non-persistent storage pool cannot be deleted. It ceases to exists when it's "
+"deactivated."
+msgstr ""
+
+#: src/components/networks/createNetworkDialog.jsx:188
+msgid "None"
+msgstr "Kein"
+
+#: src/helpers.js:263
+msgid "None (isolated network)"
+msgstr "Getrennt (Isoliertes Netzwerk)"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:587
+msgid "Offline token"
+msgstr "Offline-Token"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:226
+msgid "Offline token must not be empty"
+msgstr "Offline-Token darf nicht leer sein"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:527
+msgid "Old token expired"
+msgstr "Altes Token ist abgelaufen"
+
+#: src/components/storagePools/storageVolumeDelete.jsx:70
+msgid ""
+"One or more selected volumes are used by domains. Detach the disks first to "
+"allow volume deletion."
+msgstr ""
+
+#: src/components/vm/nics/nicEdit.jsx:39
+#: src/components/vm/overview/memoryModal.jsx:143
+#: src/components/vm/overview/bootOrder.jsx:379
+msgid "Only editable when the guest is shut off"
+msgstr "Kann nur bearbeitet werden wenn Gast ausgeschaltet ist"
+
+#: src/helpers.js:261
+msgid "Open"
+msgstr "Öffnen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:448
+msgid "Operating system"
+msgstr "Betriebssystem"
+
+#: src/components/storagePools/storagePool.jsx:175
+#: src/components/storagePools/storagePool.jsx:182
+msgid "Operation is in progress"
+msgstr "Vorgang läuft"
+
+#: src/components/storagePools/storagePool.jsx:75
+#: src/components/vm/vmDetailsPage.jsx:134
+msgid "Overview"
+msgstr "Überblick"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:60
+msgid "PCI"
+msgstr "PCI"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:137
+msgid "Parent snapshot"
+msgstr "Übergeordneter Schnappschuss"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:128
+#: src/components/vm/hostdevs/hostDevCard.jsx:132
+#: src/components/vm/disks/diskEdit.jsx:40
+#: src/components/vm/deleteDialog.jsx:63
+msgid "Path"
+msgstr "Pfad"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:109
+msgid "Path on host's filesystem"
+msgstr "Pfad zum Dateisystem des Hosts"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:283
+msgid "Path to ISO file on host's file system"
+msgstr "Pfad zur ISO-Datei im Dateisystem des Hosts"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:292
+msgid "Path to cloud image file on host's file system"
+msgstr "Pfad zur Cloud-Abbilddatei im Dateisystem des Hosts"
+
+#: src/components/vm/disks/diskAdd.jsx:339
+msgid "Path to file on host's file system"
+msgstr "Pfad zur Datei im Dateisystem des Hosts"
+
+#: src/components/vm/vmActions.jsx:200
+msgid "Pause"
+msgstr "Pause"
+
+#: src/helpers.js:226
+msgid "Paused"
+msgstr "Pausiert"
+
+#: src/components/vm/vmMigrateDialog.jsx:71
+msgid "Permanent (default)"
+msgstr "Dauerhaft (Standard)"
+
+#: src/components/vm/nics/nicAdd.jsx:86 src/components/vm/disks/diskAdd.jsx:134
+msgid "Persistence"
+msgstr "Persistenz"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:66
+#: src/components/networks/networkOverviewTab.jsx:114
+msgid "Persistent"
+msgstr "Persistent"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:61
+msgid "Physical disk device"
+msgstr "Physikalisches Festplattengerät"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:166
+msgid "Physical disk device on host"
+msgstr "Physikalisches Festplattengerät auf dem Host"
+
+#: src/components/vm/disks/diskAdd.jsx:430
+msgid "Please choose a storage pool"
+msgstr ""
+
+#: src/components/vm/disks/diskAdd.jsx:448
+msgid "Please choose a volume"
+msgstr ""
+
+#: src/components/vm/disks/diskAdd.jsx:437
+msgid "Please enter new volume name"
+msgstr "Bitte geben Sie den neuen Datenträgernamen ein"
+
+#: src/components/vm/consoles/consoles.jsx:40
+msgid "Please start the virtual machine to access its console."
+msgstr "Starten Sie die virtuelle Maschine, um auf die Konsole zuzugreifen."
+
+#: src/components/vm/disks/vmDiskColumns.jsx:46
+#: src/components/vm/disks/diskAdd.jsx:150
+#: src/components/vm/disks/mediaEject.jsx:86
+#: src/components/vm/deleteDialog.jsx:71
+#: src/components/vm/overview/bootOrder.jsx:112
+msgid "Pool"
+msgstr "Pool"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:151
+msgid "Pool needs to be active to create volume"
+msgstr ""
+
+#: src/components/vm/disks/diskAdd.jsx:440
+msgid "Pool type $0 does not support volume creation"
+msgstr ""
+
+#: src/components/storagePools/storageVolumeCreate.jsx:151
+msgid "Pool type doesn't support volume creation"
+msgstr ""
+
+#: src/components/storagePools/storagePoolDelete.jsx:94
+msgid "Pool's volumes are used by VMs "
+msgstr ""
+
+#: src/components/vm/nics/vmNicsCard.jsx:287
+#: src/components/vm/disks/vmDiskColumns.jsx:49
+#: src/components/vm/overview/bootOrder.jsx:115
+#: src/components/vm/overview/bootOrder.jsx:131
+msgid "Port"
+msgstr "Port"
+
+#: src/components/vm/overview/vcpuModal.jsx:226
+msgid "Preferred number of sockets to expose to the guest."
+msgstr ""
+"Bevorzugte Anzahl von Sockets , die dem Gast zugänglich gemacht werden "
+"sollen."
+
+#: src/components/networks/networkOverviewTab.jsx:167
+msgid "Prefix"
+msgstr "Präfix"
+
+#: src/components/networks/createNetworkDialog.jsx:284
+msgid "Prefix length"
+msgstr "Präfixlänge"
+
+#: src/components/networks/createNetworkDialog.jsx:98
+msgid "Prefix length should not be empty"
+msgstr "Präfixlänge sollte nicht leer sein"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:211
+msgid ""
+"Previously taken snapshots allow you to revert to an earlier state if "
+"something goes wrong"
+msgstr ""
+"Zuvor erstellte Schnappschüsse ermöglichen es Ihnen, zu einem früheren "
+"Zustand zurückzukehren, wenn etwas schief geht"
+
+#: src/helpers.js:266
+msgid "Private"
+msgstr "Privat"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:132
+#: src/components/vm/hostdevs/hostDevCard.jsx:242
+#: src/components/vm/hostdevs/hostDevCard.jsx:248
+#: src/components/vm/overview/bootOrder.jsx:144
+#: src/components/vm/overview/bootOrder.jsx:159
+msgid "Product"
+msgstr "Produkt"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:615
+msgid "Profile"
+msgstr "Profil"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:119
+#: src/components/vm/disks/vmDiskColumns.jsx:45
+#: src/components/vm/overview/bootOrder.jsx:111
+#: src/components/vm/overview/bootOrder.jsx:172
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: src/components/vm/nics/nicBody.jsx:96
+msgid ""
+"Provides a bridge from the guest virtual machine directly onto the LAN. This "
+"needs a bridge device on the host with one or more physical NICs."
+msgstr ""
+
+#: src/components/vm/nics/nicBody.jsx:87
+msgid ""
+"Provides a connection whose details are described by the named network "
+"definition."
+msgstr ""
+"Stellt eine Verbindung bereit, deren Details durch die benannte "
+"Netzwerkdefinition beschrieben werden."
+
+#: src/components/vm/nics/nicBody.jsx:123
+msgid "Provides a virtual LAN with NAT to the outside world."
+msgstr "Stellt ein virtuelles LAN mit NAT zur Außenwelt bereit."
+
+#: src/components/networks/networkOverviewTab.jsx:279
+msgid "Range"
+msgstr "Bereich"
+
+#: src/components/vm/disks/vmDisksCard.jsx:212
+#: src/components/vm/disks/diskEdit.jsx:121
+msgid "Read-only"
+msgstr "Nur-lesen"
+
+#: src/components/vm/vmActions.jsx:258
+msgid "Reboot"
+msgstr "Neustart"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:338
+msgid "Remote URL"
+msgstr "Remote-URL"
+
+#: src/components/vm/consoles/desktopConsole.jsx:55
+msgid "Remote viewer details"
+msgstr "Fernbetrachter-Details"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:258
+#: src/components/vm/hostdevs/hostDevCard.jsx:264
+#: src/components/vm/nics/vmNicsCard.jsx:389
+#: src/components/vm/nics/vmNicsCard.jsx:396
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:59
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:68
+#: src/components/vm/disks/vmDiskColumns.jsx:131
+#: src/components/vm/disks/vmDiskColumns.jsx:190
+#: src/components/networks/networkOverviewTab.jsx:70
+msgid "Remove"
+msgstr "Entfernen"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:130
+msgid "Remove disk from VM?"
+msgstr "Festplatte aus VM entfernen?"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:61
+msgid "Remove filesystem?"
+msgstr "Dateisystem entfernen?"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:260
+msgid "Remove host device from VM?"
+msgstr "Host-Gerät aus VM entfernen?"
+
+#: src/components/vm/nics/vmNicsCard.jsx:386
+msgid "Remove network interface?"
+msgstr "Netzwerkschnittstelle entfernen?"
+
+#: src/components/networks/networkOverviewTab.jsx:63
+msgid "Remove static host from DHCP"
+msgstr "Statischen Host aus DHCP entfernen"
+
+#: src/components/vm/vmRenameDialog.jsx:64 src/components/vm/vmActions.jsx:338
+msgid "Rename"
+msgstr "Umbenennen"
+
+#: src/components/vm/vmRenameDialog.jsx:57
+msgid "Rename VM $0"
+msgstr "VM $0 umbenennen"
+
+#: src/components/vm/vmActions.jsx:211
+msgid "Resume"
+msgstr "Fortfahren"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:161
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:72
+msgid "Revert"
+msgstr "Zurückkehren"
+
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:68
+msgid "Revert to snapshot $0"
+msgstr "Zum Schnappschuss $0 zurückkehren"
+
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:81
+msgid ""
+"Reverting to this snapshot will take the VM back to the time of the snapshot "
+"and the current state will be lost, along with any data not captured in a "
+"snapshot"
+msgstr ""
+"Wenn Sie zu diesem Schnappschuss zurückkehren, wird die VM auf den Zeitpunkt "
+"des Schnappschusses zurückgesetzt und der aktuelle Zustand geht verloren, "
+"zusammen mit allen Daten, die nicht in einem Schnappschuss erfasst wurden"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:709
+msgid "Root password"
+msgstr "Root-Passwort"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:98
+msgid "Route to $0"
+msgstr "Route zu $0"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:100
+msgid "Routed network"
+msgstr "Weitergeleitetes Netzwerk"
+
+#: src/components/vm/vmActions.jsx:280
+msgid "Run"
+msgstr "Ausführen"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:125
+#: src/components/networks/networkOverviewTab.jsx:124
+msgid "Run when host boots"
+msgstr "Starten wenn Host hochfährt"
+
+#: src/helpers.js:224
+msgid "Running"
+msgstr "Läuft"
+
+#: src/components/vm/consoles/desktopConsole.jsx:52
+msgid "SPICE TLS port"
+msgstr "SPICE TLS-Port"
+
+#: src/components/vm/consoles/desktopConsole.jsx:48
+msgid "SPICE address"
+msgstr "SPICE-Adresse"
+
+#: src/components/vm/consoles/desktopConsole.jsx:50
+msgid "SPICE port"
+msgstr "SPICE-Port"
+
+#: src/components/vm/nics/nicEdit.jsx:176
+#: src/components/vm/disks/diskEdit.jsx:265
+#: src/components/vm/overview/firmware.jsx:69
+#: src/components/vm/overview/memoryModal.jsx:154
+#: src/components/vm/overview/bootOrder.jsx:326
+msgid "Save"
+msgstr "Speichern"
+
+#: src/components/vm/consoles/consoles.jsx:111
+msgid "Select console type"
+msgstr "Konsolentyp auswählen"
+
+#: src/components/vm/consoles/vnc.jsx:150
+msgid "Send key"
+msgstr "Tastendruck senden"
+
+#: src/components/vm/vmActions.jsx:247
+msgid "Send non-maskable interrupt"
+msgstr "Nicht maskierbare Unterbrechung senden"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:106
+msgid "Serial"
+msgstr "Seriell"
+
+#: src/components/vm/consoles/consoles.jsx:112
+msgid "Serial console"
+msgstr "Serielle Konsole"
+
+#: src/components/vm/consoles/consoles.jsx:115
+msgid "Serial console ($0)"
+msgstr "Serielle Konsole ($0)"
+
+#: src/components/networks/createNetworkDialog.jsx:215
+msgid "Set DHCP range"
+msgstr "DHCP-Bereich festlegen"
+
+#: src/components/vm/nics/nicAdd.jsx:72
+msgid "Set manually"
+msgstr "Manuell einstellen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1319
+msgid ""
+"Setting the user passwords for unattended installation requires starting the "
+"VM when creating it"
+msgstr ""
+"Das Festlegen der Benutzerpasswörter für die unbeaufsichtigte Installation "
+"erfordert das Starten der VM beim Erstellen"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:169
+msgid "Share"
+msgstr "Freigabe"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:163
+msgid "Share a host directory with the guest"
+msgstr "Ein Host-Verzeichnis mit dem Gast teilen"
+
+#: src/components/vm/vmDetailsPage.jsx:204
+msgid "Shared directories"
+msgstr "Gemeinsame Verzeichnisse"
+
+#: src/components/vm/vmDetailsPage.jsx:206
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:180
+msgid "Shared host directories need to be manually mounted inside the VM"
+msgstr ""
+"Gemeinsam genutzte Host-Verzeichnisse müssen innerhalb der VM manuell "
+"eingehängt werden"
+
+#: src/components/vm/vmMigrateDialog.jsx:102
+msgid "Shared storage"
+msgstr "Gemeinsamer Speicher"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:243
+#: src/components/vm/disks/diskAdd.jsx:209
+msgid "Show additional options"
+msgstr "Zusätzlicher Optionen anzeigen"
+
+#: src/components/vm/vmActions.jsx:225 src/components/vm/vmActions.jsx:232
+msgid "Shut down"
+msgstr "Herunterfahren"
+
+#: src/helpers.js:228
+msgid "Shut off"
+msgstr "Ausgeschaltet"
+
+#: src/components/vm/overview/firmware.jsx:149
+msgid "Shut off the VM in order to edit firmware configuration"
+msgstr ""
+"Fahren Sie die VM herunter, um die Firmware-Konfiguration zu bearbeiten"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:115 src/helpers.js:227
+msgid "Shutting down"
+msgstr "Wird heruntergefahren"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:86
+#: src/components/storagePools/storagePoolVolumesTab.jsx:79
+#: src/components/storagePools/storagePoolList.jsx:76
+msgid "Size"
+msgstr "Größe"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:104
+#: src/components/vm/hostdevs/hostDevCard.jsx:106
+#: src/components/vm/hostdevs/hostDevCard.jsx:113
+#: src/components/vm/hostdevs/hostDevCard.jsx:243
+#: src/components/vm/overview/bootOrder.jsx:160
+msgid "Slot"
+msgstr ""
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:169
+msgid "Snapshot $0 could not be deleted"
+msgstr "Schnappschuss $0 konnte nicht gelöscht werden"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:170
+msgid ""
+"Snapshot $0 will be deleted from $1. All of its captured content will be "
+"lost."
+msgstr ""
+"Schnappschuss $0 wird aus $1 gelöscht. Der gesamte erfasste Inhalt geht "
+"dabei verloren."
+
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:122
+msgid "Snapshot failed to be created"
+msgstr "Schnappschuss konnte nicht erstellt werden"
+
+#: src/components/vm/vmDetailsPage.jsx:192
+msgid "Snapshots"
+msgstr "Schnappschüsse"
+
+# translation auto-copied from project MRG Realtime Reference Guide, version
+# 2.2, document Sockets
+#: src/components/vm/overview/vcpuModal.jsx:224
+msgid "Sockets"
+msgstr "Sockets"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:51
+#: src/components/vm/hostdevs/hostDevCard.jsx:224
+#: src/components/vm/nics/nicBody.jsx:197
+#: src/components/vm/nics/vmNicsCard.jsx:281
+#: src/components/vm/disks/vmDisksCard.jsx:186
+#: src/components/vm/disks/diskAdd.jsx:743
+#: src/components/vm/disks/diskAdd.jsx:779
+msgid "Source"
+msgstr "Quelle"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:56
+msgid "Source format"
+msgstr "Quellenformat"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:137
+msgid "Source must not be empty"
+msgstr "Quelle darf nicht leer sein"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:41
+#: src/components/storagePools/storagePoolOverviewTab.jsx:46
+#: src/components/storagePools/createStoragePoolDialog.jsx:174
+#: src/components/storagePools/createStoragePoolDialog.jsx:192
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:48
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:65
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:204
+msgid "Source path"
+msgstr "Quellpfad"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:175
+#: src/components/storagePools/createStoragePoolDialog.jsx:195
+msgid "Source path should not be empty"
+msgstr "Quellpfad sollte nicht leer sein"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:214
+msgid "Source should start with http, ftp or nfs protocol"
+msgstr "Die Quelle sollte mit dem http,ftp oder nfs Protokoll starten"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:221
+msgid "Source volume group"
+msgstr ""
+
+#: src/components/networks/createNetworkDialog.jsx:219
+msgid "Start"
+msgstr "Starten"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:239
+msgid "Start pool when host boots"
+msgstr "Starten Sie den Pool, wenn der Host bootet"
+
+#: src/components/networks/createNetworkDialog.jsx:76
+#: src/components/networks/createNetworkDialog.jsx:104
+msgid "Start should not be empty"
+msgstr "Start sollte nicht leer sein"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:237
+msgid "Startup"
+msgstr "Anlaufen"
+
+#: src/components/storagePools/storagePoolList.jsx:78
+#: src/components/vms/hostvmslist.jsx:97 src/components/vms/hostvmslist.jsx:140
+#: src/components/vm/nics/vmNicsCard.jsx:330
+#: src/components/vm/overview/vmOverviewCard.jsx:192
+#: src/components/networks/networkList.jsx:77
+msgid "State"
+msgstr "Status"
+
+#: src/components/networks/networkOverviewTab.jsx:287
+msgid "Static host entries"
+msgstr "Statische Host-Einträge"
+
+#: src/components/networks/networkOverviewTab.jsx:64
+msgid "Static host from DHCP could not be removed"
+msgstr "Statischer Host aus DHCP konnte nicht entfernt werden"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:845
+#: src/components/vm/vmMigrateDialog.jsx:95
+msgid "Storage"
+msgstr "Speicher"
+
+#: src/components/vm/vmMigrateDialog.jsx:117
+msgid "Storage is at a shared location"
+msgstr "Speicher ist an einem gemeinsamen Ort"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:876
+#, fuzzy
+#| msgid "Storage Limit"
+msgid "Storage limit"
+msgstr "Speichergrenze"
+
+#: src/components/storagePools/storagePool.jsx:123
+msgid "Storage pool $0 failed to get activated"
+msgstr ""
+
+#: src/components/storagePools/storagePool.jsx:143
+msgid "Storage pool $0 failed to get deactivated"
+msgstr ""
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:404
+msgid "Storage pool failed to be created"
+msgstr "Speicherpool konnte nicht erstellt werden"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:48
+msgid "Storage pool name"
+msgstr "Speicherpoolname"
+
+#: src/components/storagePools/storagePoolList.jsx:58
+#: src/components/storagePools/storagePoolList.jsx:65
+#: src/components/storagePools/storagePoolList.jsx:72
+#: src/components/create-vm-dialog/createVmDialog.jsx:851
+msgid "Storage pools"
+msgstr "Speicherpools"
+
+#: src/components/vm/disks/diskAdd.jsx:423
+msgid "Storage pools could not be fetched"
+msgstr ""
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:233
+msgid "Storage size must not be 0"
+msgstr "Speichergröße darf nicht 0 sein"
+
+#: src/components/vm/disks/diskEdit.jsx:44
+msgid "Storage volume"
+msgstr "Speichervolumen"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:67
+#: src/components/vm/disks/diskAdd.jsx:444
+msgid "Storage volume size must not exceed the storage pool's capacity ($0 $1)"
+msgstr ""
+
+#: src/components/storagePools/storagePool.jsx:81
+msgid "Storage volumes"
+msgstr "Speichervolumen"
+
+#: src/components/storagePools/storageVolumeDelete.jsx:46
+msgid "Storage volumes could not be deleted"
+msgstr "Speichervolumen konnte nicht gelöscht werden"
+
+#: src/components/vm/vmMigrateDialog.jsx:225
+msgid ""
+"Storage volumes must be shared between this host and the destination host."
+msgstr ""
+"Speichervolumes müssen von diesem Host und dem Zielhost gemeinsam genutzt "
+"werden."
+
+#: src/helpers.js:231
+msgid "Suspended (PM)"
+msgstr "Angehalten (PM)"
+
+#: src/helpers.js:220
+msgid "System"
+msgstr "System"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:131
+msgid "Table of selectable host devices"
+msgstr "Tabelle der auswählbaren Host-Geräte"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:114
+#: src/components/vm/disks/vmDiskColumns.jsx:135
+#: src/components/vm/overview/bootOrder.jsx:166
+msgid "Target"
+msgstr "Ziel"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:61
+#: src/components/storagePools/createStoragePoolDialog.jsx:103
+msgid "Target path"
+msgstr "Zielpfad"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:105
+msgid "Target path should not be empty"
+msgstr "Zielpfad sollte nicht leer sein"
+
+#: src/components/vm/vmMigrateDialog.jsx:75
+msgid "Temporary"
+msgstr "Temporär"
+
+#: src/components/vm/vmMigrateDialog.jsx:86
+msgid "Temporary migration"
+msgstr "Temporäre Migration"
+
+#: src/components/vm/deleteDialog.jsx:84
+msgid "The VM $0 is running and will be forced off before deletion."
+msgstr ""
+"Die VM $0 ist in Betrieb und wird vor dem Löschen zwangsweise abgeschaltet."
+
+#: src/components/vm/nics/vmNicsCard.jsx:397
+#: src/components/vm/disks/vmDiskColumns.jsx:189
+msgid "The VM needs to be running or shut off to detach this device"
+msgstr "Um das Gerät zu entfernen muss die VM laufen oder ausgeschaltet sein"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:160
+msgid "The directory on the server being exported"
+msgstr "Das Verzeichnis auf dem Server, der exportiert wird"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:206
+msgid "The host path that is to be exported."
+msgstr "Der zu exportierende Host-Pfad."
+
+#: src/components/vm/vmMigrateDialog.jsx:72
+msgid ""
+"The migrated VM configuration is removed from the source host. The "
+"destination host is considered the new home of the VM."
+msgstr ""
+"Die migrierte VM-Konfiguration wird vom Quellhost entfernt. Der Zielhost "
+"wird als neues Zuhause der VM betrachtet."
+
+#: src/components/vm/disks/diskAdd.jsx:105
+msgid "The pool is empty"
+msgstr "Der Pool ist leer"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:773
+msgid "The selected operating system has minimum memory requirement of $0 $1"
+msgstr ""
+"Das ausgewählte Betriebssystem hat einen Mindestspeicherbedarf von $0 $1"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:823
+msgid ""
+"The selected operating system has minimum storage size requirement of $0 $1"
+msgstr ""
+"Das ausgewählte Betriebssystem erfordert eine Mindestspeichergröße von $0 $1"
+
+#: src/components/networks/networkOverviewTab.jsx:65
+msgid "The static host entry for $0 will be removed:"
+msgstr "Der statische Host-Eintrag für $0 wird entfernt:"
+
+#: src/components/storagePools/storagePoolDelete.jsx:143
+#: src/components/storagePools/storagePoolDelete.jsx:147
+msgid "The storage pool could not be deleted"
+msgstr "Der Speicher-Pool konnte nicht entfernt werden"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:226
+msgid "The tag name to be used by the guest to mount this export point."
+msgstr ""
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:507
+#: src/components/create-vm-dialog/createVmDialog.jsx:520
+#: src/components/create-vm-dialog/createVmDialog.jsx:530
+msgid "Then copy and paste it above."
+msgstr "Kopieren Sie es dann und fügen Sie es oben ein."
+
+#: src/components/vm/vmActions.jsx:347
+msgid "This VM is transient. Shut it down if you wish to delete it."
+msgstr ""
+"Diese VM ist vorübergehend. Schalten Sie sie ab, wenn Sie sie löschen "
+"möchten."
+
+#: src/components/vm/disks/vmDiskColumns.jsx:133
+msgid "This disk will be removed from $0:"
+msgstr "Diese Festplatte wird aus $0 entfernt:"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:63
+msgid "This filesystem will be removed from $0:"
+msgstr "Dieses Dateisystem wird aus $0 entfernt:"
+
+#: src/components/vm/nics/nicBody.jsx:86
+msgid ""
+"This is the recommended config for general guest connectivity on hosts with "
+"dynamic / wireless networking configs."
+msgstr ""
+"Dies ist die empfohlene Konfiguration für allgemeine Gastkonnektivität auf "
+"Hosts mit dynamischen / drahtlosen Netzwerkkonfigurationen."
+
+#: src/components/vm/nics/nicBody.jsx:95
+msgid ""
+"This is the recommended config for general guest connectivity on hosts with "
+"static wired networking configs."
+msgstr ""
+"Dies ist die empfohlene Konfiguration für die allgemeine Gastkonnektivität "
+"auf Hosts mit statischen kabelgebundenen Netzwerkkonfigurationen."
+
+#: src/components/vm/nics/nicBody.jsx:101
+msgid ""
+"This is the recommended config for high performance or enhanced security."
+msgstr ""
+"Dies ist die empfohlene Konfiguration für hohe Leistung oder erweiterte "
+"Sicherheit."
+
+#: org.cockpit-project.machines.metainfo.xml:8
+msgid ""
+"This tool manages virtual machines. With it, you can create, monitor, and "
+"control the virtual machines of the libvirt subsystem."
+msgstr ""
+"Dieses Werkzeug verwaltet virtuelle Maschinen. Mit ihm können Sie die "
+"virtuellen Maschinen des libvirt-Subsystems erstellen, überwachen und "
+"steuern."
+
+#: src/components/vm/disks/diskAdd.jsx:75
+msgid "This volume is already used by $0."
+msgstr "Dieses Volumen wird bereits von $0 verwendet."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:864
+msgid "This volume is already used by another VM."
+msgstr "Dieses Volumen wird bereits von einer anderen VM verwendet."
+
+#: src/components/vm/overview/vcpuModal.jsx:245
+msgid "Threads per core"
+msgstr "Fäden pro Kern"
+
+#: src/components/vm/overview/firmware.jsx:155
+msgid "Transient VMs don't support editing firmware configuration"
+msgstr ""
+"Vorübergehende VMs unterstützen die Bearbeitung der Firmware-Konfiguration "
+"nicht"
+
+#: src/components/libvirtSlate.jsx:36
+msgid "Troubleshoot"
+msgstr "Fehlersuche"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:76
+#: src/components/storagePools/createStoragePoolDialog.jsx:81
+#: src/components/vm/hostdevs/hostDevAdd.jsx:50
+#: src/components/vm/hostdevs/hostDevCard.jsx:184
+#: src/components/vm/nics/vmNicsCard.jsx:228
+#: src/components/vm/overview/bootOrder.jsx:129
+#: src/components/vm/overview/bootOrder.jsx:142
+#: src/components/vm/overview/bootOrder.jsx:157
+#: src/components/vm/overview/bootOrder.jsx:164
+#: src/components/vm/overview/bootOrder.jsx:171
+#: src/components/vm/overview/bootOrder.jsx:177
+msgid "Type"
+msgstr "Typ"
+
+#: src/components/vm/overview/bootOrder.jsx:178
+msgid "Type ID"
+msgstr "Typ ID"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:364
+msgid "URL (ISO image or distro install tree)"
+msgstr "URL (ISO-Abbild oder Distro-Installationsbaum)"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:55
+msgid "USB"
+msgstr "USB"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:124
+msgid "UUID"
+msgstr "UUID"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:138
+msgid "Undefined"
+msgstr "Undefiniert"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:266
+msgid "Unique name"
+msgstr "Einzigartiger Name"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:266
+msgid "Unique name, default: $0"
+msgstr "Eindeutiger Name, Standard: $0"
+
+#: src/components/networks/createNetworkDialog.jsx:130
+msgid "Unique network name"
+msgstr "Eindeutiger Netzwerkname"
+
+#: src/components/vm/overview/bootOrder.jsx:167
+msgid "Unit"
+msgstr "Einheit"
+
+#: src/components/vm/nics/vmNicsCard.jsx:264
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: src/components/vm/overview/firmware.jsx:127
+msgid "Unknown firmware"
+msgstr "Unbekannte Firmware"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:97
+#: src/components/vm/hostdevs/hostDevCard.jsx:98
+#: src/components/vm/overview/bootOrder.jsx:148
+#: src/components/vm/overview/bootOrder.jsx:149
+msgid "Unspecified"
+msgstr "Nicht spezifiziert"
+
+#: src/components/vm/disks/diskEdit.jsx:42
+msgid "Url"
+msgstr "Url"
+
+# translation auto-copied from project subscription-manager, version 1.9.X,
+# document keys
+#: src/components/vm/vmDetailsPage.jsx:145
+msgid "Usage"
+msgstr "Auslastung"
+
+#: src/components/vm/disks/diskAdd.jsx:751
+#: src/components/vm/disks/diskAdd.jsx:787
+msgid "Use existing"
+msgstr "Benutze existierendes"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:251
+msgid "Use extended attributes on files and directories"
+msgstr "Erweiterte Attribute für Dateien und Verzeichnisse verwenden"
+
+#: src/components/vm/vmMigrateDialog.jsx:103
+msgid ""
+"Use the same location on both the origin and destination hosts for your "
+"storage. This can be a shared storage pool, NFS, or any other method of "
+"sharing storage."
+msgstr ""
+"Verwenden Sie auf dem Ausgangs- und dem Zielhost denselben Ort für Ihren "
+"Speicher. Dies kann ein gemeinsamer Speicherpool, NFS oder eine andere "
+"Methode zur gemeinsamen Nutzung von Speicher sein."
+
+#: src/components/vm/disks/vmDisksCard.jsx:178
+msgid "Used"
+msgstr "Benutzt"
+
+#: src/components/storagePools/storagePoolVolumesTab.jsx:79
+msgid "Used by"
+msgstr "Benutzt von"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:722
+msgid "User login"
+msgstr "Benutzeranmeldung"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:248
+msgid "User login must not be empty when user password is set"
+msgstr ""
+"Benutzeranmeldung darf nicht leer sein, wenn das Benutzerpasswort festgelegt "
+"ist"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:729
+msgid "User password"
+msgstr "Benutzerpasswort"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:245
+msgid "User password must not be empty when user login is set"
+msgstr ""
+"Benutzerpasswort darf nicht leer sein, wenn die Benutzeranmeldung festgelegt "
+"ist"
+
+#: src/helpers.js:221
+msgid "User session"
+msgstr "Benutzersitzung"
+
+#: src/components/vm/overview/vcpuModal.jsx:171
+msgid "VCPU settings could not be saved"
+msgstr "VCPU-Einstellungen konnten nicht gespeichert werden"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:318
+msgid "VM $0 Host Devices"
+msgstr "VM $0 Host-Geräte"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:191
+msgid "VM $0 already exists"
+msgstr "VM $0 existiert bereits"
+
+#: src/app.jsx:236
+msgid "VM $0 does not exist on $1 connection"
+msgstr "VM $0 existiert nicht auf Verbindung $1"
+
+#: src/components/vm/vmActions.jsx:121
+msgid "VM $0 failed to force reboot"
+msgstr "VM $0 konnte nicht zum Neustart gezwungen werden"
+
+#: src/components/vm/vmActions.jsx:174
+msgid "VM $0 failed to force shutdown"
+msgstr "VM $0 konnte nicht zum Herunterfahren gezwungen werden"
+
+#: src/components/vm/vmActions.jsx:98
+msgid "VM $0 failed to get installed"
+msgstr "VM$0 konnte nicht installiert werden"
+
+#: src/components/vm/vmActions.jsx:148
+msgid "VM $0 failed to pause"
+msgstr "VM $0 konnte nicht pausiert werden"
+
+#: src/components/vm/vmActions.jsx:109
+msgid "VM $0 failed to reboot"
+msgstr "VM $0 konnte nicht neugestartet werden"
+
+#: src/components/vm/vmActions.jsx:160
+msgid "VM $0 failed to resume"
+msgstr "VM $0 konnte nicht fortgesetzt werden"
+
+#: src/components/vm/vmActions.jsx:186
+msgid "VM $0 failed to send NMI"
+msgstr "NMI konnte nicht an VM $0 gesendet werden"
+
+#: src/components/vm/vmActions.jsx:136
+msgid "VM $0 failed to shutdown"
+msgstr "VM $0 konnte nicht heruntergefahren werden"
+
+#: src/components/vm/vmActions.jsx:90
+msgid "VM $0 failed to start"
+msgstr "VM $0 konnte nicht gestartet werden"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:106
+msgid "VM state"
+msgstr "VM-Status"
+
+#: src/components/vm/consoles/desktopConsole.jsx:53
+msgid "VNC TLS port"
+msgstr "VNC-TLS-Port"
+
+#: src/components/vm/consoles/desktopConsole.jsx:49
+msgid "VNC address"
+msgstr "VNC-Adresse"
+
+#: src/components/vm/consoles/consoles.jsx:113
+msgid "VNC console"
+msgstr "VNC-Konsole"
+
+#: src/components/vm/consoles/desktopConsole.jsx:51
+msgid "VNC port"
+msgstr "VNC-Port"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:536
+msgid "Valid token"
+msgstr "Gültiges Token"
+
+# translation auto-copied from project subscription-manager, version 1.9.X,
+# document keys
+#: src/components/vm/hostdevs/hostDevAdd.jsx:132
+#: src/components/vm/hostdevs/hostDevCard.jsx:214
+#: src/components/vm/hostdevs/hostDevCard.jsx:241
+#: src/components/vm/hostdevs/hostDevCard.jsx:247
+#: src/components/vm/overview/bootOrder.jsx:143
+#: src/components/vm/overview/bootOrder.jsx:158
+msgid "Vendor"
+msgstr "Anbieter"
+
+#: src/components/storagePools/storagePoolList.jsx:55
+#: src/components/vms/hostvmslist.jsx:128
+#: src/components/vms/hostvmslist.jsx:135
+#: src/components/vm/vmDetailsPage.jsx:112
+#: src/components/vm/vmDetailsPage.jsx:264
+#: src/components/networks/networkList.jsx:53 src/manifest.json:0
+msgid "Virtual machines"
+msgstr "Virtuelle Maschinen"
+
+#: src/index.html:5
+msgid "Virtual machines management"
+msgstr "Verwaltung Virtueller Maschinen"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:158
+msgid "Virtual network"
+msgstr "Virtuelles Netzwerk"
+
+#: src/components/networks/createNetworkDialog.jsx:382
+msgid "Virtual network failed to be created"
+msgstr "Virtuelles Netzwerk konnte nicht erstellt werden"
+
+#: src/components/libvirtSlate.jsx:41
+msgid "Virtualization service (libvirt) is not active"
+msgstr "Der Virtualisierungsdienst (libvirt) ist nicht aktiv"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:862
+#: src/components/vm/disks/vmDiskColumns.jsx:47
+#: src/components/vm/disks/diskAdd.jsx:113
+#: src/components/vm/disks/mediaEject.jsx:90
+#: src/components/vm/deleteDialog.jsx:68
+#: src/components/vm/overview/bootOrder.jsx:113
+msgid "Volume"
+msgstr "Lautstärke"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:88
+msgid "Volume failed to be created"
+msgstr "Volumen konnte nicht erstellt werden"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:169
+msgid "Volume group name"
+msgstr ""
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:222
+msgid "Volume group name should not be empty"
+msgstr ""
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:120
+#: src/components/vm/overview/bootOrder.jsx:173
+msgid "WWPN"
+msgstr "WWPN"
+
+#: src/components/vm/disks/vmDisksCard.jsx:212
+#: src/components/vm/disks/diskEdit.jsx:130
+msgid "Writeable"
+msgstr "Beschreibbar"
+
+#: src/components/vm/disks/vmDisksCard.jsx:212
+#: src/components/vm/disks/diskEdit.jsx:139
+msgid "Writeable and shared"
+msgstr "Beschreibbar und geteilt"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:182
+msgid "You can mount the shared folder using:"
+msgstr ""
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:194
+msgid "You need to select the most closely matching operating system"
+msgstr "Bitte wählen sie das passende Betriebssystem aus"
+
+#: src/components/storagePools/storagePool.jsx:64
+#: src/components/networks/network.jsx:57
+msgid "active"
+msgstr "Aktiv"
+
+#: src/components/networks/networkOverviewTab.jsx:191
+msgid "add entry"
+msgstr "Eintrag hinzufügen"
+
+#: src/helpers.js:251
+msgid "bridge"
+msgstr "Brücke"
+
+#: src/helpers.js:237
+msgid "cdrom"
+msgstr "CD-ROM"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:52 src/helpers.js:244
+msgid "custom"
+msgstr "Benutzerdefiniert"
+
+#: src/helpers.js:249
+msgid "direct"
+msgstr "Direkte"
+
+#: src/helpers.js:216
+msgid "disabled"
+msgstr "Aus"
+
+#: src/helpers.js:236 src/helpers.js:239
+msgid "disk"
+msgstr "Datenträger"
+
+#: src/helpers.js:277
+msgid "down"
+msgstr "runter"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:136
+#: src/components/vm/overview/vmOverviewCard.jsx:147
+#: src/components/vm/overview/vmOverviewCard.jsx:155
+#: src/components/vm/overview/bootOrder.jsx:372
+msgid "edit"
+msgstr "bearbeiten"
+
+#: src/helpers.js:217
+msgid "enabled"
+msgstr "An"
+
+#: src/helpers.js:253
+msgid "ethernet"
+msgstr "Ethernet"
+
+# translation auto-copied from project Skynet topics, version 1, document
+# 15687-444004, author rgromans
+#: src/helpers.js:245
+msgid "host"
+msgstr "host"
+
+#: src/helpers.js:241
+msgid "host device"
+msgstr "Host-Gerät"
+
+#: src/helpers.js:246
+msgid "host passthrough"
+msgstr "Host-Durchleitung"
+
+#: src/helpers.js:254
+msgid "hostdev"
+msgstr "hostdev"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:66
+msgid "iSCSI direct target"
+msgstr ""
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:144
+msgid "iSCSI initiator IQN"
+msgstr "iSCSI initiator IQN"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:60
+msgid "iSCSI target"
+msgstr "iSCSI targets"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:163
+msgid "iSCSI target IQN"
+msgstr ""
+
+#: src/components/storagePools/storagePool.jsx:64
+#: src/components/networks/network.jsx:57
+msgid "inactive"
+msgstr "Inaktiv"
+
+#: src/manifest.json:0
+msgid "iso"
+msgstr "iso"
+
+#: src/manifest.json:0
+msgid "libvirt"
+msgstr "libvirt"
+
+#: src/helpers.js:255
+msgid "mcast"
+msgstr "mcast"
+
+#: src/components/vm/vmDetailsPage.jsx:219
+#: src/components/vm/nics/nicBody.jsx:112
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:194
+msgid "more info"
+msgstr ""
+
+#: src/components/vm/vmDetailsPage.jsx:215
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:190
+msgid "mount point: The mount point inside the guest"
+msgstr "Einhängepunkt: Der Einhängepunkt innerhalb des Gastes"
+
+#: src/components/vm/vmDetailsPage.jsx:214
+msgid "mount tag: The tag associated to the exported mount point"
+msgstr ""
+
+#: src/helpers.js:238 src/helpers.js:250
+msgid "network"
+msgstr "Netzwerk"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:67
+#: src/components/storagePools/storagePoolOverviewTab.jsx:72
+#: src/components/networks/networkOverviewTab.jsx:115 src/helpers.js:273
+msgid "no"
+msgstr "Nein"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:110
+msgid "no state saved"
+msgstr "kein Zustand gespeichert"
+
+#: src/components/networks/networkOverviewTab.jsx:295
+msgid "none"
+msgstr "keine"
+
+#: src/manifest.json:0
+msgid "pxe"
+msgstr "pxe"
+
+#: src/manifest.json:0
+msgid "qcow2"
+msgstr "qcow2"
+
+#: src/manifest.json:0
+msgid "qemu"
+msgstr "qemu"
+
+#: src/helpers.js:240
+msgid "redirected device"
+msgstr "weitergeleitete Geräte"
+
+#: src/components/networks/networkOverviewTab.jsx:59
+msgid "remove"
+msgstr "entfernen"
+
+#: src/components/vm/disks/diskAdd.jsx:258
+msgid "serial number"
+msgstr "Seriennummer"
+
+#: src/helpers.js:256
+msgid "server"
+msgstr "server"
+
+#: src/helpers.js:257
+msgid "udp"
+msgstr "udp"
+
+# translation auto-copied from project RHN Satellite UI, version 5.5, document
+# java/code/src/com/redhat/rhn/frontend/strings/jsp/StringResource
+#: src/helpers.js:276
+msgid "up"
+msgstr "hoch"
+
+#: src/helpers.js:252
+msgid "user"
+msgstr "Benutzer"
+
+#: src/components/vm/overview/vcpuModal.jsx:195
+msgid "vCPU count"
+msgstr "Anzahl vCPUs"
+
+#: src/components/vm/overview/vcpuModal.jsx:208
+msgid "vCPU maximum"
+msgstr "vCPU maximum"
+
+# ctx::sourcefile::/rhn/systems/details/virtualization/VirtualGuestsList.do
+#: src/components/vm/overview/vmOverviewCard.jsx:211
+msgid "vCPUs"
+msgstr "vCPUs"
+
+#: src/helpers.js:258
+msgid "vhostuser"
+msgstr "vhostbenutzer"
+
+#: src/components/common/stateIcon.jsx:59
+#, fuzzy
+msgid "view more..."
+msgstr "Mehr lesen..."
+
+#: src/components/vm/vmActions.jsx:312
+#, fuzzy
+msgid ""
+"virt-install package needs to be installed on the system in order to clone "
+"VMs"
+msgstr ""
+"Das \"virt-install\" Paket muss auf dem System installiert werden, um neue "
+"VMs zu erstellen"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1397
+msgid ""
+"virt-install package needs to be installed on the system in order to create "
+"new VMs"
+msgstr ""
+"Das \"virt-install\" Paket muss auf dem System installiert werden, um neue "
+"VMs zu erstellen"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:161
+#, fuzzy
+msgid ""
+"virt-install package needs to be installed on the system in order to edit "
+"this attribute"
+msgstr ""
+"Das \"virt-install\" Paket muss auf dem System installiert werden, um neue "
+"VMs zu erstellen"
+
+#: src/manifest.json:0
+msgid "vm"
+msgstr "VM"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:67
+#: src/components/storagePools/storagePoolOverviewTab.jsx:72
+#: src/components/networks/networkOverviewTab.jsx:115 src/helpers.js:272
+msgid "yes"
+msgstr "Ja"
+
+#~ msgid "Creating VM installation"
+#~ msgstr "VM Installation erstellen"
+
+#~ msgid "Virtual Machines"
+#~ msgstr "Virtuelle Maschinen"
+
+#~ msgid "VM $0 failed to get deleted"
+#~ msgstr "VM $0 konnte nicht gelöscht werden"
+
+#~ msgid "Function"
+#~ msgstr "Funktion"
+
+#~ msgid "Delete content"
+#~ msgstr "Inhalt löschen"
+
+#, fuzzy
+#~| msgid "network interface"
+#~ msgid "Delete network interface $0"
+#~ msgstr "Netzwerkschnittstelle"
+
+#~ msgid "Disk $0 fail to get detached from VM $1"
+#~ msgstr "Loslösung der Festplatte $0 von VM $1 fehlgeschlagen"
+
+#~ msgid "Session"
+#~ msgstr "Sitzung"
+
+#, fuzzy
+#~| msgid "host device"
+#~ msgid "$1 host device"
+#~ msgstr "Host-Gerät"
+
+#~ msgid "snapshot"
+#~ msgstr "Schnappschuss"
+
+#~ msgid "Immediately start VM"
+#~ msgstr "Die VM sofort starten"
+
+#~ msgid "Import"
+#~ msgstr "Importieren"
+
+#~ msgid "Run unattended installation"
+#~ msgstr "Installation im Hintergrund ausführen"
+
+#~ msgid "Set cloud init parameters"
+#~ msgstr "Cloud-Init-Parameter festlegen"
+
+#~ msgid "Automatically start libvirt on boot"
+#~ msgstr "Starten Sie libvirt automatisch beim Booten"
+
+#~ msgid "Connecting to virtualization service"
+#~ msgstr "Verbindung zum Virtualisierungsdienst herstellen"
+
+#, fuzzy
+#~| msgid "Connecting to virtualization service"
+#~ msgid "Failed to enable virtualization service"
+#~ msgstr "Verbindung zum Virtualisierungsdienst herstellen"
+
+#, fuzzy
+#~| msgid "Connecting to virtualization service"
+#~ msgid "Failed to start virtualization service"
+#~ msgstr "Verbindung zum Virtualisierungsdienst herstellen"
+
+#~ msgid "Start libvirt"
+#~ msgstr "Starten Sie libvirt"
+
+#, fuzzy
+#~| msgid "Blocked"
+#~ msgid "Block"
+#~ msgstr "Gesperrt"
+
+#~ msgid "$0 day"
+#~ msgid_plural "$0 days"
+#~ msgstr[0] "$0 Tag"
+#~ msgstr[1] "$0 Tage"
+
+#~ msgid "$0 hour"
+#~ msgid_plural "$0 hours"
+#~ msgstr[0] "$0 Stunde"
+#~ msgstr[1] "$0 Stunden"
+
+#~ msgid "$0 is not available from any repository."
+#~ msgstr "$0 ist in keinem Repository verfügbar."
+
+#~ msgid "$0 minute"
+#~ msgid_plural "$0 minutes"
+#~ msgstr[0] "$0 Minute"
+#~ msgstr[1] "$0 Minuten"
+
+#~ msgid "$0 month"
+#~ msgid_plural "$0 months"
+#~ msgstr[0] "$0 Monat"
+#~ msgstr[1] "$0 Monate"
+
+#~ msgid "$0 week"
+#~ msgid_plural "$0 weeks"
+#~ msgstr[0] "$0 Woche"
+#~ msgstr[1] "$0 Wochen"
+
+#~ msgid "$0 will be installed."
+#~ msgstr "$0 wird installiert."
+
+#~ msgid "$0 year"
+#~ msgid_plural "$0 years"
+#~ msgstr[0] "$0 Jahr"
+#~ msgstr[1] "$0 Jahre"
+
+#~ msgid "1 day"
+#~ msgstr "1 Tag"
+
+#~ msgid "1 hour"
+#~ msgstr "1 Stunde"
+
+#~ msgid "1 minute"
+#~ msgstr "1 minute"
+
+#~ msgid "1 week"
+#~ msgstr "1 Woche"
+
+#~ msgid "20 minutes"
+#~ msgstr "20 Minuten"
+
+#~ msgid "40 minutes"
+#~ msgstr "40 Minuten"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 Minuten"
+
+#~ msgid "6 hours"
+#~ msgstr "6 Stunden"
+
+#~ msgid "60 minutes"
+#~ msgstr "60 Minuten"
+
+#~ msgid "Absent"
+#~ msgstr "Abwesend"
+
+#~ msgid "Additional packages:"
+#~ msgstr "Zusatzpakete:"
+
+#~ msgid "Advanced TCA"
+#~ msgstr "Fortgeschrittenes TCA"
+
+#~ msgid "All logs"
+#~ msgstr "Alle Logs"
+
+#~ msgid "All-in-one"
+#~ msgstr "Alles-in-einem"
+
+#~ msgid "Ansible"
+#~ msgstr "Ansible"
+
+#~ msgid "Ansible roles documentation"
+#~ msgstr "Ansible Rollendokumentation"
+
+#~ msgid "Automatically using NTP"
+#~ msgstr "Automatisch (NTP)"
+
+#~ msgid "Automatically using specific NTP servers"
+#~ msgstr "Automatisch (spezifische NTP-Server)"
+
+#~ msgid "Automation script"
+#~ msgstr "Automatisierungs-Skript"
+
+#~ msgid "Blade"
+#~ msgstr "Blade"
+
+#~ msgid "Blade enclosure"
+#~ msgstr "Bladegehäuse"
+
+#~ msgid "Bus expansion chassis"
+#~ msgstr "Bus-Erweiterungsgehäuse"
+
+#~ msgid "Cannot schedule event in the past"
+#~ msgstr "Vorgang kann nicht für die Vergangenheit geplant werden"
+
+#~ msgid "Change system time"
+#~ msgstr "Systemzeit ändern"
+
+#~ msgid "Checking installed software"
+#~ msgstr "Installierte Software überprüfen"
+
+#~ msgid "Compact PCI"
+#~ msgstr "Kompakte PCI"
+
+#~ msgid "Convertible"
+#~ msgstr "Convertible"
+
+#~ msgid "Copy"
+#~ msgstr "Kopieren"
+
+#~ msgid "Copy to clipboard"
+#~ msgstr "In Zwischenablage kopieren"
+
+#~ msgid "Create new task file with this content."
+#~ msgstr "Neue Task-Datei mit diesem Inhalt erstellen."
+
+#~ msgid "Delay"
+#~ msgstr "Verzögerung"
+
+#~ msgid "Desktop"
+#~ msgstr "Desktop"
+
+#~ msgid "Detachable"
+#~ msgstr "Abnehmbar"
+
+#~ msgid "Docking station"
+#~ msgstr "Dockingstation"
+
+#~ msgid "Dual rank"
+#~ msgstr "Doppelter Rang"
+
+#~ msgid "Embedded PC"
+#~ msgstr "Embedded PC"
+
+#, fuzzy
+#~ msgid "Error message"
+#~ msgstr "Nachrichten protokollieren"
+
+#~ msgid "Excellent password"
+#~ msgstr "Perfektes Passwort"
+
+#~ msgid "Expansion chassis"
+#~ msgstr "Erweiterungsgehäuse"
+
+#~ msgid "Failed to change password"
+#~ msgstr "Passwort konnte nicht geändert werden"
+
+#~ msgid "Go to now"
+#~ msgstr "Zu 'Jetzt' gehen"
+
+#~ msgid "Handheld"
+#~ msgstr "Handheld"
+
+#~ msgid "Hours must be a number between 0 and 23"
+#~ msgstr "Die Stunde muss eine Zahl zwischen 0 und 23 sein"
+
+#~ msgid "IPv4 network"
+#~ msgstr "IPv4-Netzwerk"
+
+#~ msgid "IPv6 network"
+#~ msgstr "IPv6-Netzwerk"
+
+#~ msgid "Install software"
+#~ msgstr "Software installieren"
+
+#~ msgid "Installing $0"
+#~ msgstr "$0 wird installiert"
+
+#~ msgid "Invalid date format"
+#~ msgstr "Ungültiges Datumsformat"
+
+#~ msgid "Invalid date format and invalid time format"
+#~ msgstr "Ungültiges Datumsformat und ungültiges Zeitformat"
+
+#~ msgid "Invalid file permissions"
+#~ msgstr "Ungültige Dateiberechtigungen"
+
+#~ msgid "Invalid time format"
+#~ msgstr "Ungültiges Zeitformat"
+
+#, fuzzy
+#~ msgid "Invalid timezone"
+#~ msgstr "Ungültige Zeitzone"
+
+#~ msgid "IoT gateway"
+#~ msgstr "IoT-Gateway"
+
+#~ msgid "Laptop"
+#~ msgstr "Laptop"
+
+#~ msgid "Learn more"
+#~ msgstr "Mehr erfahren"
+
+#~ msgid "Loading system modifications..."
+#~ msgstr "System-Änderungen laden..."
+
+#~ msgid "Log messages"
+#~ msgstr "Nachrichten protokollieren"
+
+#~ msgid "Low profile desktop"
+#~ msgstr "Low-Profile-Desktop"
+
+#~ msgid "Lunch box"
+#~ msgstr "Brotdose"
+
+#~ msgid "Main server chassis"
+#~ msgstr "Hauptservergehäuse"
+
+#~ msgid "Manually"
+#~ msgstr "Manuell"
+
+#~ msgid "Message to logged in users"
+#~ msgstr "Nachricht an angemeldete Benutzer"
+
+#~ msgid "Mini PC"
+#~ msgstr "Mini PC"
+
+#~ msgid "Mini tower"
+#~ msgstr "Mini-Tower"
+
+#, fuzzy
+#~ msgid "Minutes must be a number between 0 and 59"
+#~ msgstr "Minute muss eine Zahl zwischen 0 und 59 sein"
+
+#~ msgid "Multi-system chassis"
+#~ msgstr "Multi-System-Chassis"
+
+#~ msgid "NTP server"
+#~ msgstr "NTP server"
+
+#~ msgid "Need at least one NTP server"
+#~ msgstr "Benötigen Sie mindestens einen NTP-Server"
+
+#~ msgid "New password was not accepted"
+#~ msgstr "Das neue Passwort wurde nicht akzeptiert"
+
+#~ msgid "No delay"
+#~ msgstr "Keine Verzögerung"
+
+#~ msgid "Not a valid private key"
+#~ msgstr "Ungültiger privater Schlüssel"
+
+#~ msgid "Not synchronized"
+#~ msgstr "Nicht synchronisiert"
+
+#~ msgid "Notebook"
+#~ msgstr "Notizbuch"
+
+#~ msgid "Ok"
+#~ msgstr "OK"
+
+#~ msgid "Old password not accepted"
+#~ msgstr "Altes Passwort wurde nicht akzeptiert"
+
+#~ msgid "Other"
+#~ msgstr "Weitere"
+
+#~ msgid "PackageKit crashed"
+#~ msgstr "PackageKit ist abgestürzt"
+
+#~ msgid "Password is not acceptable"
+#~ msgstr "Das Passwort kann nicht akzeptiert werden"
+
+#~ msgid "Password is too weak"
+#~ msgstr "Das gewählte Passwort ist zu schwach"
+
+#~ msgid "Password not accepted"
+#~ msgstr "Passwort wurde nicht akzeptiert"
+
+#~ msgid "Paste"
+#~ msgstr "Einfügen"
+
+#~ msgid "Path to file"
+#~ msgstr "Pfad zur Datei"
+
+#~ msgid "Peripheral chassis"
+#~ msgstr "Peripheriechassis"
+
+#, fuzzy
+#~ msgid "Pick date"
+#~ msgstr "Datum"
+
+#~ msgid "Pizza box"
+#~ msgstr "Pizza-Box"
+
+#~ msgid "Plug"
+#~ msgstr "Plug"
+
+#~ msgid "Portable"
+#~ msgstr "tragbar"
+
+#~ msgid "Prompting via ssh-add timed out"
+#~ msgstr "Die Aufforderung über ssh-add ist abgelaufen"
+
+#~ msgid "Prompting via ssh-keygen timed out"
+#~ msgstr "Die Aufforderung über ssh-keygen ist abgelaufen"
+
+#~ msgid "RAID chassis"
+#~ msgstr "RAID-Chassis"
+
+#~ msgid "Rack mount chassis"
+#~ msgstr "Rack-Einbaugehäuse"
+
+#~ msgid "Removals:"
+#~ msgstr "Umzüge:"
+
+#~ msgid "Sealed-case PC"
+#~ msgstr "PC mit versiegeltem Gehäuse"
+
+#~ msgid "Set time"
+#~ msgstr "Zeit einsetzten"
+
+#~ msgid "Shell script"
+#~ msgstr "Shell script"
+
+#~ msgid "Shift+Insert"
+#~ msgstr "Shift+Einfügen"
+
+#~ msgid "Space-saving computer"
+#~ msgstr "Platzsparender Computer"
+
+#~ msgid "Specific time"
+#~ msgstr "Bestimmte Zeit"
+
+#~ msgid "Stick PC"
+#~ msgstr "Stick PC"
+
+#, fuzzy
+#~ msgid "Sub-Chassis"
+#~ msgstr "Sub-Chassis"
+
+#, fuzzy
+#~ msgid "Sub-Notebook"
+#~ msgstr "Subnotizbuch"
+
+#~ msgid "Synchronized"
+#~ msgstr "Synchronisiert"
+
+#, fuzzy
+#~ msgid "Synchronized with $0"
+#~ msgstr "Synchronisiert mit {{Server}}"
+
+#, fuzzy
+#~ msgid "Synchronizing"
+#~ msgstr "Synchronisieren"
+
+#~ msgid "Tablet"
+#~ msgstr "Tablett"
+
+#~ msgid "The passwords do not match."
+#~ msgstr "Die Passwörter stimmen nicht überein."
+
+#~ msgid "Time zone"
+#~ msgstr "Zeitzone"
+
+#~ msgid "Total size: $0"
+#~ msgstr "Gesamtgröße: $0"
+
+#~ msgid "Tower"
+#~ msgstr "Turm"
+
+#~ msgid "Trying to synchronize with $0"
+#~ msgstr "Versuche mit {{Server}} zu synchronisieren"
+
+#~ msgid "Unplug"
+#~ msgstr "Ziehen Sie den Stecker heraus"
+
+#~ msgid "View automation script"
+#~ msgstr "Automatisierungs-Script anzeigen"
+
+#~ msgid "Waiting for other software management operations to finish"
+#~ msgstr "Warten, bis andere Software-Verwaltungsvorgänge abgeschlossen sind"
+
+#~ msgid "[$0 bytes of binary data]"
+#~ msgstr "[$0 bytes Binäredaten]"
+
+#~ msgid "[binary data]"
+#~ msgstr "[Binärdaten]"
+
+#~ msgid "[no data]"
+#~ msgstr "[keine Daten]"
+
+#, fuzzy
+#~ msgid "password quality"
+#~ msgstr "Passwort"
+
+#~ msgid "show less"
+#~ msgstr "zeige weniger"
+
+#~ msgid "show more"
+#~ msgstr "Zeig mehr"

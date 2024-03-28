@@ -1,0 +1,56 @@
+#!/bin/bash
+# image-customize script to prepare a bots VM for cockpit-podman testing
+set -eu
+
+if grep -q ID.*debian /usr/lib/os-release; then
+    # Debian does not enable user namespaces by default
+    echo kernel.unprivileged_userns_clone = 1 > /etc/sysctl.d/00-local-userns.conf
+    systemctl restart systemd-sysctl
+
+    # disable services that get in the way of /var/lib/containers
+    if systemctl is-enabled docker.service; then
+        systemctl disable docker.service
+    fi
+
+    # tuned is installed for testing cockpit; but it causes funny bugs, and we are not testing this here
+    # https://launchpad.net/bugs/1774000 https://launchpad.net/bugs/1925765
+    systemctl disable tuned
+fi
+
+# don't force https:// (self-signed cert)
+printf "[WebService]\\nAllowUnencrypted=true\\n" > /etc/cockpit/cockpit.conf
+
+if type firewall-cmd >/dev/null 2>&1; then
+    firewall-cmd --add-service=cockpit --permanent
+fi
+
+. /usr/lib/os-release
+# Remove extra images for containers tests
+if [ "$ID" = "fedora" ]; then
+    if [ "${VARIANT_ID:-}" = "coreos" ]; then
+        podman rmi quay.io/jitesoft/nginx:latest
+    else
+        podman rmi localhost/cockpit/base
+        podman rmi registry.fedoraproject.org/fedora:"$VERSION_ID"
+    fi
+fi
+
+images=(quay.io/libpod/busybox quay.io/libpod/alpine quay.io/cockpit/registry:2)
+podman_version=$(podman -v | awk '{ print substr($3, 1, 1) }')
+echo $podman_version
+
+# Since 4.0 podman now ships the pause image
+if [ "${podman_version}" -lt 4 ]; then
+	images+=("k8s.gcr.io/pause:3.5")
+fi
+
+# copy images for user podman tests; podman insists on user session
+loginctl enable-linger $(id -u admin)
+for img in "${images[@]}"; do
+	podman save  $img | sudo -i -u admin podman load
+done
+	loginctl disable-linger $(id -u admin)
+
+# 15minutes after boot tmp files are removed and podman stores some tmp lock files
+systemctl disable --now systemd-tmpfiles-clean.timer
+systemctl --global disable systemd-tmpfiles-clean.timer

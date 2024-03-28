@@ -1,0 +1,2059 @@
+#!/usr/bin/python3
+
+# This file is part of Cockpit.
+#
+# Copyright (C) 2021 Red Hat, Inc.
+#
+# Cockpit is free software; you can redistribute it and/or modify it
+# under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 2.1 of the License, or
+# (at your option) any later version.
+#
+# Cockpit is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with Cockpit; If not, see <http://www.gnu.org/licenses/>.
+
+import time
+import xml.etree.ElementTree as ET
+import os
+import sys
+import math
+import re
+from datetime import datetime
+
+# import Cockpit's machinery for test VMs and its browser test API
+TEST_DIR = os.path.dirname(__file__)
+sys.path.append(os.path.join(TEST_DIR, "common"))
+sys.path.append(os.path.join(os.path.dirname(TEST_DIR), "bots/machine"))
+
+from machineslib import VirtualMachinesCase  # noqa
+from testlib import nondestructive, skipImage, test_main, wait, Error  # noqa
+from machinesxmls import NETWORK_XML_PXE, PXE_SERVER_CFG  # noqa
+
+
+@nondestructive
+class TestMachinesCreate(VirtualMachinesCase):
+
+    # This test contains basic button and form validation of the Create VM dialog
+    # None of the sub-tests will actually call virt-install
+    def testCreateBasicValidation(self):
+        runner = TestMachinesCreate.CreateVmRunner(self)
+        config = TestMachinesCreate.TestCreateConfig
+
+        # Add an extra network interface that should appear in the PXE source dropdown
+        iface = "eth42"
+        self.add_veth(iface)
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        # test create and import [VM] buttons show appropriate tooltips when hovered over
+        runner.createAndImportTooltipsTest()
+
+        # test just the DIALOG CREATION and cancel
+        print("    *\n    * validation errors and ui info/warn messages expected:\n    * ")
+        runner.cancelDialogTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                            location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                            memory_size=128, memory_size_unit='MiB',
+                                                            storage_size=12500, storage_size_unit='GiB',
+                                                            create_and_run=False,
+                                                            pixel_test_tag="iso"))
+
+        runner.cancelDialogTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                            location=config.VALID_URL,
+                                                            memory_size=128, memory_size_unit='MiB',
+                                                            os_name=config.FEDORA_28,
+                                                            create_and_run=False,
+                                                            pixel_test_tag="url"))
+
+        # OS input check
+        runner.checkOsInputTest(TestMachinesCreate.VmDialog(self))
+
+        # OS input check when import
+        runner.checkOsInputTest(TestMachinesCreate.VmDialog(self, sourceType="disk_image"))
+
+        # Test OS autodetection from URL tree media
+        # Auto auto-detection can change "Operating system" field without Ooops
+        # https://bugzilla.redhat.com/show_bug.cgi?id=1715409
+        runner.cancelDialogTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                            location=config.TREE_URL,
+                                                            memory_size=128, memory_size_unit='MiB',
+                                                            storage_pool="NoStorage",
+                                                            os_name=config.CENTOS_7,
+                                                            create_and_run=False,
+                                                            expected_os_name=config.FEDORA_28,
+                                                            pixel_test_tag="auto"))
+
+        # check if older os are filtered
+        runner.checkFilteredOsTest(TestMachinesCreate.VmDialog(self, os_name=config.REDHAT_RHEL_4_7_FILTERED_OS,
+                                                               pixel_test_tag="filter"))
+
+        runner.checkFilteredOsTest(TestMachinesCreate.VmDialog(self, os_name=config.MANDRIVA_2011_FILTERED_OS))
+
+        runner.checkFilteredOsTest(TestMachinesCreate.VmDialog(self, os_name=config.MAGEIA_3_FILTERED_OS))
+
+        # check that newer oses are present and searchable with substring match
+        runner.checkFilteredOsTest(TestMachinesCreate.VmDialog(self, os_name=config.WINDOWS_SERVER_10, os_search_name=config.WINDOWS_SERVER_10_SHORT))
+
+        # check OS versons are sorted in alphabetical order
+        runner.checkSortedOsTest(TestMachinesCreate.VmDialog(self), [config.FEDORA_29, config.FEDORA_28])
+
+        # Memory unit conversion
+        runner.unitPredictionTest(TestMachinesCreate.VmDialog(self, sourceType='disk-image'))
+
+        # try to CREATE WITH DIALOG ERROR
+        # name
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, "", storage_size=1, os_name=None), {"vm-name": "Name must not be empty"})
+
+        # location
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                                         location="invalid/url",
+                                                                         os_name=config.FEDORA_28), {"source-url": "Source should start with"})
+
+        # memory
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, memory_size=0, os_name=None), {"memory": "Memory must not be 0"})
+
+        # storage
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, storage_size=0), {"storage": "Storage size must not be 0"})
+
+        # Try setting the memory to value bigger than it's available on the OS
+        # The dialog should auto-adjust it to match the OS'es total memory
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                                         location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                                         memory_size=100000, memory_size_unit='MiB',
+                                                                         storage_pool="NoStorage",
+                                                                         create_and_run=False),
+                                             {"memory": "available on host"})
+
+        # start vm
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, storage_size=1,
+                                                                         os_name=config.FEDORA_28, create_and_run=True),
+                                             {"source-file": "Installation source must not be empty"})
+
+        # disallow empty OS
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, sourceType='url', location=config.VALID_URL,
+                                                                         storage_size=100, storage_size_unit='MiB',
+                                                                         create_and_run=False, os_name=None),
+                                             {"os-select": "You need to select the most closely matching operating system"})
+
+        # When switching from PXE mode to anything else make sure that the source input is empty
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, storage_size=1,
+                                                                         sourceType='pxe',
+                                                                         location=f"type=direct,source={iface}",
+                                                                         sourceTypeSecondChoice='url',
+                                                                         create_and_run=False),
+                                             {"source-url": "Installation source must not be empty"})
+
+        # user password
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, sourceType='cloud',
+                                                                         storage_size=10, storage_size_unit='MiB',
+                                                                         location=config.VALID_DISK_IMAGE_PATH,
+                                                                         user_login="foo",
+                                                                         create_and_run=True),
+                                             {"create-vm-dialog-user-password-pw1": "User password must not be empty when user login is set"})
+
+        # user login
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, sourceType='cloud',
+                                                                         storage_size=10, storage_size_unit='MiB',
+                                                                         location=config.VALID_DISK_IMAGE_PATH,
+                                                                         user_password="catsaremybestfr13nds",
+                                                                         create_and_run=True),
+                                             {"create-vm-dialog-user-login": "User login must not be empty when user password is set"})
+
+        # Check swithing from "os" to "cloud" source type doesn't reset passwords
+        # https://bugzilla.redhat.com/show_bug.cgi?id=2109986
+        runner.checkPasswordsAreNotResetTest(TestMachinesCreate.VmDialog(self))
+
+    def testCreateNameGeneration(self):
+        config = TestMachinesCreate.TestCreateConfig
+        runner = TestMachinesCreate.CreateVmRunner(self)
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        runner.checkEnvIsEmpty()
+
+        date = datetime.today().strftime('%Y-%-m-%-d')
+        connection_name = "system"
+        predicted_name = "fedora28-" + date
+        runner.createTest(TestMachinesCreate.VmDialog(self, name=predicted_name,
+                                                      name_generated=True,
+                                                      sourceType='os',
+                                                      storage_size=10, storage_size_unit='MiB',
+                                                      os_name=config.FEDORA_28,
+                                                      os_short_id=config.FEDORA_28_SHORTID,
+                                                      connection=connection_name,
+                                                      delete=False,
+                                                      create_and_run=False))
+
+        self.goToMainPage()
+
+        # The VM with the same name already exists, so "-B" will be appended
+        connection_name = "system"
+        predicted_name += "-B"
+        runner.createTest(TestMachinesCreate.VmDialog(self, name=predicted_name,
+                                                      name_generated=True, sourceType='os',
+                                                      storage_size=10, storage_size_unit='MiB',
+                                                      os_name=config.FEDORA_28,
+                                                      os_short_id=config.FEDORA_28_SHORTID,
+                                                      connection=connection_name,
+                                                      delete=True,
+                                                      create_and_run=False),
+                          check_env_empty=False)
+
+        # Generation for user session connection
+        # It's possible for 2 VMs with the same name to exist on cifferent connections
+        connection_name = "session"
+        predicted_name = "fedora28-" + date
+        runner.createTest(TestMachinesCreate.VmDialog(self, name=predicted_name,
+                                                      name_generated=True,
+                                                      sourceType='os',
+                                                      storage_size=10, storage_size_unit='MiB',
+                                                      os_name=config.FEDORA_28,
+                                                      os_short_id=config.FEDORA_28_SHORTID,
+                                                      connection=connection_name,
+                                                      delete=True,
+                                                      create_and_run=False),
+                          check_env_empty=False)
+
+    def testCreateCloudBaseImage(self):
+        runner = TestMachinesCreate.CreateVmRunner(self)
+        config = TestMachinesCreate.TestCreateConfig
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        # try to CREATE few machines
+        # --cloud-init user-data option exists since virt-install >= 3.0.0
+        runner.createCloudBaseImageTest(TestMachinesCreate.VmDialog(self, sourceType='cloud',
+                                                                    storage_size=10, storage_size_unit='MiB',
+                                                                    location=config.VALID_DISK_IMAGE_PATH,
+                                                                    os_name=config.FEDORA_28,
+                                                                    os_short_id=config.FEDORA_28_SHORTID,
+                                                                    user_password="catsaremybestfr13nds",
+                                                                    user_login="foo",
+                                                                    root_password="dogsaremybestfr13nds",
+                                                                    create_and_run=True))
+
+        # Test using a cloud image without setting the cloud init options
+        # https://bugzilla.redhat.com/show_bug.cgi?id=1978206
+        runner.createCloudBaseImageTest(TestMachinesCreate.VmDialog(self, sourceType='cloud',
+                                                                    storage_size=10, storage_size_unit='MiB',
+                                                                    location=config.VALID_DISK_IMAGE_PATH,
+                                                                    os_name=config.FEDORA_28,
+                                                                    os_short_id=config.FEDORA_28_SHORTID,
+                                                                    create_and_run=True))
+
+    def testCreateDownloadAnOS(self):
+        runner = TestMachinesCreate.CreateVmRunner(self)
+        config = TestMachinesCreate.TestCreateConfig
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        # try to CREATE few machines
+        runner.createDownloadAnOSTest(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                                  expected_memory_size=128,
+                                                                  expected_storage_size=128,
+                                                                  os_name=config.FEDORA_28,
+                                                                  os_short_id=config.FEDORA_28_SHORTID,
+                                                                  create_and_run=True))
+
+        runner.createDownloadAnOSTest(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                                  is_unattended=True, profile="desktop",
+                                                                  user_password="catsaremybestfr13nds",
+                                                                  user_login="foo",
+                                                                  root_password="dogsaremybestfr13nds",
+                                                                  storage_size=246, storage_size_unit='MiB',
+                                                                  os_name=config.FEDORA_28,
+                                                                  os_short_id=config.FEDORA_28_SHORTID))
+
+        # Don't create root account
+        runner.createDownloadAnOSTest(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                                  is_unattended=True, profile="desktop",
+                                                                  user_login="foo",
+                                                                  user_password="catsaremybestfr13nds",
+                                                                  storage_size=256, storage_size_unit='MiB',
+                                                                  os_name=config.FEDORA_28,
+                                                                  os_short_id=config.FEDORA_28_SHORTID))
+
+        # Don't create user account
+        runner.createDownloadAnOSTest(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                                  is_unattended=True, profile="jeos",
+                                                                  root_password="catsaremybestfr13nds",
+                                                                  storage_size=256, storage_size_unit='MiB',
+                                                                  os_name=config.FEDORA_28,
+                                                                  os_short_id=config.FEDORA_28_SHORTID))
+
+        # name already used from a VM that is currently being created
+        # https://bugzilla.redhat.com/show_bug.cgi?id=1780451
+        runner.createDownloadAnOSTest(TestMachinesCreate.VmDialog(self, name='existing-name', sourceType='os',
+                                                                  expected_memory_size=128,
+                                                                  expected_storage_size=128,
+                                                                  os_name=config.FEDORA_28,
+                                                                  os_short_id=config.FEDORA_28_SHORTID,
+                                                                  create_and_run=True, delete=False))
+
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, "existing-name", storage_size=1,
+                                                                         check_script_finished=False, env_is_empty=False), {"vm-name": "already exists"})
+
+    def testCreatePXE(self):
+        runner = TestMachinesCreate.CreateVmRunner(self)
+
+        self.login_and_go("/machines")
+
+        b = self.browser
+        b.wait_in_text("body", "Virtual machines")
+
+        # test PXE Source
+        # check that the pxe booting is not available on session connection
+        runner.checkPXENotAvailableSessionTest(TestMachinesCreate.VmDialog(self, name='pxe-guest',
+                                                                           sourceType='pxe',
+                                                                           storage_pool="NoStorage",
+                                                                           connection="session"))
+
+        self.machine.execute("virsh net-destroy default; virsh net-undefine default")
+
+        # Set up the PXE server configuration files
+        cmds = [
+            "mkdir -p /var/lib/libvirt/pxe-config",
+            f"echo \"{PXE_SERVER_CFG}\" > /var/lib/libvirt/pxe-config/pxe.cfg",
+            "chmod 666 /var/lib/libvirt/pxe-config/pxe.cfg"
+        ]
+        self.machine.execute("; ".join(cmds))
+
+        # Define and start a NAT network with tftp server configuration
+        self.machine.write("/tmp/pxe-nat.xml", NETWORK_XML_PXE)
+        self.machine.execute("virsh net-define /tmp/pxe-nat.xml; virsh net-start pxe-nat")
+
+        # Add an extra network interface that should appear in the PXE source dropdown
+        iface = "eth42"
+        self.add_veth(iface)
+
+        # We don't handle events for networks yet, so reload the page to refresh the state
+        b.reload()
+        b.enter_page('/machines')
+        b.wait_in_text("body", "Virtual machines")
+
+        # Create with immediate starting
+        runner.createTest(TestMachinesCreate.VmDialog(self, name='pxe-guest', sourceType='pxe',
+                                                      location="network=pxe-nat",
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_pool="NoStorage",
+                                                      create_and_run=True, delete=False))
+
+        # Stop it, tweak the XML to have serial console at bios and also redirect serial console to a file
+        # We don't want to use create_and_run == False because if we get a separate install phase
+        # virt-install will overwrite our changes.
+
+        # Wait for virt-install to define the VM, stop it, and wait for virt-install to be done
+        wait(lambda: "pxe-guest" in self.machine.execute("virsh list --name --persistent"), delay=3)
+        wait(lambda: "pxe-guest" in self.machine.execute("virsh list --name"), delay=3)
+        self.machine.execute("virsh destroy pxe-guest")
+        runner._assertScriptFinished()
+        self.assertEqual(self.machine.execute("virsh list --name").strip(), "")
+
+        # Remove all serial ports and consoles first and then add a console of type file
+        # virt-xml tool does not allow to remove both serial and console devices at once
+        # https://bugzilla.redhat.com/show_bug.cgi?id=1685541
+        # So use python xml parsing to change the domain XML.
+        domainXML = self.machine.execute("virsh dumpxml pxe-guest")
+        root = ET.fromstring(domainXML)
+
+        # Find the parent element of each "console" element, using XPATH
+        for p in root.findall('.//console/..'):
+            # Find each console element
+            for element in p.findall('console'):
+                # Remove the console element from its parent element
+                p.remove(element)
+
+        # Find the parent element of each "serial" element, using XPATH
+        for p in root.findall('.//serial/..'):
+            # Find each serial element
+            for element in p.findall('serial'):
+                # Remove the serial element from its parent element
+                p.remove(element)
+
+        # Set useserial attribute for bios os element
+        bios = ET.SubElement(root.find('os'), 'bios')
+        bios.set('useserial', 'yes')
+
+        # Add a serial console of type file
+        console = ET.fromstring(self.machine.execute("virt-xml --build --console file,path=/tmp/serial.txt,target_type=serial"))
+        self.addCleanup(self.machine.execute, "rm -f /tmp/serial.txt")
+        devices = root.find('devices')
+        devices.append(console)
+
+        # Redefine the domain with the new XML
+        xmlstr = ET.tostring(root, encoding='unicode', method='xml')
+
+        self.write_file("/tmp/domain.xml", xmlstr)
+        self.machine.execute("virsh define --file /tmp/domain.xml")
+
+        self.machine.execute("virsh start pxe-guest")
+
+        # The file is full of ANSI control characters in between every letter, filter them out
+        wait(lambda: self.machine.execute(r"sed 's,\x1B\[[0-9;]*[a-zA-Z],,g' /tmp/serial.txt | grep 'Rebooting in 60'"), delay=3)
+        self.goToMainPage()
+
+        self.machine.execute("virsh destroy pxe-guest")
+        self.machine.execute("virsh undefine pxe-guest")
+        runner.checkEnvIsEmpty()
+
+        # Check that host network devices are appearing in the options for PXE boot sources
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='pxe',
+                                                      name="pxe-guest",
+                                                      location=f"type=direct,source={iface}",
+                                                      storage_size=128, storage_size_unit='MiB',
+                                                      create_and_run=True,
+                                                      delete=False))
+        # Wait for virt-install to define the VM and then stop it
+        wait(lambda: "pxe-guest" in self.machine.execute("virsh list --persistent"), delay=3)
+        b.wait_in_text("#vm-pxe-guest-system-state", "Running")
+        self.machine.execute("virsh destroy pxe-guest")
+
+        # Verify that the newly created disk is first in the boot order and the network used for the PXE boot is not on the bootable devices list
+        b.wait_in_text("#vm-pxe-guest-boot-order", "disk")
+        b.wait_not_in_text("#vm-pxe-guest-boot-order", "network")
+
+    def testCreateAndVerifyQemuConf(self):
+        runner = TestMachinesCreate.CreateVmRunner(self)
+        config = TestMachinesCreate.TestCreateConfig
+        m = self.machine
+
+        self.restore_file("/etc/libvirt/qemu.conf")
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        vnc_listen = "192.168.2.6"
+        vnc_passwd = "mypass"
+
+        m.write("/etc/libvirt/qemu.conf", f'''vnc_listen = "{vnc_listen}"
+vnc_password= "{vnc_passwd}"
+''', append=True)
+
+        runner.createAndVerifyQemuConfParsedTest(
+            TestMachinesCreate.VmDialog(self, sourceType='file',
+                                        storage_pool="NoStorage",
+                                        location=config.NOVELL_MOCKUP_ISO_PATH),
+            vnc_listen, "127.0.0.1", vnc_passwd, None)
+
+        # Ensure that missing qemu.conf would not crash the script but just pick the 127.0.0.1 default value
+        m.execute("rm /etc/libvirt/qemu.conf")
+        runner.createAndVerifyQemuConfParsedTest(
+            TestMachinesCreate.VmDialog(self, sourceType='file',
+                                        storage_pool="NoStorage",
+                                        location=config.NOVELL_MOCKUP_ISO_PATH),
+            "127.0.0.1", "127.0.0.1", None, None)
+
+    @skipImage("TODO: Arch Linux has no iscsi support", "arch")
+    def testCreateThenInstall(self):
+        runner = TestMachinesCreate.CreateVmRunner(self)
+        config = TestMachinesCreate.TestCreateConfig
+
+        dev = self.add_ram_disk(1)
+        partition = dev.split('/')[2] + "1"
+        cmds = [
+            f"virsh pool-define-as poolDisk disk - - {dev} - {os.path.join(self.vm_tmpdir, 'poolDiskImages')}",
+            "virsh pool-build poolDisk --overwrite",
+            "virsh pool-start poolDisk",
+            f"virsh vol-create-as poolDisk {partition} 1024"
+        ]
+        self.machine.execute("; ".join(cmds))
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        # Test create VM with disk of type "block"
+        # Check choosing existing volume as destination storage
+        runner.createThenInstallTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                                 location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                                 memory_size=128, memory_size_unit='MiB',
+                                                                 storage_pool="poolDisk",
+                                                                 storage_volume=partition))
+
+        if "debian" not in self.machine.image and "ubuntu" not in self.machine.image:
+            target_iqn = "iqn.2019-09.cockpit.lan"
+            self.prepareStorageDeviceOnISCSI(target_iqn)
+            cmd = [
+                "virsh pool-define-as iscsi-pool --type iscsi --target /dev/disk/by-id --source-host 127.0.0.1 --source-dev {0}",
+                "ls -la /dev/disk/by-id",
+                "virsh pool-start iscsi-pool"
+            ]
+            print(self.machine.execute("; ".join(cmd).format(target_iqn)))
+            wait(lambda: "unit:0:0:0" in self.machine.execute("virsh pool-refresh iscsi-pool; virsh vol-list iscsi-pool"), delay=3)
+
+            self.addCleanup(self.machine.execute, "virsh pool-destroy iscsi-pool; virsh pool-undefine iscsi-pool")
+
+            self.browser.reload()
+            self.browser.enter_page('/machines')
+            self.browser.wait_in_text("body", "Virtual machines")
+
+            # Check choosing existing volume as destination storage
+            runner.createThenInstallTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                                     location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                                     memory_size=128, memory_size_unit='MiB',
+                                                                     storage_pool="iscsi-pool",
+                                                                     storage_volume="unit:0:0:0"))
+
+        # Click the install button through the VM details
+        runner.createThenInstallTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                                 location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                                 memory_size=128, memory_size_unit='MiB',
+                                                                 storage_pool="NoStorage"), True)
+
+        # Check PXE boot with separate install phase
+        runner.createThenInstallTest(TestMachinesCreate.VmDialog(self, sourceType='pxe',
+                                                                 location="network=default",
+                                                                 memory_size=128, memory_size_unit='MiB',
+                                                                 storage_pool="NoStorage"))
+
+        # Try performing an installation which will fail and ensure that the 'Install' button is still available
+        runner.createThenInstallTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                                 location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                                 memory_size=128, memory_size_unit='MiB',
+                                                                 storage_pool="NoStorage"), True, True)
+
+    def testCreateFileSource(self):
+        runner = TestMachinesCreate.CreateVmRunner(self)
+        config = TestMachinesCreate.TestCreateConfig
+
+        # Undefine the default storage pool for the first test
+        self.machine.execute("virsh pool-destroy default; virsh pool-undefine default")
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        # Check that when there is no storage pool defined a VM can still be created
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                      location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                      storage_pool="NoStorage",
+                                                      create_and_run=True))
+
+        self.browser.switch_to_top()
+        if self.system_before(258):
+            self.browser.wait_not_visible("#navbar-oops")
+        else:
+            self.browser.wait_not_present("#navbar-oops")
+
+        # define again the default storage pool for system connection
+        # we need so that the UI will know the remaining available space when we use that pool's path
+        self.machine.execute("virsh pool-define-as default --type dir --target /var/lib/libvirt/images")
+        self.machine.execute("virsh pool-start default")
+
+        self.browser.reload()
+        self.browser.enter_page('/machines')
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                      location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_pool="NoStorage",
+                                                      create_and_run=False,
+                                                      connection='session'))
+        cmds = [
+            "mkdir -p '/var/lib/libvirt/pools/tmp pool'; chmod a+rwx '/var/lib/libvirt/pools/tmp pool'",
+            "virsh pool-define-as 'tmp pool' --type dir --target '/var/lib/libvirt/pools/tmp pool'",
+            "virsh pool-start 'tmp pool'",
+            "qemu-img create -f qcow2 '/var/lib/libvirt/pools/tmp pool/vmTmpDestination.qcow2' 128M",
+            "virsh pool-refresh 'tmp pool'"
+        ]
+        self.machine.execute("; ".join(cmds))
+
+        self.browser.reload()
+        self.browser.enter_page('/machines')
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        # Check choosing existing volume as destination storage
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                      location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_pool="tmp pool",
+                                                      storage_volume="vmTmpDestination.qcow2",
+                                                      create_and_run=True,))
+
+        # Check "NoStorage" option (only define VM)
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                      location=config.NOVELL_MOCKUP_ISO_PATH,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_pool="NoStorage",
+                                                      create_and_run=True,))
+
+        self.machine.execute(f"touch '{config.PATH_WITH_SPACE}'")
+        # Check file with empty space
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='file',
+                                                      location=config.PATH_WITH_SPACE,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_pool="NoStorage",
+                                                      create_and_run=True,))
+
+    def testCreateImportDisk(self):
+        runner = TestMachinesCreate.CreateVmRunner(self)
+        config = TestMachinesCreate.TestCreateConfig
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='disk_image',
+                                                      location=config.VALID_DISK_IMAGE_PATH,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      create_and_run=False))
+
+        # Recreate the image the previous test just deleted to reuse it
+        self.machine.execute(f"qemu-img create {TestMachinesCreate.TestCreateConfig.VALID_DISK_IMAGE_PATH} 500M")
+
+        # Unload KVM module, otherwise we get errors getting the nested VMs
+        # to start properly.
+        # This is applicable for all tests that we want to really successfully run a nested VM.
+        # in order to allow the rest of the tests to run faster with QEMU KVM
+        # Stop pmcd service if available which is invoking pmdakvm and is keeping KVM module used
+        self.machine.execute("systemctl stop pmcd || true; modprobe -r kvm_intel kvm_amd kvm")
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='disk_image',
+                                                      location=config.VALID_DISK_IMAGE_PATH,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      create_and_run=True))
+
+    def testCreateUrlSource(self):
+        m = self.machine
+        runner = TestMachinesCreate.CreateVmRunner(self)
+        config = TestMachinesCreate.TestCreateConfig
+
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+
+        runner.checkEnvIsEmpty()
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                      location=config.TREE_URL,
+                                                      storage_size=1))
+
+        # name already exists
+        runner.createTest(TestMachinesCreate.VmDialog(self, name='existing-name', sourceType='url',
+                                                      location=config.TREE_URL, storage_size=1,
+                                                      delete=False))
+
+        self.goToMainPage()
+        runner.checkDialogFormValidationTest(TestMachinesCreate.VmDialog(self, "existing-name", storage_size=1,
+                                                                         env_is_empty=False), {"vm-name": "already exists"})
+
+        m.execute("virsh undefine existing-name")
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                      location=config.TREE_URL,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_pool="NoStorage",
+                                                      os_name=config.FEDORA_28))
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                      location=config.TREE_URL,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_pool="NoStorage",
+                                                      os_name=config.FEDORA_28,
+                                                      create_and_run=False))
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                      location=config.TREE_URL,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_size=128, storage_size_unit='MiB',
+                                                      create_and_run=False))
+
+        # This functionality works on debian only because of extra qemu-block-extra dep.
+        # Check error is returned if dependency is missing
+        if m.image.startswith("debian"):
+            m.execute("mount -o bind /dev/null /usr/lib/x86_64-linux-gnu/qemu/block-curl.so")
+            try:
+                runner.checkDialogErrorTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                                        location=config.ISO_URL,
+                                                                        memory_size=128, memory_size_unit='MiB',
+                                                                        storage_pool="NoStorage",
+                                                                        create_and_run=True), ["qemu", "protocol"])
+            finally:
+                m.execute("umount /usr/lib/x86_64-linux-gnu/qemu/block-curl.so")
+
+        # Test detection of ISO file in URL; HACK: unpredictable behaviour, the "failed to install" alert sometimes appears,
+        # sometimes not; so run this last
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='url',
+                                                      location=config.ISO_URL,
+                                                      memory_size=128, memory_size_unit='MiB',
+                                                      storage_pool="NoStorage",
+                                                      create_and_run=True))
+
+    def testDisabledCreate(self):
+        self.login_and_go("/machines")
+        self.browser.wait_in_text("body", "Virtual machines")
+        self.browser.wait_visible("#create-new-vm:not(:disabled)")
+        self.browser.wait_attr("#create-new-vm", "testdata", None)
+
+        virt_install_bin = self.machine.execute("which virt-install").strip()
+        self.machine.execute(f'mount -o bind /dev/null {virt_install_bin}')
+        self.addCleanup(self.machine.execute, f"umount {virt_install_bin}")
+
+        self.browser.reload()
+        self.browser.enter_page('/machines')
+        self.browser.wait_visible("#create-new-vm:disabled")
+        # There are many reasons why the button would be disabled, so check if it's correct one
+        self.browser.wait_attr("#create-new-vm", "testdata", "disabledVirtInstall")
+
+    class TestCreateConfig:
+        VALID_URL = 'http://mirror.i3d.net/pub/centos/7/os/x86_64/'
+        VALID_DISK_IMAGE_PATH = '/var/lib/libvirt/images/example.img'
+        NOVELL_MOCKUP_ISO_PATH = '/var/lib/libvirt/novell.iso'
+        PATH_WITH_SPACE = '/var/lib/libvirt/novell with spaces.iso'
+        NOT_EXISTENT_PATH = '/tmp/not-existent.iso'
+        ISO_URL = 'https://archive.fedoraproject.org/pub/archive/fedora/linux/releases/28/Server/x86_64/os/images/boot.iso'
+        TREE_URL = 'https://archive.fedoraproject.org/pub/archive/fedora/linux/releases/28/Server/x86_64/os'
+
+        # LINUX can be filtered if 3 years old
+        REDHAT_RHEL_4_7_FILTERED_OS = 'Red Hat Enterprise Linux 4.9'
+
+        FEDORA_28 = 'Fedora 28'
+        FEDORA_28_SHORTID = 'fedora28'
+
+        FEDORA_29 = 'Fedora 29'
+        FEDORA_29_SHORTID = 'fedora29'
+
+        RHEL_8_1 = 'Red Hat Enterprise Linux 8.1 (Ootpa)'
+        RHEL_8_1_SHORTID = 'rhel8.1'
+        RHEL_8_2 = 'Red Hat Enterprise Linux 8.2 (Ootpa)'
+        RHEL_8_2_SHORTID = 'rhel8.2'
+        RHEL_7_1 = 'Red Hat Enterprise Linux 7.1'
+        RHEL_7_1_SHORTID = 'rhel7.1'
+
+        CENTOS_7 = 'CentOS 7'
+
+        MANDRIVA_2011_FILTERED_OS = 'Mandriva Linux 2011'
+
+        MAGEIA_3_FILTERED_OS = 'Mageia 3'
+
+        WINDOWS_SERVER_10 = 'Microsoft Windows 10'
+        WINDOWS_SERVER_10_SHORT = 'win'
+
+    class VmDialog:
+        vmId = 0
+
+        def __init__(self, test_obj, name=None, name_generated=False,
+                     sourceType='file', sourceTypeSecondChoice=None, location='',
+                     memory_size=128, memory_size_unit='MiB',
+                     expected_memory_size=None,
+                     storage_size=None, storage_size_unit='GiB',
+                     expected_storage_size=None,
+                     os_name="Fedora 28",
+                     os_search_name=None,
+                     os_short_id="fedora28",
+                     expected_os_name=None,
+                     is_unattended=None,
+                     profile=None,
+                     root_password=None,
+                     user_password=None,
+                     user_login=None,
+                     storage_pool='NewVolume', storage_volume='',
+                     create_and_run=False,
+                     delete=True,
+                     env_is_empty=True,
+                     check_script_finished=True,
+                     connection="system",
+                     offline_token=None,
+                     offline_token_autofilled=True,
+                     pixel_test_tag=None):
+
+            TestMachinesCreate.VmDialog.vmId += 1  # This variable is static - don't use self here
+
+            if name is None:
+                self.name = 'subVmTestCreate' + str(TestMachinesCreate.VmDialog.vmId)
+            else:
+                self.name = name
+
+            self.browser = test_obj.browser
+            self.machine = test_obj.machine
+            self.assertTrue = test_obj.assertTrue
+            self.assertFalse = test_obj.assertFalse
+            self.assertIn = test_obj.assertIn
+            self.assertNotIn = test_obj.assertNotIn
+            self.assertEqual = test_obj.assertEqual
+            self.goToVmPage = test_obj.goToVmPage
+            self.goToMainPage = test_obj.goToMainPage
+
+            self.sourceType = sourceType
+            self.sourceTypeSecondChoice = sourceTypeSecondChoice
+            self.location = location
+            self.memory_size = memory_size
+            self.memory_size_unit = memory_size_unit
+            self.expected_memory_size = expected_memory_size
+            self.storage_size = storage_size
+            self.storage_size_unit = storage_size_unit
+            self.expected_storage_size = expected_storage_size
+            self.os_name = os_name
+            self.os_search_name = os_search_name
+            self.os_short_id = os_short_id
+            self.expected_os_name = expected_os_name
+            self.is_unattended = is_unattended
+            self.profile = profile
+            self.root_password = root_password
+            self.user_password = user_password
+            self.user_login = user_login
+            self.create_and_run = create_and_run or is_unattended or sourceType == "cloud"
+            self.storage_pool = storage_pool
+            self.storage_volume = storage_volume
+            self.delete = delete
+            self.env_is_empty = env_is_empty
+            self.check_script_finished = check_script_finished
+            self.connection = connection
+            self.name_generated = name_generated
+            self.offline_token = offline_token
+            self.offline_token_autofilled = offline_token_autofilled
+
+            self.pixel_test_tag = pixel_test_tag
+
+        def open(self):
+            b = self.browser
+
+            if self.sourceType == 'disk_image':
+                b.click("#import-existing-vm")
+            else:
+                b.click("#create-new-vm")
+
+            b.wait_visible("#create-vm-dialog")
+            if self.sourceType == 'disk_image':
+                b.wait_in_text(".pf-c-modal-box .pf-c-modal-box__header .pf-c-modal-box__title", "Import a virtual machine")
+            else:
+                b.wait_in_text(".pf-c-modal-box .pf-c-modal-box__header .pf-c-modal-box__title", "Create new virtual machine")
+
+            if self.os_name is not None:
+                # remove os codename from os name, e.g.: 'bullseye' in 'Debian 11 (bullseye)'
+                query_result = re.sub(r" \(.*\)", "", self.os_name)
+                query_result = f'{query_result}'
+                # check if there is os present in osinfo-query because it can be filtered out in the UI
+                # throws exception if grep fails
+                self.machine.execute(
+                    r"osinfo-query os --fields=name | tail -n +3 | sed -e 's/\s*|\s*/|/g; s/^\s*//g; s/\s*$//g' | grep '{0}'".format(
+                        query_result))
+
+            return self
+
+        def checkUnitPrediction(self):
+            b = self.browser
+            m = self.machine
+
+            b.select_from_dropdown("#memory-size-unit-select", "MiB")
+            b.set_input_text("#memory-size", "128")
+            b.select_from_dropdown("#memory-size-unit-select", "GiB")
+            b.wait_val("#memory-size", "0.125")
+
+            # Check that the best unit is chosen when the storage size is automatically filled after selecting an OS
+            # https://bugzilla.redhat.com/show_bug.cgi?id=1987120
+            b.select_from_dropdown("#source-type", "url")
+            fake_fedora = "Fedora 28"  # 128 MiB minimum storage
+            suse = "SUSE CaaS Platform Unknown (unknown)"  # 20 GiB minimum storage
+            b.set_input_text("#os-select-group input", fake_fedora)
+            b.click(f"#os-select li button:contains('{fake_fedora}')")
+            b.wait_val("#storage-limit", "128")
+            b.wait_visible("#storage-limit-unit-select[data-value=MiB]")
+
+            # Check minimum requirement warnings are present
+            b.set_input_text("#memory-size", "127")
+            b.wait_in_text("#memory-size-helper", "The selected operating system has minimum memory requirement of 128 MiB")
+            b.set_input_text("#storage-limit", "127")
+            b.wait_in_text("#storage-limit-helper", "The selected operating system has minimum storage size requirement of 128 MiB")
+
+            b.set_input_text("#os-select-group input", suse)
+            b.click(f"#os-select li button:contains('{suse}')")
+            b.wait_val("#storage-limit", "20")
+            b.wait_visible("#storage-limit-unit-select[data-value=GiB]")
+
+            # Check case when minimum requirements are unknown
+            fake_fedora = "Fedora 29"  # no minimum memory or storage
+            b.set_input_text("#os-select-group input", fake_fedora)
+            b.click(f"#os-select li button:contains('{fake_fedora}')")
+            # get available memory on host
+            memory = m.execute("virsh nodeinfo | grep 'Memory size:' | awk '{print $3}'").strip()
+            memory = math.floor(int(memory) / 1024)
+            # If available memory on host is lesser than 1GiB, set it as default memory in dialog
+            memoryUnit = "MiB" if memory < 1024 else "GiB"
+            memory = memory if memory < 1024 else 1
+            # Check memory and storage were set to defaults
+            b.wait_val("#memory-size", memory)
+            b.wait_visible(f"#memory-size-unit-select[data-value={memoryUnit}]")
+            b.wait_val("#storage-limit", "10")
+            b.wait_visible("#storage-limit-unit-select[data-value=GiB]")
+            # Since minimum requirements are unknown Check no warning about minimum requirement is shown
+            b.select_from_dropdown("#memory-size-unit-select", "MiB")
+            b.set_input_text("#memory-size", "1")
+            b.wait_not_in_text("#memory-size-helper", "The selected operating system has minimum memory requirement")
+            b.select_from_dropdown("#storage-limit-unit-select", "MiB")
+            b.set_input_text("#storage-limit", "1")
+            b.wait_not_in_text("#storage-limit-helper", "The selected operating system has minimum storage size requirement")
+
+            return self
+
+        def checkOsInput(self):
+            b = self.browser
+
+            # select "Installation Type" for more complete OS list
+            if self.sourceType != "disk_image":
+                b.select_from_dropdown("#source-type", "file")
+            # input an OS and check there is no Ooops
+            b.set_input_text("#os-select-group input", self.os_name)
+            b.click(f"#os-select li button:contains('{self.os_name}')")
+            b.wait_attr_contains("#os-select-group input", "value", self.os_name)
+            b.wait_not_present("#navbar-oops")
+
+            # re-input an OS which is "Fedora 28"
+            # need to click the extend button to show the OS list
+            b.click("#os-select-group button[aria-label=\"Options menu\"]")
+            b.set_input_text("#os-select-group input", "Fedora")
+            b.click("#os-select li button:contains('Fedora 28')")
+            b.wait_attr_contains("#os-select-group input", "value", "Fedora 28")
+            b.wait_not_present("#navbar-oops")
+
+            # click the 'X' button to clear the OS input and check there is no Ooops
+            b.click("#os-select-group button[aria-label=\"Clear all\"]")
+            b.wait_attr("#os-select-group input", "value", "")
+            b.wait_not_present("#navbar-oops")
+
+            return self
+
+        def checkPasswordsAreNotReset(self):
+            b = self.browser
+
+            b.select_from_dropdown("#source-type", "os")
+            b.set_input_text("#os-select-group input", "Fedora")
+            b.click(f"#os-select li button:contains('{TestMachinesCreate.TestCreateConfig.FEDORA_28}')")
+            b.wait_attr_contains("#os-select-group input", "value", TestMachinesCreate.TestCreateConfig.FEDORA_28)
+            b.wait_not_present("#navbar-oops")
+
+            b.click("#pf-tab-1-automation")
+            b.set_input_text("#create-vm-dialog-user-password-pw1", "foobaruser")
+            b.set_input_text("#create-vm-dialog-root-password-pw1", "foobarroot")
+
+            b.click("#pf-tab-0-details-tab")
+            b.select_from_dropdown("#source-type", "cloud")
+
+            b.click("#pf-tab-1-automation")
+
+            # Check swithing from "os" to "cloud" sourcetype did not reset passwords
+            b.wait_attr("#create-vm-dialog-user-password-pw1", "value", "foobaruser")
+            b.wait_attr("#create-vm-dialog-root-password-pw1", "value", "foobarroot")
+
+            return self
+
+        def checkOsFiltered(self, present=False):
+            b = self.browser
+
+            b.focus("#os-select-group input")
+            # os_search_name is meant to be used to test substring much
+            b.key_press(self.os_search_name or self.os_name)
+
+            if not present:
+                try:
+                    with b.wait_timeout(5):
+                        b.wait_in_text("#os-select li button", "No results found")
+                    return self
+                except AssertionError:
+                    # os found which is not ok
+                    raise AssertionError(f"{self.os_name} was not filtered")
+            else:
+                b.wait_visible(f"#os-select li button:contains({self.os_search_name})")
+
+        def checkRhelIsDownloadable(self):
+            b = self.browser
+
+            b.select_from_dropdown("#source-type", "os")
+            b.set_input_text("#os-select-group input", "Red Hat")
+
+            # Check only RHEL >= 8 is shown
+            b.wait_visible(f"#os-select li button:contains('{TestMachinesCreate.TestCreateConfig.RHEL_8_1}')")
+            b.wait_not_present(f"#os-select li button:contains('{TestMachinesCreate.TestCreateConfig.RHEL_7_1}')")
+
+            return self
+
+        def checkOsSorted(self, sorted_list):
+            b = self.browser
+
+            b.click("#os-select-group .pf-c-select .pf-c-button")
+
+            # Find the first OS from the sorted list, and get a text of it's next neighbour
+            next_os = b.text(f"#os-select-group li:contains({sorted_list[0]}) + li")
+            # The next neighbour should contain the second OS from the sorted list
+            self.assertEqual(next_os, sorted_list[1])
+            return self
+
+        def checkPXENotAvailableSession(self):
+            self.browser.set_checked(f"#connectionName-{self.connection}", True)
+            # Our custom select does not respond on the click function
+            self.browser.wait_not_present(f"#source-type option[value='{self.sourceType}']")
+            return self
+
+        def createAndVerifyVirtInstallArgsCloudInit(self):
+            if self.create_and_run:
+                self.browser.click(".pf-c-modal-box__footer button:contains(Create and run)")
+            else:
+                self.browser.click(".pf-c-modal-box__footer button:contains(Create and edit)")
+            self.browser.wait_not_present("#create-vm-dialog")
+
+            if self.create_and_run:
+                self.goToVmPage(self.name)
+            self.browser.wait_text(f"#vm-{self.name}-disks-vda-bus", "virtio")
+            # A cloud-init NoCloud ISO file is generated, and attached to the VM as a CDROM device.
+            self.browser.wait_text(f"#vm-{self.name}-disks-sda-device", "cdrom")
+            self.goToMainPage()
+
+            # usual tricks: prevent grep from seeing itself in the output of ps
+            virt_install_cmd = "ps aux | grep '[v]irt-install --connect'"
+
+            wait(lambda: self.machine.execute(virt_install_cmd), delay=3)
+            virt_install_cmd_out = self.machine.execute(virt_install_cmd)
+            if self.user_login or self.user_password:
+                self.assertIn("--cloud-init user-data=", virt_install_cmd_out)
+                # parse the file
+                user_data_path = virt_install_cmd_out.split("user-data=", 1)[1].split()[0]
+                user_data = self.machine.execute("cat " + user_data_path)
+
+                self.assertIn("\nssh_pwauth: true", user_data)
+
+            # --unattended option is conflicting with --cloud-init option, resulting --cloud-init user_data being ignored
+            # https://bugzilla.redhat.com/show_bug.cgi?id=2096200#c14
+            self.assertNotIn("--unattended", virt_install_cmd_out)
+
+            self.browser.wait_text(f"#vm-{self.name}-{self.connection}-state", "Running")
+
+            # Wait for it to become permanent before destruction.  If
+            # we destroy it while it is still transient, the domain
+            # will come back as running.
+            wait(lambda: "yes" in self.machine.execute(f"virsh dominfo {self.name} | grep ^Persistent"))
+            self.machine.execute(f"virsh destroy {self.name}")
+
+            # wait for virt-install to finish
+            self.machine.execute(f"while {virt_install_cmd}; do sleep 1; done")
+
+            self.browser.wait_text(f"#vm-{self.name}-{self.connection}-state", "Shut off")
+
+            self.assertIn(f"backing file: {self.location}", self.machine.execute(f"qemu-img info /var/lib/libvirt/images/{self.name}.qcow2"))
+
+        def createRespectQemuConfConsoleConfig(self, vnc_listen, spice_listen, vnc_passwd, spice_passwd):
+            m = self.machine
+
+            if self.create_and_run:
+                self.browser.click(".pf-c-modal-box__footer button:contains(Create and run)")
+            else:
+                self.browser.click(".pf-c-modal-box__footer button:contains(Create and edit)")
+            self.browser.wait_not_present("#create-vm-dialog")
+            self.browser.wait_text(f"#vm-{self.name}-{self.connection}-state", "Shut off")
+
+            domainXML = m.execute(f"virsh dumpxml --security-info {self.name}")
+            root = ET.fromstring(domainXML)
+
+            expect_spice = not m.image.startswith("rhel-9") and m.image not in ["centos-9-stream"]
+            if m.image.startswith("fedora"):
+                # HACK: Fedora splits out the driver into a separate package, which we don't depend on
+                # spice currently requires this, but shouldn't: https://bugzilla.redhat.com/show_bug.cgi?id=2064594
+                expect_spice = m.execute("if rpm -q qemu-device-display-qxl >/dev/null; then echo yes; fi").strip() == "yes"
+
+            spice = root.findall(".//graphics[@type='spice']")
+            if expect_spice:
+                self.assertEqual(spice_listen, spice[0].attrib['listen'])
+                self.assertEqual(spice_passwd, spice[0].attrib.get('passwd', None))
+            else:
+                self.assertEqual(spice, [])
+
+            vnc = root.findall(".//graphics[@type='vnc']")[0]
+            self.assertEqual(vnc_listen, vnc.attrib['listen'])
+            self.assertEqual(vnc_passwd, vnc.attrib.get('passwd', None))
+
+        def createAndVerifyVirtInstallArgsUnattended(self):
+            if self.create_and_run:
+                self.browser.click(".pf-c-modal-box__footer button:contains(Create and run)")
+            else:
+                self.browser.click(".pf-c-modal-box__footer button:contains(Create and edit)")
+            self.browser.wait_not_present("#create-vm-dialog")
+            if self.storage_pool != "NoStorage":
+                self.goToVmPage(self.name)
+                self.browser.wait_text(f"#vm-{self.name}-disks-vda-bus", "virtio")
+                self.goToMainPage()
+
+            # usual tricks: prevent grep from seeing itself in the output of ps
+            virt_install_cmd = "ps aux | grep '[v]irt-install --connect'"
+            wait(lambda: self.machine.execute(virt_install_cmd), delay=3)
+            virt_install_cmd_out = self.machine.execute(virt_install_cmd)
+            self.assertIn(f"--install os={self.os_short_id}", virt_install_cmd_out)
+            if self.is_unattended:
+                self.assertIn(f"profile={self.profile}", virt_install_cmd_out)
+                if self.root_password:
+                    root_password_file = virt_install_cmd_out.split("admin-password-file=", 1)[1].split(",")[0]
+                    self.assertIn(self.machine.execute(f"cat {root_password_file}").rstrip(), self.root_password)
+                if self.user_password:
+                    user_password_file = virt_install_cmd_out.split("user-password-file=", 1)[1].split(",")[0]
+                    self.assertIn(self.machine.execute(f"cat {user_password_file}").rstrip(), self.user_password)
+                if self.user_login:
+                    user_login = virt_install_cmd_out.split("user-login=", 1)[1].split(",")[0].rstrip()
+                    self.assertIn(user_login, self.user_login)
+
+        def fill(self):
+            b = self.browser
+            if not self.name_generated:
+                b.set_input_text("#vm-name", self.name)
+
+            b.wait_not_present("#offline-token")
+            if self.os_name:
+                b.click("#os-select-group > div button")
+                b.click(f"#os-select li:contains('{self.os_name}') button")
+                b.wait_attr("#os-select-group input", "value", self.os_name)
+
+            if self.sourceType != 'disk_image':
+                b.select_from_dropdown("#source-type", self.sourceType)
+            else:
+                b.wait_not_present("#source-type")
+            if self.sourceType == 'file' or self.sourceType == 'cloud':
+                b.set_file_autocomplete_val("#source-file-group", self.location)
+            elif self.sourceType == 'disk_image':
+                b.set_file_autocomplete_val("#source-disk-group", self.location)
+            elif self.sourceType == 'pxe':
+                b.select_from_dropdown("#network-select", self.location)
+            elif self.sourceType == 'url':
+                b.set_input_text("#source-url", self.location)
+
+            if self.sourceTypeSecondChoice:
+                b.select_from_dropdown("#source-type", self.sourceTypeSecondChoice)
+
+            # Data loading doesn't start immediately
+            time.sleep(1)
+            b.wait_attr("#os-select-group", "data-loading", "false")
+            # For the mocked fedora URL installation wait to see that the OS section is automatically filled
+            if self.sourceType == "url" and self.location == TestMachinesCreate.TestCreateConfig.TREE_URL:
+                b.wait_attr("#os-select-group input", "value", TestMachinesCreate.TestCreateConfig.FEDORA_28)
+
+            if self.expected_os_name:
+                b.wait_attr("#os-select-group input", "value", self.expected_os_name)
+
+            if self.sourceType == "os" and self.os_name in [TestMachinesCreate.TestCreateConfig.RHEL_8_1, TestMachinesCreate.TestCreateConfig.RHEL_8_2]:
+                if not self.offline_token_autofilled:
+                    b.set_input_text("#offline-token", self.offline_token)
+                b.wait_in_text("#offline-token", self.offline_token)
+                b.wait_in_text("#offline-token-helper", "Valid")
+
+            if self.sourceType != 'disk_image':
+                if not self.expected_storage_size:
+                    b.wait_visible("#storage-pool-select")
+                    b.select_from_dropdown("#storage-pool-select", self.storage_pool)
+
+                    if self.storage_pool == 'NewVolume' or self.storage_pool == 'NoStorage':
+                        b.wait_not_present("#storage-volume-select")
+                    else:
+                        b.wait_visible("#storage-volume-select")
+                        b.select_from_dropdown("#storage-volume-select", self.storage_volume)
+
+                    if self.storage_pool != 'NewVolume':
+                        b.wait_not_present("#storage-limit")
+                    else:
+                        b.select_from_dropdown("#storage-limit-unit-select", self.storage_size_unit)
+                        if self.storage_size is not None:
+                            b.set_input_text("#storage-limit", str(self.storage_size), value_check=False)
+                else:
+                    b.wait_val("#storage-limit", self.expected_storage_size)
+
+            # First select the unit so that UI will auto-adjust the memory input
+            # value according to the available total memory on the host
+            if not self.expected_memory_size:
+                b.select_from_dropdown("#memory-size-unit-select", self.memory_size_unit)
+                b.set_input_text("#memory-size", str(self.memory_size), value_check=True)
+            else:
+                b.wait_val("#memory-size", self.expected_memory_size)
+
+            if self.sourceType == "cloud":
+                b.wait_visible("#create-and-edit[aria-disabled=true]")
+                b.mouse("#create-and-edit", "mouseenter")
+                b.wait_visible("#create-and-edit-disabled-tooltip")
+            else:
+                b.wait_visible("#create-and-run[aria-disabled=false]")
+
+            if (self.connection):
+                b.set_checked(f"#connectionName-{self.connection}", True)
+
+            if self.is_unattended or self.sourceType == "cloud":
+                if self.is_unattended or self.user_password or self.user_login or self.root_password:
+                    b.click("#pf-tab-1-automation")
+
+                if self.profile:
+                    b.select_from_dropdown("#profile-select", self.profile)
+                if self.user_password:
+                    b.set_input_text("#create-vm-dialog-user-password-pw1", self.user_password)
+                if self.user_login:
+                    b.set_input_text("#user-login", self.user_login)
+                if self.root_password:
+                    b.set_input_text("#create-vm-dialog-root-password-pw1", self.root_password)
+
+            return self
+
+        def cancel(self, force=False):
+            b = self.browser
+            if b.is_present("#create-vm-dialog"):
+                b.click(".pf-c-modal-box__footer button:contains(Cancel)")
+                b.wait_not_present("#create-vm-dialog")
+            elif force:
+                raise Exception("There is no dialog to cancel")
+            return self
+
+        def createAndExpectInlineValidationErrors(self, errors):
+
+            b = self.browser
+
+            if self.sourceType == 'disk_image':
+                if self.create_and_run:
+                    b.click(".pf-c-modal-box__footer button:contains(Import and run)")
+                else:
+                    b.click(".pf-c-modal-box__footer button:contains(Import and edit)")
+            else:
+                if self.create_and_run:
+                    b.click(".pf-c-modal-box__footer button:contains(Create and run)")
+                else:
+                    b.click(".pf-c-modal-box__footer button:contains(Create and edit)")
+
+            for error, error_msg in errors.items():
+                error_location = f".pf-c-modal-box__body #{error}-group .pf-c-form__helper-text.pf-m-error"
+                b.wait_visible(error_location)
+                if (error_msg):
+                    b.wait_in_text(error_location, error_msg)
+
+            if self.sourceType == 'disk_image':
+                b.wait_visible(".pf-c-modal-box__footer button:contains(Import and run)[aria-disabled=true]")
+                b.wait_visible(".pf-c-modal-box__footer button:contains(Import and edit)[aria-disabled=true]")
+            else:
+                b.wait_visible(".pf-c-modal-box__footer button:contains(Create and run)[aria-disabled=true]")
+                b.wait_visible(".pf-c-modal-box__footer button:contains(Create and edit)[aria-disabled=true]")
+
+            return self
+
+        def createAndExpectError(self, errors):
+            b = self.browser
+
+            def waitForError(errors, error_location):
+                for retry in range(0, 60):
+                    error_message = b.text(error_location)
+                    if any(error in error_message for error in errors):
+                        break
+                    time.sleep(5)
+                else:
+                    raise Error("Retry limit exceeded: None of [%s] is part of the error message '%s'" % (
+                        ', '.join(errors), b.text(error_location)))
+
+            if self.create_and_run:
+                b.click(".pf-c-modal-box__footer button:contains(Create and run)")
+            else:
+                b.click(".pf-c-modal-box__footer button:contains(Create and edit)")
+
+            error_location = ".pf-c-modal-box__footer div.pf-c-alert"
+
+            try:
+                with b.wait_timeout(10):
+                    b.wait_visible(error_location)
+                    b.wait_in_text("button.alert-link.more-button", "show more")
+                    b.click("button.alert-link.more-button")
+                    waitForError(errors, error_location)
+
+                # dialog can complete if the error was not returned immediately
+            except Error:
+                if b.is_present("#create-vm-dialog"):
+                    raise
+                else:
+                    # then error should be shown in the notification area
+                    error_location = ".pf-c-alert-group li .pf-c-alert"
+                    with b.wait_timeout(20):
+                        b.wait_visible(error_location)
+                        b.wait_in_text("button.alert-link.more-button", "show more")
+                        b.click("button.alert-link.more-button")
+                        waitForError(errors, error_location)
+
+            # Close the notification
+            b.click(".pf-c-alert-group li .pf-c-alert button.pf-m-plain")
+            b.wait_not_present(".pf-c-alert-group li .pf-c-alert")
+
+            return self
+
+        def assert_pixels(self, subtag=None):
+            if self.pixel_test_tag:
+                tag = self.pixel_test_tag + ("-" + subtag if subtag else "")
+                ignore = ["#memory-size-helper"]
+                if self.storage_pool != "NoStorage":
+                    ignore += ["#storage-limit-helper"]
+                self.browser.assert_pixels("#create-vm-dialog", tag, ignore=ignore)
+            return self
+
+        def checkNoCrashOnThePage(self):
+            self.browser.switch_to_top()
+            self.browser.wait_not_present("#navbar-oops:not([hidden])")
+            self.browser.enter_page("/machines")
+
+            return self
+
+    class CreateVmRunner:
+
+        def __init__(self, test_obj, rhel_download=False):
+            self.browser = test_obj.browser
+            self.machine = test_obj.machine
+            self.assertTrue = test_obj.assertTrue
+            self.assertRegex = test_obj.assertRegex
+            self.test_obj = test_obj
+            self.run_admin = test_obj.run_admin
+
+            self.machine.execute(f"touch {TestMachinesCreate.TestCreateConfig.NOVELL_MOCKUP_ISO_PATH}")
+            self.machine.execute(f"qemu-img create {TestMachinesCreate.TestCreateConfig.VALID_DISK_IMAGE_PATH} 500M")
+            test_obj.addCleanup(test_obj.machine.execute, "rm -f {0} {1}".format(
+                TestMachinesCreate.TestCreateConfig.NOVELL_MOCKUP_ISO_PATH,
+                TestMachinesCreate.TestCreateConfig.VALID_DISK_IMAGE_PATH))
+
+            if rhel_download:
+                self._fakeOsDBInfoRhel()
+                self._fakeRhelDownload()
+            else:
+                self._fakeOsDBInfoFedora()
+                self._fakeFedoraTree()
+
+            # Make sure we don't run into long DNS timeouts when trying to contact this server
+            self.machine.execute("echo >>/etc/hosts 127.0.0.42 mirror.i3d.net")
+
+            # console for try INSTALL
+            self.test_obj.allow_journal_messages('.*connection.*')
+            self.test_obj.allow_journal_messages('.*Connection.*')
+            self.test_obj.allow_journal_messages('.*session closed.*')
+
+            self.test_obj.allow_browser_errors("Failed when connecting: Connection closed")
+            self.test_obj.allow_browser_errors("Tried changing state of a disconnected RFB object")
+
+            # Deleting a running guest will disconnect the serial console
+            self.test_obj.allow_browser_errors("Disconnection timed out.")
+            self.test_obj.allow_journal_messages(".* couldn't shutdown fd: Transport endpoint is not connected")
+
+            # See https://bugzilla.redhat.com/show_bug.cgi?id=1406979, this is a WONTFIX:
+            # It suggests configure auditd to dontaudit these messages since selinux can't
+            # offer whitelisting this directory for qemu process
+            self.test_obj.allow_journal_messages('audit: type=1400 audit(.*): avc:  denied .*for .* comm="qemu-.* dev="proc" .*')
+
+            # define default storage pool for system connection
+            # we need so that the UI will know the remaining available space when we use that pool's path
+            self.machine.execute("virsh pool-define-as default --type dir --target /var/lib/libvirt/images")
+            self.machine.execute("virsh pool-start default")
+
+        def _fakeOsDBInfoFedora(self):
+            # Fake the osinfo-db data in order that it will allow spawn the installation - of course we don't expect it to succeed -
+            # we just need to check that the VM was spawned
+            fedora_28_xml = self.machine.execute("cat /usr/share/osinfo/os/fedoraproject.org/fedora-28.xml")
+            root = ET.fromstring(fedora_28_xml)
+            root.find('os').find('resources').find('minimum').find('ram').text = '134217728'
+            root.find('os').find('resources').find('minimum').find('storage').text = '134217728'
+            root.find('os').find('eol-date').text = '9999-12-31'
+            new_fedora_28_xml = ET.tostring(root)
+            self.machine.execute(f"echo '{str(new_fedora_28_xml, 'utf-8')}' > {self.test_obj.vm_tmpdir}/fedora-28.xml")
+            self.machine.execute(f"mount -o bind  {self.test_obj.vm_tmpdir}/fedora-28.xml /usr/share/osinfo/os/fedoraproject.org/fedora-28.xml")
+            self.test_obj.addCleanup(self.machine.execute, "umount /usr/share/osinfo/os/fedoraproject.org/fedora-28.xml || true")
+
+            # Fake distro with no minimum ram or storage defined
+            fedora_29_xml = self.machine.execute("cat /usr/share/osinfo/os/fedoraproject.org/fedora-29.xml")
+            root = ET.fromstring(fedora_29_xml)
+            root.find('os').find('eol-date').text = '9999-12-31'
+            minimum = root.find('os').find('resources').find('minimum')
+            minimum.remove(minimum.find('ram'))
+            minimum.remove(minimum.find('storage'))
+            new_fedora_29_xml = ET.tostring(root)
+            self.machine.execute(f"echo '{str(new_fedora_29_xml, 'utf-8')}' > {self.test_obj.vm_tmpdir}/fedora-29.xml")
+            self.machine.execute(f"mount -o bind  {self.test_obj.vm_tmpdir}/fedora-29.xml /usr/share/osinfo/os/fedoraproject.org/fedora-29.xml")
+            self.test_obj.addCleanup(self.machine.execute, "umount /usr/share/osinfo/os/fedoraproject.org/fedora-29.xml || true")
+
+        def _fakeOsDBInfoRhel(self):
+            # Fake rhel 8 images
+            rhel_8_1_xml = self.machine.execute("cat /usr/share/osinfo/os/redhat.com/rhel-8.1.xml")
+            root = ET.fromstring(rhel_8_1_xml)
+            root.find('os').find('resources').find('minimum').find('ram').text = '134217728'
+            root.find('os').find('resources').find('minimum').find('storage').text = '134217728'
+            root.find('os').find('release-date').text = datetime.today().strftime('%Y-%m-%d')
+            new_rhel_8_1_xml = ET.tostring(root)
+            self.machine.execute(f"echo '{str(new_rhel_8_1_xml, 'utf-8')}' > {self.test_obj.vm_tmpdir}/rhel-8.1.xml")
+            self.machine.execute(f"mount -o bind  {self.test_obj.vm_tmpdir}/rhel-8.1.xml /usr/share/osinfo/os/redhat.com/rhel-8.1.xml")
+            self.test_obj.addCleanup(self.machine.execute, "umount /usr/share/osinfo/os/redhat.com/rhel-8.1.xml || true")
+
+            rhel_8_2_xml = self.machine.execute("cat /usr/share/osinfo/os/redhat.com/rhel-8.2.xml")
+            root = ET.fromstring(rhel_8_2_xml)
+            root.find('os').find('resources').find('minimum').find('ram').text = '134217728'
+            root.find('os').find('resources').find('minimum').find('storage').text = '134217728'
+            root.find('os').find('release-date').text = datetime.today().strftime('%Y-%m-%d')
+            new_rhel_8_2_xml = ET.tostring(root)
+            self.machine.execute(f"echo '{str(new_rhel_8_2_xml, 'utf-8')}' > {self.test_obj.vm_tmpdir}/rhel-8.2.xml")
+            self.machine.execute(f"mount -o bind  {self.test_obj.vm_tmpdir}/rhel-8.2.xml /usr/share/osinfo/os/redhat.com/rhel-8.2.xml")
+            self.test_obj.addCleanup(self.machine.execute, "umount /usr/share/osinfo/os/redhat.com/rhel-8.2.xml || true")
+
+            # Fake rhel 7 image
+            rhel_7_1_xml = self.machine.execute("cat /usr/share/osinfo/os/redhat.com/rhel-7.1.xml")
+            root = ET.fromstring(rhel_7_1_xml)
+            root.find('os').find('resources').find('minimum').find('ram').text = '134217728'
+            root.find('os').find('resources').find('minimum').find('storage').text = '134217728'
+            new_rhel_7_1_xml = ET.tostring(root)
+            self.machine.execute(f"echo '{str(new_rhel_7_1_xml, 'utf-8')}' > {self.test_obj.vm_tmpdir}/rhel-7.1.xml")
+            self.machine.execute(f"mount -o bind  {self.test_obj.vm_tmpdir}/rhel-7.1.xml /usr/share/osinfo/os/redhat.com/rhel-7.1.xml")
+            self.test_obj.addCleanup(self.machine.execute, "umount /usr/share/osinfo/os/redhat.com/rhel-7.1.xml || true")
+
+        def _fakeFedoraTree(self):
+            server = self.test_obj.setup_mock_server("mock-range-server.py", ["archive.fedoraproject.org"])
+            self.test_obj.addCleanup(self.machine.execute, f"kill {server}")
+            distro_tree_path = "/var/lib/libvirt/pub/archive/fedora/linux/releases/28/Server/x86_64/os/"
+            self.machine.execute(f"mkdir -p {distro_tree_path}")
+            self.machine.upload(["files/fakefedoratree/.treeinfo", "files/fakefedoratree/images"], distro_tree_path)
+            # borrow the kernel executable for the test server
+            if self.machine.image == "arch":
+                self.machine.execute(f"cp /boot/vmlinuz-linux {distro_tree_path}images/pxeboot/vmlinuz")
+            else:
+                self.machine.execute(f"cp /boot/vmlinuz-{self.machine.execute('uname -r').rstrip()} {distro_tree_path}images/pxeboot/vmlinuz")
+            self.machine.execute("chown -R 777 /var/lib/libvirt/pub")
+
+        def _fakeRhelDownload(self):
+            server = self.test_obj.setup_mock_server("mock-rhsm-rest", ["sso.redhat.com", "api.access.redhat.com"])
+            self.test_obj.addCleanup(self.machine.execute, f"kill {server}")
+
+        def _assertVmStates(self, name, connection, before, after):
+            b = self.browser
+            selector = f"#vm-{name}-{connection}-state"
+
+            b.wait_in_text(selector, before)
+
+            # Make sure that the initial state goes away and then try to check what the new state is
+            # because we might end up checking the text for the new state the momment it disappears
+            # HACK: Ensure that the selector exists to avoid a quadratic timeout loop; see
+            # https://github.com/cockpit-project/cockpit/pull/16200
+            wait(lambda: b.is_present(selector) and b.text(selector) != before, tries=30, delay=3)
+            b.wait_in_text(selector, after)
+
+        def _create(self, dialog):
+            b = self.browser
+            if dialog.sourceType == 'disk_image':
+                if dialog.create_and_run:
+                    b.click(".pf-c-modal-box__footer button:contains(Import and run)")
+                else:
+                    b.click(".pf-c-modal-box__footer button:contains(Import and edit)")
+            else:
+                if dialog.create_and_run:
+                    b.click(".pf-c-modal-box__footer button:contains(Create and run)")
+                else:
+                    b.click(".pf-c-modal-box__footer button:contains(Create and edit)")
+
+            final_state = "Running" if dialog.create_and_run else "Shut off"
+            # Test dowloading RHEL image shows the progress of the download
+            if dialog.os_name == TestMachinesCreate.TestCreateConfig.RHEL_8_1:
+                # Check download percantage is shown as a whole number 0-100 followed by '%'
+                if dialog.create_and_run:
+                    b.wait_in_text(f"#vm-{dialog.name}-{dialog.connection}-state", "Downloading")
+                    # Progress is shown in VM state in VMs list
+                    self.assertRegex(b.text(f"#vm-{dialog.name}-{dialog.connection}-state"), r"^.*[0-9][0-9]?%$|^100%$")
+                else:
+                    b.wait_in_text(".pf-c-empty-state__content .pf-c-title", "Downloading image")
+                    # Progress is shown at VM page empty state
+                    self.assertRegex(b.text(".pf-c-empty-state__body .pf-c-progress__status"), r"^[0-9][0-9]?%$|^100%$")
+
+                b.wait_in_text(f"#vm-{dialog.name}-{dialog.connection}-state", final_state)
+            b.wait_not_present("#create-vm-dialog")
+            b.wait_text(f"#vm-{dialog.name}-{dialog.connection}-state",
+                        dialog.create_and_run and "Running" or "Shut off")
+
+        def _tryCreate(self, dialog, generated_name=None):
+            name = generated_name or dialog.name
+
+            dialog.open() \
+                .fill()
+            self._create(dialog)
+
+            if dialog.create_and_run:
+                # successfully created
+                self.test_obj.waitVmRow(name, dialog.connection)
+            else:
+                # created and redirected
+                self.test_obj.waitVmPage(name)
+
+            self._assertCorrectConfiguration(dialog)
+
+            return self
+
+        def _tryCreateThenInstall(self, dialog, installFromVmDetails, tryWithFailInstall):
+            b = self.browser
+            m = self.machine
+            dialog.create_and_run = False
+            name = dialog.name
+            connection = dialog.connection
+
+            dialog.open() \
+                .fill()
+            self._create(dialog)
+
+            if dialog.create_and_run:
+                # successfully created
+                self.test_obj.waitVmRow(name, dialog.connection)
+
+                if installFromVmDetails:
+                    self.test_obj.goToVmPage(name)
+            else:
+                # created and redirected
+                self.test_obj.waitVmPage(name)
+
+            b.click(f"#vm-{name}-{connection}-install")
+
+            if tryWithFailInstall:
+                # Deleting the default network will make the installation to fail immediately
+                m.execute("virsh net-destroy default")
+                b.wait_in_text(f"#vm-{name}-{connection}-state", "Shut off")
+                b.wait_visible(f"#vm-{name}-{connection}-install")
+                b.wait_in_text(".pf-c-alert", "failed to get installed")
+                # can reattempt installation
+                b.wait_visible(f"#vm-{name}-{connection}-install")
+                # can't run, as it is still in install phase
+                b.wait_not_present(f"#vm-{name}-{connection}-run")
+            else:
+                b.wait_in_text(f"#vm-{name}-{connection}-state", "Running")
+                self._assertCorrectConfiguration(dialog)
+
+                # Wait for virt-install to define the VM and then stop it - otherwise we get 'domain is ready being removed' error
+                wait(lambda: dialog.name in self.machine.execute("virsh list --persistent"), delay=3)
+
+                # unfinished install script runs indefinitely, so we need to force it off
+                self.test_obj.performAction(name, "forceOff", checkExpectedState=False)
+                b.wait_in_text(f"#vm-{name}-{connection}-state", "Shut off")
+                # install phase got cleared
+                b.wait_visible(f"#vm-{name}-{connection}-run")
+                b.wait_not_present(f"#vm-{name}-{connection}-install")
+
+            return self
+
+        def _deleteVm(self, dialog):
+            b = self.browser
+
+            self.test_obj.performAction(dialog.name, "delete", connectionName=dialog.connection)
+            b.wait_visible(f"#vm-{dialog.name}-delete-modal-dialog")
+            b.click(f"#vm-{dialog.name}-delete-modal-dialog button:contains(Delete)")
+            b.wait_not_present(f"#vm-{dialog.name}-delete-modal-dialog")
+
+            self.test_obj.waitVmRow(dialog.name, dialog.connection, False)
+            return self
+
+        def _assertCorrectConfiguration(self, dialog):
+            b = self.browser
+            name = dialog.name
+            connection = dialog.connection
+
+            if not (b.is_present("#vm-details") and b.is_visible("#vm-details")):
+                self.test_obj.goToVmPage(name, dialog.connection or "system")
+
+            # Check connection information in the details page
+            b.wait_in_text(f"#vm-{dialog.name}-connection", "System" if connection == "system" else "User session")
+
+            vm_state = b.text(f"#vm-{name}-{connection}-state")
+
+            # check firmware configuration is available after importing and/or before installing VM
+            if vm_state != "Running" and (dialog.sourceType == "disk_image" or not dialog.create_and_run):
+                b.wait_visible(f"button#vm-{name}-firmware")
+            else:
+                b.wait_not_present(f"button#vm-{name}-firmware")
+
+            # check bus type
+            if dialog.storage_pool != "NoStorage":
+                b.wait_in_text(f"#vm-{name}-disks-vda-bus", "virtio")
+            # check memory
+            # adjust to how cockpit_format_bytes() formats sizes > 1024 MiB -- this depends on how much RAM
+            # the host has (less or more than 1 GiB), and thus needs to be dynamic
+            if dialog.memory_size >= 1024 and dialog.memory_size_unit == "MiB":
+                memory_text = "/ " + f"{dialog.memory_size / 1024:.1f}".rstrip('.0') + " GiB"
+            else:
+                memory_text = "/ " + f"{dialog.memory_size:.1f}".rstrip('.0') + f" {dialog.memory_size_unit}"
+            b.wait_in_text(".memory-usage-chart .pf-c-progress__status > .pf-c-progress__measure", memory_text)
+
+            # check disks
+            # Test disk got imported/created
+            if dialog.sourceType == 'disk_image' or (dialog.os_name == TestMachinesCreate.TestCreateConfig.RHEL_8_1):
+                b.wait_visible(".disks-card table tbody > tr:first-child")
+                if b.is_present(f"#vm-{name}-disks-vda-device"):
+                    b.wait_in_text(f"#vm-{name}-disks-vda-source-file", dialog.location)
+                elif b.is_present(f"#vm-{name}-disks-hda-device"):
+                    b.wait_in_text(f"#vm-{name}-disks-hda-source-file", dialog.location)
+                else:
+                    raise AssertionError("Unknown disk device")
+            # New volume was created or existing volume was already chosen as destination
+            elif (dialog.storage_size is not None and dialog.storage_size > 0) or dialog.storage_pool not in ["NoStorage", "NewVolume"]:
+                b.wait_visible(".disks-card table tbody > tr:first-child")
+                if b.is_present(f"#vm-{name}-disks-vda-device"):
+                    b.wait_in_text(f"#vm-{name}-disks-vda-device", "disk")
+                elif b.is_present(f"#vm-{name}-disks-hda-device"):
+                    b.wait_in_text(f"#vm-{name}-disks-hda-device", "disk")
+                elif b.is_present(f"#vm-{name}-disks-sda-device"):
+                    b.wait_in_text(f"#vm-{name}-disks-sda-device", "disk")
+                else:
+                    raise AssertionError("Unknown disk device")
+            elif (vm_state == "Running" and (((dialog.storage_pool == 'NoStorage' or dialog.storage_size == 0) and dialog.sourceType == 'file') or dialog.sourceType == 'url')):
+                b.wait_visible(".disks-card table tbody > tr:first-child")
+                if b.is_present(f"#vm-{name}-disks-sda-device"):
+                    b.wait_in_text(f"#vm-{name}-disks-sda-device", "cdrom")
+                elif b.is_present(f"#vm-{name}-disks-hda-device"):
+                    b.wait_in_text(f"#vm-{name}-disks-hda-device", "cdrom")
+                else:
+                    raise AssertionError("Unknown disk device")
+            else:
+                b.wait_in_text(f"#vm-{name}-disks .pf-c-empty-state", "No disks defined")
+                b.click(f"#vm-{name}-disks-adddisk")
+                b.click(f"#vm-{name}-disks-adddisk-dialog-cancel")
+            return self
+
+        def _assertScriptFinished(self):
+            self.machine.execute("while pgrep virt-install; do sleep 1; done", timeout=20)
+            return self
+
+        def _assertDomainDefined(self, name, connection, install_phase=""):
+            for retry in range(5):
+                dumpxml = self.run_admin(f"virsh -c qemu:///system dumpxml --inactive {name}", connection)
+                try:
+                    # has cockpit-machines specific metadata
+                    self.test_obj.assertIn(f"<cockpit_machines:has_install_phase>{install_phase}", dumpxml)
+                    self.test_obj.assertIn("<cockpit_machines:install_source>", dumpxml)
+                    # The running XML has always substituted port
+                    # This checks that the defined domain is using the proper inactive XML
+                    self.test_obj.assertIn("type='vnc' port='-1'", dumpxml)
+                    break
+                except AssertionError as e:
+                    fail = e
+                    time.sleep(2)
+            else:
+                raise fail
+
+            return self
+
+        def checkEnvIsEmpty(self, dialog=None):
+            b = self.browser
+
+            # wait until virt-install process is finished
+            wait(lambda: "virt-install" not in self.machine.execute("ps aux | grep '[v]irt-install --connect' || true"))
+            b.wait_in_text("#virtual-machines-listing .pf-c-empty-state", "No VM is running")
+            # wait for the vm and disks to be deleted
+            self.machine.execute("until test -z $(virsh list --all --name); do sleep 1; done")
+            self.machine.execute("until test -z $(ls /home/admin/.local/share/libvirt/images/ 2>/dev/null); do sleep 1; done")
+
+            # When we delete a VM while virt-install is running there will be an error
+            while (b.is_present(".pf-c-alert-group li")):
+                b.click(".pf-c-alert-group li:first-of-type .pf-c-alert button.pf-m-plain")
+            b.wait_not_present(".pf-c-alert-group")
+
+            return self
+
+        def checkOsInputTest(self, dialog):
+            dialog.open().checkOsInput().cancel(True)
+
+            self._assertScriptFinished().checkEnvIsEmpty()
+
+        def checkPasswordsAreNotResetTest(self, dialog):
+            dialog.open().checkPasswordsAreNotReset().cancel(True)
+
+            self._assertScriptFinished().checkEnvIsEmpty()
+
+        # Many of testCreate* tests use these helpers - let's keep them here to avoid repetition
+        def checkDialogFormValidationTest(self, dialog, errors):
+            dialog.open() \
+                .fill() \
+                .createAndExpectInlineValidationErrors(errors) \
+                .cancel(True)
+            if dialog.check_script_finished:
+                self._assertScriptFinished()
+            if dialog.env_is_empty:
+                self.checkEnvIsEmpty()
+
+        def createTest(self, dialog, check_env_empty=True):
+            self._tryCreate(dialog) \
+
+            # When not booting the actual OS from either existing image
+            # configure virt-install to wait for the installation to complete.
+            # Thus we should only check that virt-install exited when using existing disk images.
+            if dialog.sourceType == 'disk_image':
+                self._assertScriptFinished() \
+                    ._assertDomainDefined(dialog.name, dialog.connection)
+
+            if dialog.delete:
+                self._deleteVm(dialog)
+                if check_env_empty:
+                    self.checkEnvIsEmpty(dialog)
+
+        def createAndImportTooltipsTest(self):
+            b = self.browser
+
+            b.wait_visible("#import-existing-vm:not(:disabled)")
+            b.mouse("#import-existing-vm", "mouseenter")
+            b.wait_in_text("#import-button-tooltip", "existing")
+            b.mouse("#import-existing-vm", "mouseleave")
+            b.wait_visible("#create-new-vm:not(:disabled)")
+            b.mouse("#create-new-vm", "mouseenter")
+            b.wait_in_text("#create-button-tooltip", "medium")
+            b.mouse("#create-new-vm", "mouseleave")
+
+        def checkDialogInvalidOfflineToken(self, dialog, error_msg, create_disabled):
+            b = self.browser
+            dialog.open() \
+
+            b.select_from_dropdown("#source-type", dialog.sourceType)
+            b.click("#os-select-group > div button")
+            b.click(f"#os-select li:contains('{dialog.os_name}') button")
+            b.wait_attr("#os-select-group input", "value", dialog.os_name)
+            if not dialog.offline_token_autofilled:
+                b.set_input_text("#offline-token", dialog.offline_token)
+
+            b.wait_visible("#token-helper-message")
+            b.wait_in_text("#token-helper-message", error_msg)
+            if create_disabled:
+                b.wait_visible(".pf-c-modal-box__footer button:contains(Create and run)[aria-disabled=true]")
+                b.wait_visible(".pf-c-modal-box__footer button:contains(Create and edit)[aria-disabled=true]")
+
+            dialog.cancel()
+
+        def cancelDialogTest(self, dialog):
+            dialog.open() \
+                .fill() \
+                .checkNoCrashOnThePage() \
+                .assert_pixels() \
+                .cancel(True)
+            self._assertScriptFinished() \
+                .checkEnvIsEmpty()
+
+        def unitPredictionTest(self, dialog):
+            dialog.open() \
+                .checkUnitPrediction() \
+                .cancel(True)
+
+        def checkFilteredOsTest(self, dialog):
+            dialog.open() \
+                .checkOsFiltered() \
+                .assert_pixels() \
+                .cancel(True)
+            self._assertScriptFinished() \
+                .checkEnvIsEmpty()
+
+        def checkRhelIsDownloadableTest(self, dialog):
+            dialog.open() \
+                .checkRhelIsDownloadable() \
+                .cancel(True)
+
+        def checkSortedOsTest(self, dialog, sorted_list):
+            dialog.open() \
+                .checkOsSorted(sorted_list) \
+                .cancel(True)
+            self._assertScriptFinished() \
+                .checkEnvIsEmpty()
+
+        def createCloudBaseImageTest(self, dialog):
+            dialog.open() \
+                .fill() \
+                .createAndVerifyVirtInstallArgsCloudInit()
+            if dialog.delete:
+                self._deleteVm(dialog) \
+                    .checkEnvIsEmpty()
+
+        def createDownloadAnOSTest(self, dialog):
+            dialog.open() \
+                .fill() \
+                .createAndVerifyVirtInstallArgsUnattended()
+            if dialog.delete:
+                self._deleteVm(dialog) \
+                    .checkEnvIsEmpty()
+
+        def createAndVerifyQemuConfParsedTest(self, dialog, vnc_listen, spice_listen, vnc_passwd, spice_passwd):
+            dialog.open() \
+                .fill() \
+                .createRespectQemuConfConsoleConfig(vnc_listen, spice_listen, vnc_passwd, spice_passwd)
+            if dialog.delete:
+                self._deleteVm(dialog) \
+                    .checkEnvIsEmpty()
+
+        def checkPXENotAvailableSessionTest(self, dialog):
+            dialog.open() \
+                .checkPXENotAvailableSession() \
+                .cancel(True)
+            self._assertScriptFinished() \
+                .checkEnvIsEmpty()
+
+        def createThenInstallTest(self, dialog, installFromVmDetails=False, tryWithFailInstall=False):
+            self._tryCreateThenInstall(dialog, installFromVmDetails, tryWithFailInstall) \
+                ._assertScriptFinished() \
+                ._assertDomainDefined(dialog.name, dialog.connection, install_phase="true" if tryWithFailInstall else "false") \
+                ._deleteVm(dialog) \
+                .checkEnvIsEmpty()
+
+        def checkDialogErrorTest(self, dialog, errors):
+            dialog.open() \
+                .fill() \
+                .createAndExpectError(errors) \
+                .cancel(False)
+            self._assertScriptFinished() \
+                .checkEnvIsEmpty()
+
+    # Check various configuration changes made before VM installation persist after installation
+    def testConfigureBeforeInstall(self):
+        TestMachinesCreate.CreateVmRunner(self)
+
+        b = self.browser
+        m = self.machine
+
+        self.login_and_go("/machines")
+        b.wait_in_text("body", "Virtual machines")
+
+        dialog = TestMachinesCreate.VmDialog(self, sourceType='file',
+                                             name="VmNotInstalled",
+                                             location=TestMachinesCreate.TestCreateConfig.NOVELL_MOCKUP_ISO_PATH,
+                                             memory_size=128, memory_size_unit='MiB',
+                                             storage_size=256, storage_size_unit='MiB',
+                                             create_and_run=False)
+        dialog.open() \
+            .fill() \
+
+        b.click(".pf-c-modal-box__footer button:contains(Create and edit)")
+        b.wait_not_present("#create-vm-dialog")
+
+        wait(lambda: "<cockpit_machines:os_variant>fedora28</cockpit_machines:os_variant>" in m.execute("virsh dumpxml VmNotInstalled"), delay=3)
+
+        self.waitVmPage("VmNotInstalled")
+
+        # Change autostart
+        autostart = not b.get_checked("#vm-VmNotInstalled-autostart-switch")
+        b.click("#vm-VmNotInstalled-autostart-switch")
+
+        # Change memory settings
+        b.click("#vm-VmNotInstalled-memory-count button")
+        b.wait_visible("#vm-memory-modal")
+        b.set_input_text("#vm-VmNotInstalled-memory-modal-max-memory", "150")
+        b.blur("#vm-VmNotInstalled-memory-modal-max-memory")
+        b.set_input_text("#vm-VmNotInstalled-memory-modal-memory", "130")
+        b.blur("#vm-VmNotInstalled-memory-modal-memory")
+        b.click("#vm-VmNotInstalled-memory-modal-save")
+        b.wait_not_present(".pf-c-modal-box__body")
+
+        # Change vCPUs setting
+        b.click("#vm-VmNotInstalled-vcpus-count button")
+        b.wait_visible(".pf-c-modal-box__body")
+        b.set_input_text("#machines-vcpu-max-field", "8")
+        b.blur("#machines-vcpu-max-field")
+        b.set_input_text("#machines-vcpu-count-field", "2")
+        b.blur("#machines-vcpu-count-field")
+        b.select_from_dropdown("#socketsSelect", "2")
+        b.select_from_dropdown("#coresSelect", "2")
+        b.select_from_dropdown("#threadsSelect", "2")
+        b.click("#machines-vcpu-modal-dialog-apply")
+        b.wait_not_present(".pf-c-modal-box__body")
+
+        # Change Boot Order setting
+        bootOrder = b.text("#vm-VmNotInstalled-boot-order")
+        b.click("#vm-VmNotInstalled-boot-order button")
+        b.wait_visible(".pf-c-modal-box__body")
+        b.set_checked("#vm-VmNotInstalled-order-modal-device-1-checkbox", True)
+        b.click("#vm-VmNotInstalled-order-modal-device-row-0 #vm-VmNotInstalled-order-modal-down")
+        b.click("#vm-VmNotInstalled-order-modal-save")
+        b.wait_not_present(".pf-c-modal-box__body")
+
+        # Attach some interface
+        m.execute("virsh attach-interface --persistent VmNotInstalled bridge virbr0")
+
+        # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1006324
+        if "debian-stable" != m.image:
+            # Change the os boot firmware configuration
+            b.wait_in_text("#vm-VmNotInstalled-firmware", "BIOS")
+            b.click("#vm-VmNotInstalled-firmware")
+            b.wait_visible(".pf-c-modal-box__body")
+            b.select_from_dropdown(".pf-c-modal-box__body select", "efi")
+            b.click("#firmware-dialog-apply")
+            b.wait_not_present(".pf-c-modal-box__body")
+            b.wait_in_text("#vm-VmNotInstalled-firmware", "UEFI")
+
+        # Temporarily delete the OVMF binary and check the firmware options again
+        if "fedora" in m.image or "rhel" in m.image or "centos" in m.image:
+            ovmf_path = "/usr/share/edk2"
+        elif "debian" in m.image or "ubuntu" in m.image:
+            ovmf_path = "/usr/share/OVMF"
+        elif "arch" in m.image:
+            ovmf_path = "/usr/share/edk2-ovmf"
+        else:
+            raise AssertionError("Unhandled distro for OVMF path")
+
+        m.execute("mount -t tmpfs tmpfs " + ovmf_path)
+        self.addCleanup(m.execute, f"umount {ovmf_path} || true")
+
+        # Reload for the new configuration to be read
+        b.reload()
+        b.enter_page('/machines')
+
+        b.mouse("#vm-VmNotInstalled-firmware-tooltip", "mouseenter")
+        b.wait_in_text(".pf-c-tooltip", "Libvirt did not detect any UEFI/OVMF firmware image installed on the host")
+        b.mouse("#vm-VmNotInstalled-firmware-tooltip", "mouseleave")
+        b.wait_not_present("#missing-uefi-images")
+        m.execute("umount " + ovmf_path)
+
+        # Install the VM
+        b.click("#vm-VmNotInstalled-system-install")
+
+        # Wait for virt-install to define the VM and then stop it - otherwise we get 'domain is ready being removed' error
+        wait(lambda: "VmNotInstalled" in m.execute("virsh list --persistent"), delay=3)
+        logfile = "/var/log/libvirt/qemu/VmNotInstalled.log"
+        m.execute(f"> {logfile}")  # clear logfile
+        self.performAction("VmNotInstalled", "forceOff", checkExpectedState=False)
+        b.wait_in_text("#vm-VmNotInstalled-system-state", "Shut off")
+        wait(lambda: "133120" in m.execute("virsh dominfo VmNotInstalled | grep 'Used memory'"), delay=1)  # Wait until memory parameters get adjusted after shutting the VM
+
+        # Check configuration changes survived installation
+        # Check memory settings have persisted
+        b.click("#vm-VmNotInstalled-memory-count button")
+        b.wait_visible("#vm-VmNotInstalled-memory-modal-memory")
+        b.wait_val("#vm-VmNotInstalled-memory-modal-max-memory", "150")
+        b.wait_val("#vm-VmNotInstalled-memory-modal-memory", "130")
+        b.click("#vm-VmNotInstalled-memory-modal-cancel")
+        b.wait_not_present(".pf-c-modal-box__body")
+
+        # Check vCPU settings have persisted
+        b.click("#vm-VmNotInstalled-vcpus-count button")
+        b.wait_visible(".pf-c-modal-box__body")
+        b.wait_val("#machines-vcpu-max-field", "8")
+        b.wait_val("#machines-vcpu-count-field", "2")
+        b.wait_val("#socketsSelect", "2")
+        b.wait_val("#coresSelect", "2")
+        b.wait_val("#threadsSelect", "2")
+        b.click("#machines-vcpu-modal-dialog-cancel")
+        b.wait_not_present(".pf-c-modal-box__body")
+
+        # Check changed boot order have persisted
+        b.wait_text_not("#vm-VmNotInstalled-boot-order", bootOrder)
+
+        # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1006324
+        if "debian-stable" != m.image:
+            # Check firmware changes persisted
+            b.wait_in_text("#vm-VmNotInstalled-firmware", "UEFI")
+
+        # Check autostart have persisted
+        self.assertEqual(b.get_checked("#vm-VmNotInstalled-autostart-switch"), autostart)
+
+        # Check new vNIC have persisted
+        b.wait_visible("#vm-VmNotInstalled-network-1-type")
+
+        self.allow_browser_errors("Failed when connecting: Connection closed")
+        self.allow_browser_errors("Tried changing state of a disconnected RFB object")
+        self.allow_journal_messages(".* couldn't shutdown fd: Transport endpoint is not connected")
+        # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1006324
+        if "debian-stable" == m.image:
+            self.allow_journal_messages('.* apparmor="DENIED" operation="capable" profile="libvirtd" .*')
+
+    def testConfigureBeforeInstallBios(self):
+        TestMachinesCreate.CreateVmRunner(self)
+
+        b = self.browser
+
+        self.login_and_go("/machines")
+        b.wait_in_text("body", "Virtual machines")
+
+        dialog = TestMachinesCreate.VmDialog(self, sourceType='file',
+                                             name="VmNotInstalledBios",
+                                             location=TestMachinesCreate.TestCreateConfig.NOVELL_MOCKUP_ISO_PATH,
+                                             memory_size=128, memory_size_unit='MiB',
+                                             storage_size=256, storage_size_unit='MiB',
+                                             create_and_run=False)
+        dialog.open().fill()
+
+        b.click(".pf-c-modal-box__footer #create-and-edit")
+        b.wait_not_present("#create-vm-dialog")
+
+        self.waitVmPage("VmNotInstalledBios")
+
+        # Show and keep the os boot firmware configuration
+        b.wait_in_text("#vm-VmNotInstalledBios-firmware", "BIOS")
+        b.click("#vm-VmNotInstalledBios-firmware")
+        b.wait_visible(".pf-c-modal-box__body")
+        b.wait_val(".pf-c-modal-box__body select", "bios")
+        b.click("#firmware-dialog-apply")
+        b.wait_not_present(".pf-c-modal-box__body")
+        b.wait_in_text("#vm-VmNotInstalledBios-firmware", "BIOS")
+
+        # Install the VM
+        b.click("#vm-VmNotInstalledBios-system-install")
+        b.wait_in_text("#vm-VmNotInstalledBios-system-state", "Running")
+
+        domainXML = self.machine.execute("virsh dumpxml VmNotInstalledBios")
+        # no explicit "firmware=" field
+        self.assertIn("<os>", domainXML)
+        self.assertNotIn("efi", domainXML)
+
+    def testCreateDownloadRhel(self):
+        runner = TestMachinesCreate.CreateVmRunner(self, rhel_download=True)
+        config = TestMachinesCreate.TestCreateConfig
+
+        b = self.browser
+        m = self.machine
+
+        self.login_and_go("/machines")
+        b.wait_in_text("body", "Virtual machines")
+
+        m.execute(f"qemu-img create {TestMachinesCreate.TestCreateConfig.VALID_DISK_IMAGE_PATH} 500M")
+
+        runner.checkDialogInvalidOfflineToken(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                                          os_name=config.RHEL_8_1,
+                                                                          os_short_id=config.RHEL_8_1_SHORTID,
+                                                                          offline_token="invalid_token",
+                                                                          offline_token_autofilled=False,
+                                                                          create_and_run=True),
+                                              "Error",
+                                              True)
+
+        # Check create buttons do not get disabled when RHEL is selected for sourceType != 'os' (Download an OS)
+        dialog = TestMachinesCreate.VmDialog(self, sourceType='url',
+                                             location=config.VALID_URL,
+                                             os_name=config.RHEL_8_1,
+                                             os_short_id=config.RHEL_8_1_SHORTID) \
+            .open() \
+            .fill()
+        b.wait_visible(".pf-c-modal-box__footer button:contains(Create and run)[aria-disabled=false]")
+        b.wait_visible(".pf-c-modal-box__footer button:contains(Create and edit)[aria-disabled=false]")
+        dialog.cancel()
+
+        runner.checkDialogErrorTest(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                                os_name=config.RHEL_8_2,
+                                                                os_short_id=config.RHEL_8_2_SHORTID,
+                                                                offline_token="valid_token",
+                                                                offline_token_autofilled=False,
+                                                                create_and_run=True),
+                                    ["No image available for RHEL 8.2"])
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                      os_name=config.RHEL_8_1,
+                                                      os_short_id=config.RHEL_8_1_SHORTID,
+                                                      offline_token="valid_token",
+                                                      offline_token_autofilled=False,
+                                                      create_and_run=False))
+
+        m.execute("rm /var/lib/libvirt/images/rhel-8-1-boot.iso")
+
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                      os_name=config.RHEL_8_1,
+                                                      os_short_id=config.RHEL_8_1_SHORTID,
+                                                      offline_token="valid_token",
+                                                      offline_token_autofilled=True,
+                                                      create_and_run=True))
+
+        # If run on different connection, the downloaded iso should be stored in ~/.local/share/libvirt/images/
+        runner.createTest(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                      os_name=config.RHEL_8_1,
+                                                      os_short_id=config.RHEL_8_1_SHORTID,
+                                                      offline_token="valid_token",
+                                                      create_and_run=True,
+                                                      connection="session"),
+                          check_env_empty=False)
+
+        # Check only RHEL >= 8 are available for download
+        runner.checkRhelIsDownloadableTest(TestMachinesCreate.VmDialog(self))
+
+        # Change token saved at localStorage to imitate expiration of a token
+        b.call_js_func("localStorage.setItem", "rhsm-offline-token", "expired_token")
+        runner.checkDialogInvalidOfflineToken(TestMachinesCreate.VmDialog(self, sourceType='os',
+                                                                          os_name=config.RHEL_8_1,
+                                                                          os_short_id=config.RHEL_8_1_SHORTID,
+                                                                          offline_token_autofilled=True),
+                                              "expired",
+                                              False)
+
+
+if __name__ == '__main__':
+    test_main()

@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+
+# This file is part of Cockpit.
+#
+# Copyright (C) 2015 Red Hat, Inc.
+#
+# Cockpit is free software; you can redistribute it and/or modify it
+# under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 2.1 of the License, or
+# (at your option) any later version.
+#
+# Cockpit is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with Cockpit; If not, see <http://www.gnu.org/licenses/>.
+
+import parent  # noqa: F401
+from storagelib import StorageCase
+from testlib import nondestructive, test_main
+
+
+@nondestructive
+class TestStorageUsed(StorageCase):
+
+    def testUsed(self):
+        m = self.machine
+        b = self.browser
+
+        self.login_and_go("/storage")
+
+        disk = self.add_ram_disk()
+        b.wait_in_text("#drives", disk)
+        m.execute(f"parted -s {disk} mktable msdos")
+        m.execute(f"parted -s {disk} mkpart primary ext2 1M 25")
+        m.execute("udevadm settle")
+        m.execute(f"echo einszweidrei | cryptsetup luksFormat --pbkdf-memory 32768 {disk}1")
+        m.execute(f"echo einszweidrei | cryptsetup luksOpen {disk}1 dm-test")
+        m.execute("udevadm settle")
+        m.execute("mke2fs -q -L TEST /dev/mapper/dm-test")
+        m.execute("mount /dev/mapper/dm-test /mnt")
+
+        # Keep the mount point busy.  The extra "true" is here to
+        # prevent bash from applying tail call optimization to the
+        # "sleep" invocation.
+        sleep_pid = m.spawn("cd /mnt; sleep infinity; true", "sleep")
+        self.write_file("/etc/systemd/system/keep-mnt-busy.service",
+                        """
+[Unit]
+Description=Test Service
+
+[Service]
+WorkingDirectory=/mnt
+ExecStart=/usr/bin/sleep infinity
+""")
+        m.execute("systemctl start keep-mnt-busy")
+
+        # Now all of /dev/mapper/dm-test, /dev/sda1, and /dev/sda
+        # should be 'in use' but Cockpit can clean them all up anyway.
+
+        b.click(f'.sidepanel-row:contains("{disk}")')
+        b.wait_visible("#storage-detail")
+
+        self.content_dropdown_action(1, "Format")
+        self.dialog_wait_open()
+        b.click("#dialog button:contains(Currently in use)")
+        b.wait_in_text(".pf-c-popover", str(sleep_pid))
+        b.wait_in_text(".pf-c-popover", "keep-mnt-busy")
+        b.assert_pixels(".pf-c-popover", "popover", ignore=["li"],
+                        scroll_into_view="#dialog button:contains(Currently in use)")
+        b.click(".pf-c-popover button")
+        b.assert_pixels('#dialog', "format")
+        self.dialog_cancel()
+        self.dialog_wait_close()
+
+        self.content_dropdown_action(1, "Delete")
+        self.dialog_wait_open()
+        b.wait_visible("#dialog button:contains(Currently in use)")
+        b.assert_pixels('#dialog', "delete")
+        self.dialog_cancel()
+        self.dialog_wait_close()
+
+        # No go ahead and let the automatic teardown take care of the mount
+
+        b.click('button:contains(Create partition table)')
+        self.dialog_wait_open()
+        b.wait_visible("#dialog tr:first-child button:contains(Currently in use)")
+        b.assert_pixels('#dialog', "format-disk")
+        self.dialog_apply()
+        self.dialog_wait_close()
+
+        m.execute("! systemctl --quiet is-active keep-mnt-busy")
+
+        self.content_row_wait_in_col(1, 0, "Free space")
+
+    def testUsedAsPV(self):
+        m = self.machine
+        b = self.browser
+
+        self.login_and_go("/storage")
+
+        dev_1 = self.add_ram_disk()
+        dev_2 = self.add_loopback_disk()
+        b.wait_in_text("#drives", dev_1)
+        b.wait_in_text("#others", dev_2)
+
+        # Create a volume group out of two disks
+        m.execute(f"vgcreate TEST1 {dev_1} {dev_2}")
+        self.addCleanup(m.execute, "vgremove --force TEST1 2>/dev/null || true")
+        b.wait_in_text("#devices", "TEST1")
+
+        # Formatting dev_1 should cleanly remove it from the volume
+        # group.
+
+        b.click(f'.sidepanel-row:contains("{dev_1}")')
+        b.click('button:contains("Create partition table")')
+        b.wait_in_text('#dialog', "remove from LVM2, initialize")
+        self.dialog_apply()
+        self.dialog_wait_close()
+        self.assertEqual(int(m.execute("vgs TEST1 -o pv_count --noheadings")), 1)
+
+        # Formatting dev_2 should now cleanly remove the whole volume
+        # group.
+
+        b.go("#/")
+        b.click(f'.sidepanel-row:contains("{dev_2}")')
+        b.click('button:contains("Create partition table")')
+        b.wait_in_text('#dialog', "remove from LVM2, initialize")
+        self.dialog_apply()
+        self.dialog_wait_close()
+
+        self.assertEqual(m.execute("vgs TEST1 || echo GONE").strip(), "GONE")
+
+
+if __name__ == '__main__':
+    test_main()

@@ -1,0 +1,2828 @@
+# #-#-#-#-#  machines.js.pot (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE_VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-15 03:04+0000\n"
+"PO-Revision-Date: 2022-12-06 18:20+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
+"cockpit-machines/main/ka/>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Generator: Weblate 4.14.2\n"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:812
+msgid "$0 $1 available at default location"
+msgstr "$0 $1 ხელმისაწვდომია ნაგულისხმებ მდებარეობაზე"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:238
+#: src/components/create-vm-dialog/createVmDialog.jsx:763
+msgid "$0 $1 available on host"
+msgstr "ჰოსტზე ხელმისაწვდომია $0 $1"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:62
+msgid "$0 CPU configuration"
+msgstr "$0-ე CPU-ის მორგება"
+
+#: src/components/aggregateStatusCards.jsx:77
+msgid "$0 Network"
+msgid_plural "$0 Networks"
+msgstr[0] "$0 ცალი ქსელი"
+msgstr[1] "$0 ქსელი"
+
+#: src/components/aggregateStatusCards.jsx:52
+msgid "$0 Storage pool"
+msgid_plural "$0 Storage pools"
+msgstr[0] "$0 ცალი საცავის პული"
+msgstr[1] "$0 საცავის პული"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1172
+msgid "$0 does not support unattended installation."
+msgstr "$0-ს ოპერაციულ სისტემას ავტომატური დაყენების საშუალება არ გააჩნია."
+
+#: src/components/vm/consoles/desktopConsole.jsx:61
+msgid ""
+"$0 is available for most operating systems. To install it, search for it in "
+"GNOME Software or run the following:"
+msgstr ""
+"$0 ხელმისაწვდომია ოპერაციული სისტემების უმრავლესობისთვის. დასაყენებლად "
+"მოძებნეთ ის GNOME-ის პროგრამებში ან გაუშვით:"
+
+#: src/components/vm/overview/memoryModal.jsx:150
+msgid "$0 memory adjustment"
+msgstr "$0-ის მეხსიერების შესწორება"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:105
+msgid "$0 network"
+msgstr "$0 ქსელი"
+
+#: src/components/vm/vmUsageCard.jsx:49
+msgid "$0 vCPU"
+msgid_plural "$0 vCPUs"
+msgstr[0] "$0 ცალი vCPU"
+msgstr[1] "$0 vCPU"
+
+#: src/components/vm/overview/vcpuModal.jsx:259
+msgid "$0 vCPU details"
+msgstr "ინფორმაცია $0-ე vCPU-ის შესახებ"
+
+#: src/components/vm/nics/nicEdit.jsx:172
+msgid "$0 virtual network interface settings"
+msgstr "ვირტუალური ქსელის ინტერფეისის მორგება ($0)"
+
+#: src/components/vm/vmMigrateDialog.jsx:76
+msgid ""
+"A copy of the VM will run on the destination and will disappear when it is "
+"shut off. Meanwhile, the origin host keeps its copy of the VM configuration."
+msgstr ""
+"VM-ის ასლი გაეშვება სამიზნე მანქანაზე და გაქრება, როცა ის გამოირთვება. ამავე "
+"დროს საწყისი ჰოსტს VM-ის კონფიგურაცის საკუთარი ასლი გააჩნია."
+
+#: src/components/vm/disks/vmDisksCard.jsx:184
+#: src/components/vm/disks/diskEdit.jsx:113
+msgid "Access"
+msgstr "წვდომა"
+
+#: src/components/storagePools/storagePool.jsx:170
+#: src/components/networks/network.jsx:166
+msgid "Activate"
+msgstr "აქტივაცია"
+
+#: src/components/storagePools/storagePoolVolumesTab.jsx:113
+msgid "Activate the storage pool to administer volumes"
+msgstr "საცავის პულის აქტივაცია საცავების ადმინისტრირებისთვის"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:226
+#: src/components/vm/nics/nicAdd.jsx:207
+#: src/components/vm/disks/diskAdd.jsx:853
+#: src/components/networks/networkOverviewTab.jsx:236
+msgid "Add"
+msgstr "დამატება"
+
+#: src/components/networks/networkOverviewTab.jsx:232
+msgid "Add a DHCP static host entry"
+msgstr "ჰოსტის DHCP სტატიკური ელემენტის დამატება"
+
+#: src/components/vm/disks/vmDisksCard.jsx:74
+#: src/components/vm/disks/diskAdd.jsx:843
+msgid "Add disk"
+msgstr "დისკის დამატება"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:242
+#: src/components/vm/hostdevs/hostDevCard.jsx:153
+msgid "Add host device"
+msgstr "ჰოსტის მოწყობილობის დამატება"
+
+#: src/components/vm/nics/vmNicsCard.jsx:81
+msgid "Add network interface"
+msgstr "ქსელის ინტერფეისის დამატება"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:114
+msgid "Add shared directory"
+msgstr "ზიარი საქაღალდის დამატება"
+
+#: src/components/vm/nics/nicAdd.jsx:196
+msgid "Add virtual network interface"
+msgstr "ქსელის ვირტუალური ინტერფეისის დამატება"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:118
+msgid "Adding shared directories is possible only when the guest is shut off"
+msgstr ""
+"გაზიარებული საქაღალდეების დამატება მხოლოდ სტუმრის გამორთულობის დროსაა "
+"შესაძლებელი"
+
+#: src/components/vm/disks/vmDisksCard.jsx:188
+msgid "Additional"
+msgstr "დამატებითი"
+
+#: src/components/vm/nics/vmNicsCard.jsx:286
+#: src/components/vm/consoles/desktopConsole.jsx:47
+#: src/components/networks/networkOverviewTab.jsx:142
+#: src/components/networks/networkOverviewTab.jsx:162
+msgid "Address"
+msgstr "მისამართი"
+
+#: src/components/networks/createNetworkDialog.jsx:80
+#: src/components/networks/createNetworkDialog.jsx:87
+#: src/components/networks/createNetworkDialog.jsx:108
+#: src/components/networks/createNetworkDialog.jsx:115
+msgid "Address not within subnet"
+msgstr "მისამართი დიაპაზონს არ ეკუთვნის"
+
+#: src/components/vms/hostvmslist.jsx:65 src/components/vms/hostvmslist.jsx:82
+msgid "All"
+msgstr "ყველა"
+
+#: src/components/vm/vmMigrateDialog.jsx:204
+msgid ""
+"All VM activity, including storage, will be temporary. This will result in "
+"data loss on the destination host."
+msgstr ""
+"ვმ-ის ყველა აქტივობა, საცავის ჩათვლით, დროებითი იქნება. ეს სამიზნე ჰოსტზე "
+"მონაცემების დაკარგვას გამოიწვევს."
+
+#: src/components/vm/disks/diskAdd.jsx:244
+msgid ""
+"Allowed characters: basic Latin alphabet, numbers, and limited punctuation "
+"(-, _, +, .)"
+msgstr ""
+"დაშვებული სიმბოლოები: ძირითადი ლათინური ანბანი, ციფრები და ზოგიერთი სასვენი "
+"ნიშანი (-, _, +, .)"
+
+#: src/components/storagePools/storagePoolDelete.jsx:176
+msgid "Also delete all volumes inside this pool:"
+msgstr "ასევე წაიშლება ამ პულში მდებარე საცავებიც:"
+
+#: src/components/vm/nics/nicAdd.jsx:89 src/components/vm/disks/diskAdd.jsx:137
+msgid "Always attach"
+msgstr "ყოველთვის მიბმა"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:66
+#: src/components/vm/overview/vcpuModal.jsx:263
+msgid "Apply"
+msgstr "გადატარება"
+
+#: src/components/vm/disks/diskAdd.jsx:77
+msgid "Attaching it will make this disk shareable for every VM using it."
+msgstr ""
+"მიმაგრება გამოიწვევს დისკის გაზიარებას ყველა ვმ-თვის, რომელიც მას იყენებს."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1171
+msgid ""
+"Automated installs are only available when downloading an image or using "
+"cloud-init."
+msgstr ""
+"ავტომატური დაყენება ხელმისაწვდომია მხოლოდ გამოსახულების გადმოწერისას ან "
+"cloud-init-ით."
+
+#: src/components/networks/createNetworkDialog.jsx:167
+msgid "Automatic"
+msgstr "ავტომატური"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1285
+msgid "Automation"
+msgstr "ავტომატიზაცია"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:71
+#: src/components/vm/overview/vmOverviewCard.jsx:229
+#: src/components/networks/networkOverviewTab.jsx:119
+msgid "Autostart"
+msgstr "ავტომატური გაშვება"
+
+#: src/helpers.js:232
+msgid "Blocked"
+msgstr "დაბლოკილია"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:221
+msgid "Boot order"
+msgstr "ჩატვირთვის მიმდევრობა"
+
+#: src/components/vm/overview/bootOrder.jsx:255
+msgid "Boot order settings could not be saved"
+msgstr "ჩატვირთვის მიმდევრობის შენახვის შეცდომა"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:92
+#: src/components/vm/hostdevs/hostDevCard.jsx:104
+#: src/components/vm/hostdevs/hostDevCard.jsx:112
+#: src/components/vm/hostdevs/hostDevCard.jsx:252
+#: src/components/vm/disks/vmDisksCard.jsx:182
+#: src/components/vm/disks/diskAdd.jsx:224
+#: src/components/vm/disks/diskEdit.jsx:88
+#: src/components/vm/overview/bootOrder.jsx:118
+#: src/components/vm/overview/bootOrder.jsx:130
+#: src/components/vm/overview/bootOrder.jsx:148
+#: src/components/vm/overview/bootOrder.jsx:151
+#: src/components/vm/overview/bootOrder.jsx:165
+msgid "Bus"
+msgstr "მატარებელი"
+
+#: src/components/vm/disks/diskAdd.jsx:352
+msgid "CD/DVD disc"
+msgstr "CD/DVD დისკი"
+
+#: src/components/vm/vmUsageCard.jsx:71
+msgid "CPU"
+msgstr "CPU"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:28
+msgid "CPU configuration could not be saved"
+msgstr "CPU-ის კონფიგურაციის შენახვის შეცდომა"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:216
+msgid "CPU type"
+msgstr "CPU-ის ტიპი"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:105
+#: src/components/vm/disks/diskAdd.jsx:213
+#: src/components/vm/disks/diskEdit.jsx:58
+msgid "Cache"
+msgstr "ქეში"
+
+#: src/components/storagePools/storagePoolDelete.jsx:203
+#: src/components/storagePools/storageVolumeCreate.jsx:107
+#: src/components/storagePools/createStoragePoolDialog.jsx:449
+#: src/components/create-vm-dialog/createVmDialog.jsx:1345
+#: src/components/common/deleteResource.jsx:80
+#: src/components/vm/hostdevs/hostDevAdd.jsx:232
+#: src/components/vm/vmMigrateDialog.jsx:218
+#: src/components/vm/nics/nicAdd.jsx:210 src/components/vm/nics/nicEdit.jsx:179
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:174
+#: src/components/vm/vmCloneDialog.jsx:79
+#: src/components/vm/disks/diskAdd.jsx:856
+#: src/components/vm/disks/mediaEject.jsx:110
+#: src/components/vm/disks/diskEdit.jsx:268
+#: src/components/vm/vmRenameDialog.jsx:67
+#: src/components/vm/deleteDialog.jsx:178
+#: src/components/vm/overview/firmware.jsx:72
+#: src/components/vm/overview/memoryModal.jsx:157
+#: src/components/vm/overview/cpuTypeModal.jsx:69
+#: src/components/vm/overview/bootOrder.jsx:329
+#: src/components/vm/overview/vcpuModal.jsx:266
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:149
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:75
+#: src/components/networks/networkOverviewTab.jsx:239
+#: src/components/networks/createNetworkDialog.jsx:426
+msgid "Cancel"
+msgstr "გაუქმება"
+
+#: src/components/vm/disks/vmDisksCard.jsx:180
+msgid "Capacity"
+msgstr "მოცულობა"
+
+#: src/components/vm/overview/bootOrder.jsx:322
+msgid "Change boot order"
+msgstr "ჩატვირთვის მიმდევრობის შეცვლა"
+
+#: src/components/vm/overview/firmware.jsx:65
+msgid "Change firmware"
+msgstr "მიკროკოდის შეცვლა"
+
+#: src/components/common/warningInactive.jsx:11
+#: src/components/vm/nics/nicEdit.jsx:166
+#: src/components/vm/disks/diskEdit.jsx:253
+#: src/components/vm/overview/vcpuModal.jsx:186
+msgid "Changes will take effect after shutting down the VM"
+msgstr "ცვლილებები ძალაში მხოლოდ ვმ-ის გათიშვის შემდეგ შევა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:512
+msgid "Checking token validity..."
+msgstr "კოდის სისწორის შემოწმება..."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:455
+#: src/components/create-vm-dialog/createVmDialog.jsx:456
+msgid "Choose an operating system"
+msgstr "აირჩეთ ოპერაციული სისტემა"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:194
+msgid "Class"
+msgstr "კლასი"
+
+#: src/components/vm/consoles/desktopConsole.jsx:58
+msgid ""
+"Clicking \"Launch remote viewer\" will download a .vv file and launch $0."
+msgstr ""
+"\"დაშორებული დამთვალიერებლის გაშვება\"-ზე დაჭერა გადმოწერს .vv ფაილს და "
+"გაუშვებს $0-ს."
+
+#: src/components/vm/vmCloneDialog.jsx:76 src/components/vm/vmActions.jsx:302
+msgid "Clone"
+msgstr "კლონი"
+
+#: src/components/common/stateIcon.jsx:54
+msgid "Close"
+msgstr "დახურვა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:360
+msgid "Cloud base image"
+msgstr "ღრუბლოვანი საბაზისო გამოსახულება"
+
+#: src/components/common/deleteResource.jsx:86
+msgid "Confirm this action"
+msgstr "ქმედების დასტური"
+
+#: src/components/vm/consoles/serialConsole.jsx:93
+msgid "Connect"
+msgstr "დაკავშირება"
+
+#: src/components/vm/consoles/desktopConsole.jsx:46
+msgid "Connect with any viewer application for following protocols"
+msgstr "დაუკავშირდით ნებისმიერი მაყურებლით შემდეგი პროტოკოლებით"
+
+#: src/components/vm/consoles/vnc.jsx:169
+msgid "Connecting"
+msgstr "დაკავშირება"
+
+#: src/components/storagePools/storagePoolList.jsx:77
+#: src/components/vms/hostvmslist.jsx:139
+#: src/components/common/machinesConnectionSelector.jsx:33
+#: src/components/vm/overview/vmOverviewCard.jsx:187
+#: src/components/networks/networkList.jsx:75
+#: src/components/networks/createNetworkDialog.jsx:41
+msgid "Connection"
+msgstr "კავშირი"
+
+#: src/components/vm/vmDetailsPage.jsx:118
+#: src/components/vm/vmDetailsPage.jsx:151
+msgid "Console"
+msgstr "კონსოლი"
+
+#: src/components/vm/vmMigrateDialog.jsx:106
+#: src/components/vm/vmMigrateDialog.jsx:122
+msgid "Copy storage"
+msgstr "საცავის კოპირება"
+
+#: src/components/vm/overview/vcpuModal.jsx:237
+msgid "Cores per socket"
+msgstr "ბირთვების რაოდენობა თითოეულ სოკეტზე"
+
+#: src/components/vm/deleteDialog.jsx:151
+msgid "Could not delete $0"
+msgstr "წაშლის შეცდომა: $0"
+
+#: src/components/vm/deleteDialog.jsx:156
+msgid "Could not delete storage for $0"
+msgstr "საცავის ($0) წაშლის შეცდომა"
+
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:54
+msgid "Could not revert to snapshot"
+msgstr "სწრაფ ასლზე დაბრუნების შეცდომა"
+
+#: src/helpers.js:229
+msgid "Crashed"
+msgstr "გაითიშა"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:104
+#: src/components/storagePools/createStoragePoolDialog.jsx:446
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:146
+#: src/components/networks/createNetworkDialog.jsx:423
+msgid "Create"
+msgstr "შექმნა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1391
+msgid "Create VM"
+msgstr "ვმ-ის შექმნა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1410
+msgid "Create VM by importing a disk image of an existing VM installation"
+msgstr "შექმენით ვმ-ი არსებული ვმ-ის დისკის ასლის შემოტანით"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1409
+msgid "Create VM from local or network installation medium"
+msgstr "შექმენით ვმ-ი ლოკალური ან ქსელური დისკით"
+
+#: src/components/vm/vmCloneDialog.jsx:68
+msgid "Create a clone VM based on $0"
+msgstr "$0-ის ასლზე დაფუძნებული ვმ-ის შექმნა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1313
+msgid "Create and edit"
+msgstr "შექმნა და ჩასწორება"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1339
+msgid "Create and run"
+msgstr "შექმნა და გაშვება"
+
+#: src/components/vm/disks/diskAdd.jsx:782
+msgid "Create new"
+msgstr "ახლის შექმნა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1327
+msgid "Create new virtual machine"
+msgstr "ახალი ვირტუალური მანქანის შექმნა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:849
+msgid "Create new volume"
+msgstr "ახალი ტომის შექმნა"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:47
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:142
+msgid "Create snapshot"
+msgstr "სწრაფი ასლის შექმნა"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:442
+#: src/components/storagePools/createStoragePoolDialog.jsx:491
+msgid "Create storage pool"
+msgstr "საცავის პულის შექმნა"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:100
+msgid "Create storage volume"
+msgstr "საცავის ტომის შექმნა"
+
+#: src/components/networks/createNetworkDialog.jsx:416
+#: src/components/networks/createNetworkDialog.jsx:444
+msgid "Create virtual network"
+msgstr "ვირტუალური ქსელის შექმნა"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:145
+#: src/components/storagePools/storageVolumeCreate.jsx:156
+msgid "Create volume"
+msgstr "ტომის შექმნა"
+
+#: src/components/vms/hostvmslist.jsx:51
+msgid "Creating VM"
+msgstr "ვმ-ის შექმნა"
+
+#: src/app.jsx:248
+msgid "Creating VM $0"
+msgstr "ვმ-ის შექმნა: $0"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1147
+msgid "Creation of VM $0 failed"
+msgstr "ვმ-ის ($0) შექმნის შეცდომა"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:67
+msgid "Creation time"
+msgstr "შექმნის დრო"
+
+#: src/components/vm/consoles/vnc.jsx:135
+msgid "Ctrl+Alt+$0"
+msgstr "Ctrl+Alt+$0"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:74
+msgid "Current"
+msgstr "მიმდინარე"
+
+#: src/components/vm/overview/memoryModal.jsx:127
+msgid "Current allocation"
+msgstr "მიმდინარე განაწილება"
+
+#: src/components/vm/overview/firmware.jsx:125
+msgid "Custom firmware: $0"
+msgstr "ხელით მითითებული მიკროკოდი: $0"
+
+#: src/components/vm/disks/diskAdd.jsx:337
+#: src/components/vm/disks/diskAdd.jsx:746
+#: src/components/vm/disks/diskAdd.jsx:792
+msgid "Custom path"
+msgstr "ხელით მითითებული ბილიკი"
+
+#: src/components/networks/networkOverviewTab.jsx:275
+msgid "DHCP Settings"
+msgstr "DHCP-ის მორგება"
+
+#: src/components/storagePools/storagePool.jsx:161
+#: src/components/networks/network.jsx:162
+msgid "Deactivate"
+msgstr "დეაქტივაცია"
+
+#: src/components/storagePools/storagePoolDelete.jsx:200
+#: src/components/storagePools/storagePoolDelete.jsx:236
+#: src/components/storagePools/storagePoolDelete.jsx:246
+#: src/components/common/deleteResource.jsx:77
+#: src/components/common/deleteResource.jsx:121
+#: src/components/common/deleteResource.jsx:130
+#: src/components/vm/deleteDialog.jsx:175 src/components/vm/vmActions.jsx:351
+#: src/components/vm/vmActions.jsx:359 src/components/networks/network.jsx:144
+#: src/components/networks/network.jsx:146
+msgid "Delete"
+msgstr "წაშლა"
+
+#: src/components/vm/deleteDialog.jsx:170
+msgid "Delete $0 VM?"
+msgstr "წავშალო $0 ვმ-ი?"
+
+#: src/components/storagePools/storagePoolDelete.jsx:192
+msgid "Delete $0 storage pool?"
+msgstr "წავშალო $0 საცავის პული?"
+
+#: src/components/storagePools/storageVolumeDelete.jsx:62
+msgid "Delete $0 volume"
+msgid_plural "Delete $0 volumes"
+msgstr[0] "$0 ცალი ტომის წაშლა"
+msgstr[1] "$0 ტომის წაშლა"
+
+#: src/components/vm/deleteDialog.jsx:86
+msgid "Delete associated storage files:"
+msgstr "საცავის მიბმული ფაილების წაშლა:"
+
+#: src/components/networks/network.jsx:135
+msgid "Delete network?"
+msgstr "წავშალო ქსელი?"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:168
+msgid "Delete snapshot?"
+msgstr "წავშალო სწრაფი ასლი?"
+
+#: src/components/storagePools/storagePoolDelete.jsx:183
+msgid ""
+"Deleting an inactive storage pool will only undefine the pool. Its content "
+"will not be deleted."
+msgstr ""
+"არააქტიური საცავის პულის წაშლა მხოლოდ პულის განსაზღვრებას მოაშორებს. "
+"შიგთავსი არ წაიშლება."
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:71
+msgid "Deleting shared directories is possible only when the guest is shut off"
+msgstr ""
+"გაზიარებული საქაღალდეების წაშლა მხოლოდ სტუმრის გამორთულობის დროსაა "
+"შესაძლებელი"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:91
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:52
+msgid "Description"
+msgstr "აღწერა"
+
+#: src/components/vm/consoles/consoles.jsx:114
+msgid "Desktop viewer"
+msgstr "სამუშაო მაგიდის დამთვალიერებელი"
+
+#: src/components/vm/vmMigrateDialog.jsx:48
+msgid "Destination URI"
+msgstr "სამიზნე URI"
+
+#: src/components/vm/vmMigrateDialog.jsx:156
+msgid "Destination URI must not be empty"
+msgstr "სამიზნე URI ცარიელი არ შეიძლება იყოს"
+
+#: src/components/storagePools/storagePoolDelete.jsx:96
+msgid ""
+"Detach the disks using this pool from any VMs before attempting deletion."
+msgstr ""
+"წაშლის ცდამდე საჭიროა ამ პულიდან მიბმული დისკების ყველა ვმ-დან მოცილება."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1281
+msgid "Details"
+msgstr "დეტალები"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:91
+#: src/components/vm/hostdevs/hostDevAdd.jsx:126
+#: src/components/vm/hostdevs/hostDevCard.jsx:103
+#: src/components/vm/hostdevs/hostDevCard.jsx:251
+#: src/components/vm/disks/vmDisksCard.jsx:168
+#: src/components/vm/disks/vmDiskColumns.jsx:44
+#: src/components/vm/disks/diskAdd.jsx:345
+#: src/components/vm/overview/bootOrder.jsx:110
+#: src/components/vm/overview/bootOrder.jsx:117
+#: src/components/vm/overview/bootOrder.jsx:149
+#: src/components/vm/overview/bootOrder.jsx:152
+#: src/components/networks/networkList.jsx:74
+#: src/components/networks/createNetworkDialog.jsx:161
+msgid "Device"
+msgstr "მოწყობილობა"
+
+#: src/components/networks/createNetworkDialog.jsx:168
+msgid "Devices"
+msgstr "მოწყობილობები"
+
+#: src/components/vm/consoles/serialConsole.jsx:92
+#: src/components/vm/consoles/vnc.jsx:171
+msgid "Disconnect"
+msgstr "გათიშვა"
+
+#: src/components/vm/consoles/vnc.jsx:170
+msgid "Disconnected"
+msgstr "გათიშულია"
+
+#: src/components/vm/consoles/serialConsole.jsx:85
+msgid "Disconnected from serial console. Click the connect button."
+msgstr "სერიული კონსოლი გაითიშა. დააწექით კავშირის ღილაკს."
+
+#: src/components/vm/disks/vmDiskColumns.jsx:132
+msgid "Disk $0 could not be removed"
+msgstr "დისკის წაშლის შეცდომა: $0"
+
+#: src/components/vm/disks/diskAdd.jsx:720
+msgid "Disk failed to be attached"
+msgstr "დისკის მიბმის შეცდომა"
+
+#: src/components/vm/disks/diskAdd.jsx:632
+#: src/components/vm/disks/diskAdd.jsx:670
+msgid "Disk failed to be created"
+msgstr "დისკის შექმნის შეცდომა"
+
+#: src/components/vm/disks/diskAdd.jsx:256
+msgid "Disk identifier"
+msgstr "დისკის იდენტიფიკატორი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:372
+msgid "Disk image"
+msgstr "დისკის გამოსახულება"
+
+#: src/components/vm/disks/diskAdd.jsx:350
+msgid "Disk image file"
+msgstr "დისკის გამოსახეულების ფაილი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:220
+msgid "Disk image path must not be empty"
+msgstr "დისკის გამოსახულების ბილიკი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/vm/disks/diskAdd.jsx:706
+#: src/components/vm/disks/diskEdit.jsx:216
+msgid "Disk settings could not be saved"
+msgstr "დისკის პარამეტრების შენახვის შეცდომა"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:116
+msgid "Disk-only snapshot"
+msgstr "მხოლოდ-დისკის სწრაფი ასლი"
+
+#: src/components/vm/vmDetailsPage.jsx:166
+msgid "Disks"
+msgstr "დისკები"
+
+#: src/components/vm/vmMigrateDialog.jsx:202
+msgid ""
+"Do not run this VM on the origin and destination hosts at the same time."
+msgstr "არ გაუშვა ეს ვმ-ი ერთდროულად წყარო და სამიზნე ჰოსტზე."
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:118
+msgid "Domain has crashed"
+msgstr "დომენი გაითიშა"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:117
+msgid "Domain is blocked on resource"
+msgstr "დომენი დაბლოკილია რესურსზე"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:358
+msgid "Download an OS"
+msgstr "OS-ის გადმოწერა"
+
+#: src/app.jsx:255
+msgid "Download progress"
+msgstr "გადმოწერა"
+
+#: src/app.jsx:248
+msgid "Downloading image for VM $0"
+msgstr "ასლის გადმოწერა ვმ-სთვის $0"
+
+#: src/components/vms/hostvmslist.jsx:49
+msgid "Downloading: $0%"
+msgstr "გადმოწერა: $0%"
+
+#: src/components/vm/vmMigrateDialog.jsx:64
+msgid "Duration"
+msgstr "ხანგრძილობა"
+
+#: src/helpers.js:230
+msgid "Dying"
+msgstr "კვდება"
+
+#: src/components/vm/nics/vmNicsCard.jsx:371
+#: src/components/vm/disks/diskEdit.jsx:164
+msgid "Edit"
+msgstr "ჩასწორება"
+
+#: src/components/vm/disks/diskEdit.jsx:261
+msgid "Edit $0 attributes"
+msgstr "$0-ის ატრიბუტების ჩასწორება"
+
+#: src/components/vm/nics/vmNicsCard.jsx:359
+msgid "Editing network interfaces of transient guests is not allowed"
+msgstr "დროებით სტუმრებზე ქსელის ინტერფეისების ჩასწორება მხარდაუჭერელია"
+
+#: src/components/vm/nics/vmNicsCard.jsx:365
+msgid "Editing transient network interfaces is not allowed"
+msgstr "ქსელის დროებითი ინტერფეისების ჩასწორება შეუძლებელია"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:164
+#: src/components/vm/disks/mediaEject.jsx:103
+msgid "Eject"
+msgstr "გამოღება"
+
+#: src/components/vm/disks/mediaEject.jsx:99
+msgid "Eject disc from VM?"
+msgstr "გამოვიღო დისკი ვმ-დან?"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:241
+msgid "Emulated machine"
+msgstr "ემულირებული მანქანა"
+
+#: src/components/networks/createNetworkDialog.jsx:226
+msgid "End"
+msgstr "დასასრული"
+
+#: src/components/networks/createNetworkDialog.jsx:83
+#: src/components/networks/createNetworkDialog.jsx:111
+msgid "End should not be empty"
+msgstr "ბოლო ცარიელი არ შეიძლება იყოს"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1170
+msgid "Enter root and/or user information to enable unattended installation."
+msgstr ""
+"ავტომატური დაყენებისთვის შეიყვანეთ root-ის ან/და მომხმარებლის ინფორმაცია."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:517
+msgid "Error checking token"
+msgstr "კოდის შემოწმების შეცდომა"
+
+#: src/components/vm/vmMigrateDialog.jsx:54
+msgid "Example, $0"
+msgstr "მაგალითად, $0"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:301
+msgid "Existing disk image on host's file system"
+msgstr "დისკის არსებული გამოსახულების ბილიკი ჰოსტის ფაილურ სისტემაზე"
+
+#: src/components/vm/vmDetailsPage.jsx:159
+msgid "Expand"
+msgstr "გაფართოება"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:248
+msgid "Extended attributes"
+msgstr "გაფართოებული ატრიბუტები"
+
+#: src/components/common/stateIcon.jsx:58
+msgid "Failed"
+msgstr "შეცდომა"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:201
+msgid "Failed to add shared directory"
+msgstr "გაზიარებული საქაღალდის დამატების შეცდომა"
+
+#: src/components/vm/overview/firmware.jsx:58
+msgid "Failed to change firmware"
+msgstr "მიკროკოდის შეცვლის შეცდომა"
+
+#: src/components/vm/vmCloneDialog.jsx:61
+msgid "Failed to clone VM $0"
+msgstr "ვმ-ის ($0) ასლის შექმნის შეცდომა"
+
+#: src/app.jsx:136
+msgid "Failed to fetch some resources"
+msgstr "ზოგიერთი რესურსების გამოთხოვნის შეცდომა"
+
+#: src/components/vm/nics/vmNicsCard.jsx:129
+msgid "Failed to fetch the IP addresses of the interfaces present in $0"
+msgstr "$0-ში ინტერფეისებზე იმაგრებული IP მისამართების მიღების შეცდომა"
+
+#: src/components/vm/vmRenameDialog.jsx:51
+msgid "Failed to rename VM $0"
+msgstr "ვმ-ის ($0) გადარქმევის შეცდომა"
+
+#: src/components/networks/networkOverviewTab.jsx:246
+msgid "Failed to save network settings"
+msgstr "ქსელის პარამეტრების შენახვის შეცდომა"
+
+#: src/components/vm/consoles/vnc.jsx:130
+msgid "Failed to send key Ctrl+Alt+$0 to VM $1"
+msgstr "Ctrl+Alt+$0-ის ვმ-თან ($1) გაგზავნის შეცდომა"
+
+#: src/components/vm/overview/vcpuModal.jsx:197
+msgid "Fewer than the maximum number of virtual CPUs should be enabled."
+msgstr "ჩართული უნდა იყოს ხელმისაწვდომზე ნაკლები ვირტუალური პროცესორი."
+
+#: src/components/vm/disks/vmDiskColumns.jsx:43
+#: src/components/vm/overview/bootOrder.jsx:109
+msgid "File"
+msgstr "ფაილი"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:62
+msgid "Filesystem $0 could not be removed"
+msgstr "ფაილური სისტემის წაშლის შეცდომა: $0"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:58
+msgid "Filesystem directory"
+msgstr "ფაილური სიტემის საქაღალდე"
+
+#: src/components/vms/hostvmslist.jsx:93
+msgid "Filter by name"
+msgstr "სახელით გაფილტვრა"
+
+#: src/components/vm/overview/firmware.jsx:78
+#: src/components/vm/overview/vmOverviewCard.jsx:247
+msgid "Firmware"
+msgstr "მიკროკოდი"
+
+#: src/components/vm/disks/mediaEject.jsx:107
+msgid "Force eject"
+msgstr "ძალით გამოღება"
+
+#: src/components/vm/vmActions.jsx:265
+msgid "Force reboot"
+msgstr "ძალით გადატვირთვა"
+
+#: src/components/vm/vmActions.jsx:239
+msgid "Force shut down"
+msgstr "ძალით გამორთვა"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:70
+#: src/components/storagePools/createStoragePoolDialog.jsx:202
+msgid "Format"
+msgstr "ფორმატი"
+
+#: src/components/networks/createNetworkDialog.jsx:142
+msgid "Forward mode"
+msgstr "გადაგზავნის რეჟიმი"
+
+#: src/components/networks/networkList.jsx:76
+msgid "Forwarding mode"
+msgstr "გადაგზავნის რეჟიმი"
+
+#: src/components/vm/vmMigrateDialog.jsx:107
+msgid ""
+"Full disk images and the domain's memory will be migrated. Only non-shared, "
+"writable disk images will be transferred. Unused storage will remain on the "
+"origin after migration."
+msgstr ""
+"დისკის სრული გამოსახუებები და დომენის მეხსიერება გადაინაცვლებს. გადაიცემა "
+"მხოლოდ არაგაზიარებული, ჩასაწერი დისკის გამოსახულებები. გამოუყენებელი საცავი "
+"დარჩება საწყისზე მიგრაციის შემდეგ."
+
+#: src/components/vm/overview/vmOverviewCard.jsx:183
+#: src/components/networks/networkOverviewTab.jsx:110
+msgid "General"
+msgstr "ზოგადი"
+
+#: src/components/vm/nics/nicAdd.jsx:67
+msgid "Generate automatically"
+msgstr "ავტომატური გენერაცია"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:500
+msgid "Get a new RHSM token."
+msgstr "ახალი RHSM კოდის მიღება."
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:104
+#: src/components/create-vm-dialog/createVmDialog.jsx:798
+#: src/components/create-vm-dialog/createVmDialog.jsx:894
+#: src/components/vm/disks/vmDisksCard.jsx:48
+#: src/components/vm/overview/memorySelectRow.jsx:89
+msgid "GiB"
+msgstr "გიბ"
+
+#: src/app.jsx:240 src/app.jsx:252
+msgid "Go to VMs list"
+msgstr "ვმ-ების სიაზე გადასვლა"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:243
+#: src/components/vm/disks/diskAdd.jsx:209
+msgid "Hide additional options"
+msgstr "დამატებითი პარამეტრების დამალვა"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:34
+#: src/components/storagePools/createStoragePoolDialog.jsx:122
+#: src/components/vm/disks/vmDiskColumns.jsx:48
+#: src/components/vm/overview/bootOrder.jsx:114
+msgid "Host"
+msgstr "ჰოსტი"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:166
+msgid "Host device"
+msgstr "ჰოსტის მოწყობილობა"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:203
+msgid "Host device could not be attached"
+msgstr "ჰოსტის მოწყობილობის მიბმის შეცდომა"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:262
+msgid "Host device will be removed from $0:"
+msgstr "$0-დან წაიშლება ჰოსტის მოწყობილობა:"
+
+#: src/components/vm/vmDetailsPage.jsx:183
+msgid "Host devices"
+msgstr "ჰოსტის მოწყობილობები"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:127
+msgid "Host name"
+msgstr "ჰოსტის სახელი"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:123
+msgid "Host should not be empty"
+msgstr "ჰოსტი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:237
+msgid "Hypervisor details"
+msgstr "ინფორმაცია ჰაიპერვაიზორის შესახებ"
+
+#: src/components/vm/disks/diskEdit.jsx:38
+msgid "ID"
+msgstr "ID"
+
+#: src/components/networks/networkOverviewTab.jsx:67
+msgid "IP"
+msgstr "IP"
+
+#: src/components/vm/nics/vmNicsCard.jsx:255
+#: src/components/networks/networkOverviewTab.jsx:255
+msgid "IP address"
+msgstr "IP მისამართი"
+
+#: src/components/networks/networkOverviewTab.jsx:256
+msgid "IP address must not be empty"
+msgstr "IP მისამართი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/networks/createNetworkDialog.jsx:183
+msgid "IP configuration"
+msgstr "IP კონფიგურაცია"
+
+#: src/components/networks/networkOverviewTab.jsx:138
+#: src/components/networks/createNetworkDialog.jsx:244
+msgid "IPv4 address"
+msgstr "IPv4 მისამართი"
+
+#: src/components/networks/createNetworkDialog.jsx:68
+msgid "IPv4 address cannot be same as the network identifier"
+msgstr "IPv4 მისამართი ქსელის იდენტიფიკატორი ვერ იქნება"
+
+#: src/components/networks/createNetworkDialog.jsx:72
+msgid "IPv4 address cannot be same as the network's broadcast address"
+msgstr "IPv4 მისამართი და ქსელის გადაცემის მისამართი ერთი და იგივე ვერ იქნება"
+
+#: src/components/networks/createNetworkDialog.jsx:191
+msgid "IPv4 and IPv6"
+msgstr "IPv4 და IPv6"
+
+#: src/components/networks/createNetworkDialog.jsx:62
+msgid "IPv4 network should not be empty"
+msgstr "IPv4 ქსელი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/networks/createNetworkDialog.jsx:189
+msgid "IPv4 only"
+msgstr "მხოლოდ IPv4"
+
+#: src/components/networks/networkOverviewTab.jsx:158
+#: src/components/networks/createNetworkDialog.jsx:276
+msgid "IPv6 address"
+msgstr "IPv6 მისამართი"
+
+#: src/components/networks/createNetworkDialog.jsx:93
+msgid "IPv6 network should not be empty"
+msgstr "IPv6 ქსელი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/networks/createNetworkDialog.jsx:190
+msgid "IPv6 only"
+msgstr "მხოლოდ IPv6"
+
+#: src/components/vm/disks/diskAdd.jsx:249
+msgid "Identifier may be silently truncated to $0 characters "
+msgstr "იდენტიფიკატორს შეიძლება წაეჭრას $0 simbolo "
+
+#: src/helpers.js:225
+msgid "Idle"
+msgstr "უქმი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1391
+msgid "Import VM"
+msgstr "ვმ-ის შემოტანა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1327
+msgid "Import a virtual machine"
+msgstr "ვირტუალური მანქანის შემოტანა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1313
+msgid "Import and edit"
+msgstr "შემოტანა და ჩასწორება"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1339
+msgid "Import and run"
+msgstr "შემოტანა და გაშვება"
+
+#: src/components/vm/disks/diskAdd.jsx:551
+msgid "Importing an image with a backing file is unsupported"
+msgstr "უკანაბოლოს სახით ფაილის მქონე ასლის შემოტანა მხარდაუჭერელია"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:309
+msgid ""
+"In most configurations, macvtap does not work for host to guest network "
+"communication."
+msgstr "macvtap-ი არ მუშაობს ჰოსტიდან სტუმრამდე ქსელური კომუნიკაციისთვის."
+
+#: src/components/vm/nics/nicBody.jsx:102
+msgid ""
+"In the default 'vepa' mode, switching is offloaded to the external switch. "
+"If the switch is not VEPA-capable, communication between guest virtual "
+"machines, or between a guests and the host is not possible."
+msgstr ""
+"ნაგულისხმებ, \"vepa\" რეჟიმში, სვიჩინგი გადაგდებულია გარე სვიჩზე. თუ სვიჩი "
+"VEPA თავსებადი არაა, სტუმრებსა შორის ან სტუმრიდან ჰოსტამდე კავშირი "
+"შეუძლებელია."
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:140
+msgid "Initiator"
+msgstr "ინიციატორი"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:141
+msgid "Initiator IQN should not be empty"
+msgstr "ინიციატორის IQN ცარიელი არ შეიძლება იყოს"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:158
+#: src/components/vm/disks/diskAdd.jsx:853
+msgid "Insert"
+msgstr "ჩადება"
+
+#: src/components/vm/disks/diskAdd.jsx:843
+msgid "Insert disc media"
+msgstr "დისკის ჩადება"
+
+#: src/components/vm/vmActions.jsx:291
+msgid "Install"
+msgstr "დაყენება"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:372
+msgid "Installation source"
+msgstr "დაყენების წყარო"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:222
+msgid "Installation source must not be empty"
+msgstr "დაყენების წყარო ცარიელი არ შეიძლება იყოს"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:350
+msgid "Installation type"
+msgstr "დაყენების ტიპი"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:136
+msgid "Interface"
+msgstr "ინტერფეისი"
+
+#: src/components/vm/nics/nicBody.jsx:162
+msgid "Interface type"
+msgstr "ინტერფეისის ტიპი"
+
+#: src/components/vm/nics/nicBody.jsx:164
+msgid "Interface type help"
+msgstr "ინტერფეისის ტიპის დახმარება"
+
+#: src/components/networks/createNetworkDialog.jsx:64
+#: src/components/networks/createNetworkDialog.jsx:78
+#: src/components/networks/createNetworkDialog.jsx:85
+msgid "Invalid IPv4 address"
+msgstr "არასწორი IPv4 მისამართი"
+
+#: src/components/networks/createNetworkDialog.jsx:59
+msgid "Invalid IPv4 mask or prefix length"
+msgstr "არასწორი IPv4 ნიღაბი ან პრეფიქსის სიგრძე"
+
+#: src/components/networks/createNetworkDialog.jsx:95
+#: src/components/networks/createNetworkDialog.jsx:106
+#: src/components/networks/createNetworkDialog.jsx:113
+msgid "Invalid IPv6 address"
+msgstr "არასწორი IPv6 მისამართი"
+
+#: src/components/networks/createNetworkDialog.jsx:100
+msgid "Invalid IPv6 prefix"
+msgstr "არასწორი IPv6 პრეფიქსი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:206
+msgid "Invalid filename"
+msgstr "ფაილის არასწორი სახელი"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:108
+msgid "Isolated network"
+msgstr "იზოლირებული ქსელი"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:62
+msgid "LVM volume group"
+msgstr "LVM ტომების ჯგუფი"
+
+#: src/components/vm/consoles/desktopConsole.jsx:54
+msgid "Launch remote viewer"
+msgstr "დაშორებული მაყურებლის გაშვება"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:636
+msgid ""
+"Leave the password blank if you do not wish to have a root account created"
+msgstr "root ანგარიშის არ შესაქმნელად დატოვეთ პაროლი ცარიელი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:733
+msgid ""
+"Leave the password blank if you do not wish to have a user account created"
+msgstr "მომხმარებლის პაროლის არ შესაქმნელად დატოვეთ პაროლი ცარიელი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:749
+msgid "Leave the password blank if you do not wish to set a root password"
+msgstr "თუ არ გნებავთ პაროლის დაყენება, დატოვეთ ის ცარიელი"
+
+#: src/components/vm/overview/firmware.jsx:168
+msgid ""
+"Libvirt did not detect any UEFI/OVMF firmware image installed on the host"
+msgstr ""
+"Libvirt-მა ჰოსტზე დაყენებული ვერცერთი UEFI/OMVF მიკროკოდის გამოსახულება ვერ "
+"იპოვა"
+
+#: src/components/vm/overview/firmware.jsx:162
+msgid "Libvirt or hypervisor does not support UEFI"
+msgstr "Libvirt-ს ან ჰაიპერვაიზორს UEFI-ის მხარდაჭერა არ გააჩნია"
+
+#: src/components/vm/nics/vmNicsCard.jsx:362
+msgid "Loading available network devices"
+msgstr "ხელმისაწვდომი ქსელური მოწყობილობების ჩატვირთვა"
+
+#: src/components/libvirtSlate.jsx:32
+msgid "Loading resources"
+msgstr "რესურსების ჩატვირთვა"
+
+#: src/components/vm/consoles/serialConsole.jsx:77
+msgid "Loading..."
+msgstr "ჩატვირთვა..."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:362
+msgid "Local install media (ISO image or distro install tree)"
+msgstr ""
+"დაყენების ლოკალური წყარო (ISO გამოსახულება ან დისტრიბუტივის დასაყენებელი ხე)"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:132
+msgid "Location"
+msgstr "მდებარეობა"
+
+#: src/components/vm/overview/bootOrder.jsx:124
+#: src/components/networks/networkOverviewTab.jsx:68
+msgid "MAC"
+msgstr "MAC"
+
+#: src/components/vm/nics/vmNicsCard.jsx:253
+#: src/components/vm/nics/nicAdd.jsx:63 src/components/vm/nics/nicEdit.jsx:42
+#: src/components/networks/networkOverviewTab.jsx:247
+msgid "MAC address"
+msgstr "MAC მისამართი"
+
+#: src/components/networks/networkOverviewTab.jsx:248
+msgid "MAC address must not be empty"
+msgstr "MAC მისამართი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/vm/disks/diskEdit.jsx:90
+msgid "Machine must be shut off before changing bus type"
+msgstr "მატარებლის ტიპის შეცვლამდე მანქანა უნდა გამოირთოს"
+
+#: src/components/vm/disks/diskEdit.jsx:60
+msgid "Machine must be shut off before changing cache mode"
+msgstr "ქეშის რეჟიმის შეცვლამდე მანქანა უნდა გამოირთოს"
+
+#: org.cockpit-project.machines.metainfo.xml:5
+msgid "Machines"
+msgstr "მანქანები"
+
+#: org.cockpit-project.machines.metainfo.xml:6
+msgid "Manage your virtual machines"
+msgstr "მართეთ თქვენი ვირტუალური მანქანები"
+
+#: src/manifest.json:0
+msgid "Managing virtual machines"
+msgstr "ვირტუალური მანქანების მართვა"
+
+#: src/components/vm/consoles/desktopConsole.jsx:44
+msgid "Manual connection"
+msgstr "ხელით მითითებული კავშირი"
+
+#: src/components/networks/createNetworkDialog.jsx:252
+msgid "Mask or prefix length"
+msgstr "ნიღაბი ან პრეფიქსის სიგრზე"
+
+#: src/components/networks/createNetworkDialog.jsx:57
+msgid "Mask or prefix length should not be empty"
+msgstr "ნიღაბი ან პრეფიქსის სიგრძე ცარიელი არ შეიძლება იყოს"
+
+#: src/components/vm/overview/memoryModal.jsx:136
+msgid "Maximum allocation"
+msgstr "მაქსიმალური განაწილება"
+
+#: src/components/vm/overview/memoryModal.jsx:101
+msgid "Maximum memory could not be saved"
+msgstr "მაქსიმალური მეხსიერების შენახვის პრობლემა"
+
+#: src/components/vm/overview/vcpuModal.jsx:212
+msgid "Maximum number of virtual CPUs allocated for the guest OS"
+msgstr ""
+"სტუმარი ოპერაციული სისტემისთვის გამოყოფილი ვირტუალური პროცესორების "
+"მაქსიმალური რაოდენობა"
+
+#: src/components/vm/overview/vcpuModal.jsx:211
+msgid ""
+"Maximum number of virtual CPUs allocated for the guest OS, which must be "
+"between 1 and $0"
+msgstr "ვირტუალური CPU-ების მაქსიმალური რაოდენობა. დიაპაზონი 1-$0"
+
+#: src/components/networks/networkOverviewTab.jsx:129
+msgid "Maximum transmission unit"
+msgstr "გადაცემის მაქსიმალური ერთეული"
+
+#: src/components/vm/disks/mediaEject.jsx:114
+msgid "Media could not be ejected from $0"
+msgstr "$0-დან დისკის გამოღების შეცდომა"
+
+#: src/components/vm/disks/mediaEject.jsx:116
+msgid "Media will be ejected from $0:"
+msgstr "მოხდება დისკის $0-დან ამოღება:"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:781
+#: src/components/vm/vmUsageCard.jsx:60
+#: src/components/vm/overview/vmOverviewCard.jsx:206
+msgid "Memory"
+msgstr "მეხსიერება"
+
+#: src/components/vm/overview/memoryModal.jsx:98
+#: src/components/vm/overview/memoryModal.jsx:114
+msgid "Memory could not be saved"
+msgstr "მეხსიერების შენახვის შეცდომა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:229
+msgid "Memory must not be 0"
+msgstr "მეხსიერება არ შეიძლება 0-ის ტოლი იყოს"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:102
+#: src/components/create-vm-dialog/createVmDialog.jsx:796
+#: src/components/create-vm-dialog/createVmDialog.jsx:892
+#: src/components/vm/overview/memorySelectRow.jsx:87
+msgid "MiB"
+msgstr "მიბ"
+
+#: src/components/vm/vmMigrateDialog.jsx:215
+#: src/components/vm/vmActions.jsx:325
+msgid "Migrate"
+msgstr "მიგრაცია"
+
+#: src/components/vm/vmMigrateDialog.jsx:226
+msgid "Migrate VM to another host"
+msgstr "ვმ-ის სხვა ჰოსტზე გადატანა"
+
+#: src/components/vm/vmMigrateDialog.jsx:181
+msgid "Migration failed"
+msgstr "მიგრაციის შეცდომა"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:34
+#: src/components/vm/overview/cpuTypeModal.jsx:36
+msgid "Mode"
+msgstr "რეჟიმი"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:204
+#: src/components/vm/nics/nicBody.jsx:50
+msgid "Model"
+msgstr "მოდელი"
+
+#: src/components/vm/nics/vmNicsCard.jsx:241
+msgid "Model type"
+msgstr "მოდელის ტიპი"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:227
+msgid "More info for mount tag field"
+msgstr "მეტი ინფორმაცია მიმაგრების ჭდის ველის შესახებ"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:207
+msgid "More info for source path field"
+msgstr "მეტი ინფორმაცია წყაროს ბილიკის შესახებ"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:48
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:66
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:224
+msgid "Mount tag"
+msgstr "მიბმის ჭდე"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:135
+msgid "Mount tag must not be empty"
+msgstr "მიმაგრების ჭდე ცარიელი არ შეიძლება იყოს"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:93
+msgid "NAT to $0"
+msgstr "NAT $0მდე"
+
+#: src/components/vm/nics/vmNicsCard.jsx:216
+msgid "NIC $0 of VM $1 failed to change state"
+msgstr "ვმ-ის ($1) ქსელური ინტერფეისის($0) მდგომარეობის შეცვლის შეცდომა"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:40
+#: src/components/storagePools/storagePoolVolumesTab.jsx:79
+#: src/components/storagePools/createStoragePoolDialog.jsx:44
+#: src/components/storagePools/storagePoolList.jsx:75
+#: src/components/create-vm-dialog/createVmDialog.jsx:258
+#: src/components/vms/hostvmslist.jsx:138
+#: src/components/vm/vmCloneDialog.jsx:89
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:81
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:39
+#: src/components/networks/networkList.jsx:73
+#: src/components/networks/createNetworkDialog.jsx:126
+msgid "Name"
+msgstr "სახელი"
+
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:97
+msgid "Name already exists"
+msgstr "სახელი უკვე არსებობს"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:45
+msgid "Name contains invalid characters"
+msgstr "სახელი შეიცავს არასწორ სიმბოლოებს"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:64
+#: src/components/create-vm-dialog/createVmDialog.jsx:189
+#: src/components/vm/vmCloneDialog.jsx:41
+msgid "Name must not be empty"
+msgstr "სახელი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:45
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:99
+#: src/components/networks/createNetworkDialog.jsx:53
+msgid "Name should not be empty"
+msgstr "სახელ ცარიელი არ შეიძლება იყოს"
+
+#: src/components/networks/networkOverviewTab.jsx:47
+msgid "Name: "
+msgstr "სახელი: "
+
+#: src/components/networks/networkOverviewTab.jsx:147
+msgid "Netmask"
+msgstr "ქსელის ნიღაბი"
+
+#: src/components/networks/network.jsx:136
+msgid "Network $0 could not be deleted"
+msgstr "ქსელის წაშლის შეცდომა: $0"
+
+#: src/components/networks/network.jsx:99
+msgid "Network $0 failed to get activated"
+msgstr "ქსელის ($0) აქტივაციის შეცდომა"
+
+#: src/components/networks/network.jsx:117
+msgid "Network $0 failed to get deactivated"
+msgstr "ქსელის ($0) დეაქტივაციის შეცდომა"
+
+#: src/components/networks/network.jsx:137
+msgid "Network $0 will be permanently deleted."
+msgstr "ქსელი სამუდამოდ წაიშლება: $0."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:367
+msgid "Network boot (PXE)"
+msgstr "ქსელური ჩატვირთვა (PXE)"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:59
+msgid "Network file system"
+msgstr "ქსელური ფაილური სისტემა"
+
+#: src/components/vm/nics/vmNicsCard.jsx:387
+msgid "Network interface $0 could not be removed"
+msgstr "ქსელის ინტერფეისის წაშლის შეცდომა: $0"
+
+#: src/components/vm/nics/vmNicsCard.jsx:388
+msgid "Network interface $0 will be removed from $1"
+msgstr "ქსელის ინტერფეისი $0 წაშლილი იქნება $1-დან"
+
+#: src/components/vm/nics/nicAdd.jsx:161 src/components/vm/nics/nicEdit.jsx:135
+msgid "Network interface settings could not be saved"
+msgstr "ქსელის ინტერფეისის პარამეტრების შენახვის შეცდომა"
+
+#: src/components/vm/vmDetailsPage.jsx:174
+msgid "Network interfaces"
+msgstr "ქსელის ინტერფეისები"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:317
+msgid "Network selection does not support PXE."
+msgstr "არჩეულ ქსელს PXE-ის მხარდაჭერა არ გააჩნია."
+
+#: src/components/networks/networkList.jsx:56
+#: src/components/networks/networkList.jsx:63
+#: src/components/networks/networkList.jsx:70
+msgid "Networks"
+msgstr "ქსელები"
+
+#: src/components/vm/vmRenameDialog.jsx:77
+msgid "New name"
+msgstr "ახალი სახელი"
+
+#: src/components/vm/vmRenameDialog.jsx:79
+msgid "New name must not be empty"
+msgstr "ახალი სახელი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:43
+msgid "New volume name"
+msgstr "ახალი ტომის სახელი"
+
+#: src/components/vms/hostvmslist.jsx:143
+msgid "No VM is running or defined on this host"
+msgstr "ამ ჰოსტზე გაშვებული ან აღწერილი ვმ-ი არ არსებობს"
+
+#: src/components/vm/overview/bootOrder.jsx:353
+msgid "No boot device found"
+msgstr "ჩასატვირთი მოწყობილობის გარეშე"
+
+#: src/components/vm/consoles/desktopConsole.jsx:45
+msgid "No connection available"
+msgstr "კავშირი ხელმიუწვდომელია"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:95
+msgid "No description"
+msgstr "აღწერის გარეშე"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:91
+msgid "No directories shared between the host and this VM"
+msgstr "ამ ვმ-სა და ჰოსტს შორის საქაღალდეები გაზიარებული არაა"
+
+#: src/components/vm/disks/vmDisksCard.jsx:248
+msgid "No disks defined for this VM"
+msgstr "ამ ვმ-ს დისკები არ გააჩნია"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:208
+msgid "No host device selected"
+msgstr "ჰოსტის მოწყობილობა არჩეული არაა"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:321
+msgid "No host devices assigned to this VM"
+msgstr "ამ ვმ-ს არ გააჩნია ჰოსტის მიბმული მოწყობილობები"
+
+#: src/components/vm/nics/nicBody.jsx:149
+msgid "No network devices"
+msgstr "ქსელის მოწყობილობების გარეშე"
+
+#: src/components/vm/nics/vmNicsCard.jsx:454
+msgid "No network interfaces defined for this VM"
+msgstr "ამ ვმ-ს ქსელის ინტერფეისები არ გააჩნია"
+
+#: src/components/networks/networkList.jsx:80
+msgid "No network is defined on this host"
+msgstr "ამ ჰოსტზე ქსელები აღწერილი არაა"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:172
+msgid "No networks available"
+msgstr "ქსელები მიუწვდომელია"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:139
+msgid "No parent"
+msgstr "მშობლის გარეშე"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:210
+msgid "No snapshots defined for this VM"
+msgstr "ამ ვმ-ს სწრაფი ასლები არ გააჩნია"
+
+#: src/helpers.js:233
+msgid "No state"
+msgstr "მდგომარეობის გარეშე"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:850
+msgid "No storage"
+msgstr "საცავის გარეშე"
+
+#: src/components/storagePools/storagePoolList.jsx:81
+msgid "No storage pool is defined on this host"
+msgstr "ამ ჰოსტზე საცავის პული აღწერილი არაა"
+
+#: src/components/vm/disks/diskAdd.jsx:165
+msgid "No storage pools available"
+msgstr "საცავის პულები ხელმიუწვდომელია"
+
+#: src/components/storagePools/storagePoolVolumesTab.jsx:113
+msgid "No storage volumes defined for this storage pool"
+msgstr "საცავის ამ პულში ტომები აღწერილი არაა"
+
+#: src/components/vm/nics/nicBody.jsx:147
+msgid "No virtual networks"
+msgstr "ვირტუალური ქსელების გარეშე"
+
+#: src/components/storagePools/storagePoolDelete.jsx:182
+msgid "No volumes exist in this storage pool."
+msgstr "საცავის პულში ტომები არ არსებობს."
+
+#: src/components/networks/network.jsx:143
+msgid ""
+"Non-persistent network cannot be deleted. It ceases to exists when it's "
+"deactivated."
+msgstr "დროებითი ქსელის წაშლა შეუძლებელია. ის მისი დეაქტივაციისთანავე გაქრება."
+
+#: src/components/storagePools/storagePoolDelete.jsx:225
+msgid ""
+"Non-persistent storage pool cannot be deleted. It ceases to exists when it's "
+"deactivated."
+msgstr ""
+"საცავის დროებითი პულის წაშლა შეუძლებელია. ის გაქრება, როცა დეაქტივირდება."
+
+#: src/components/networks/createNetworkDialog.jsx:188
+msgid "None"
+msgstr "არცერთი"
+
+#: src/helpers.js:263
+msgid "None (isolated network)"
+msgstr "არცერთი (იზოლირებული ქსელი)"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:587
+msgid "Offline token"
+msgstr "გათიშული კოდი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:226
+msgid "Offline token must not be empty"
+msgstr "გათიშული კოდი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:527
+msgid "Old token expired"
+msgstr "ძველი კოდის ვადა ამოიწურა"
+
+#: src/components/storagePools/storageVolumeDelete.jsx:70
+msgid ""
+"One or more selected volumes are used by domains. Detach the disks first to "
+"allow volume deletion."
+msgstr ""
+"ერთი ან მეტი არჩეული ტომი დომენების მიერ გამოიყენება. ტომის წასაშლელად ჯერ "
+"მოაძრეთ დისკები."
+
+#: src/components/vm/nics/nicEdit.jsx:39
+#: src/components/vm/overview/memoryModal.jsx:143
+#: src/components/vm/overview/bootOrder.jsx:379
+msgid "Only editable when the guest is shut off"
+msgstr "ჩასწორებადია მხოლოდ მაშინ, როცა სტუმარი გათიშულია"
+
+#: src/helpers.js:261
+msgid "Open"
+msgstr "გახსნა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:448
+msgid "Operating system"
+msgstr "ოპერაციული სისტემა"
+
+#: src/components/storagePools/storagePool.jsx:175
+#: src/components/storagePools/storagePool.jsx:182
+msgid "Operation is in progress"
+msgstr "ოპერაცია მიმდინარეობს"
+
+#: src/components/storagePools/storagePool.jsx:75
+#: src/components/vm/vmDetailsPage.jsx:134
+msgid "Overview"
+msgstr "გადახედვა"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:60
+msgid "PCI"
+msgstr "PCI"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:137
+msgid "Parent snapshot"
+msgstr "მშობელი სწრაფი ასლი"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:128
+#: src/components/vm/hostdevs/hostDevCard.jsx:132
+#: src/components/vm/disks/diskEdit.jsx:40
+#: src/components/vm/deleteDialog.jsx:63
+msgid "Path"
+msgstr "ბილიკი"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:109
+msgid "Path on host's filesystem"
+msgstr "ბილიკი ჰოსტის ფაილურ სისტემაზე"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:283
+msgid "Path to ISO file on host's file system"
+msgstr "ბილიკი ISO ფაილამდე ჰოსტის ფაილურ სისტემაზე"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:292
+msgid "Path to cloud image file on host's file system"
+msgstr "ღრუბლოვანი გამოსახულების ბილიკი ჰოსტის ფაილურ სისტემაზე"
+
+#: src/components/vm/disks/diskAdd.jsx:339
+msgid "Path to file on host's file system"
+msgstr "ბილიკი ფაილამდე ჰოსტის ფალურ სისტემაზე"
+
+#: src/components/vm/vmActions.jsx:200
+msgid "Pause"
+msgstr "შეჩერება"
+
+#: src/helpers.js:226
+msgid "Paused"
+msgstr "შეჩერებულია"
+
+#: src/components/vm/vmMigrateDialog.jsx:71
+msgid "Permanent (default)"
+msgstr "მუდმივი (ნაგულისხმები)"
+
+#: src/components/vm/nics/nicAdd.jsx:86 src/components/vm/disks/diskAdd.jsx:134
+msgid "Persistence"
+msgstr "მუდმივობა"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:66
+#: src/components/networks/networkOverviewTab.jsx:114
+msgid "Persistent"
+msgstr "მუდმივი"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:61
+msgid "Physical disk device"
+msgstr "დისკის ფიზიკური მოწყობილობა"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:166
+msgid "Physical disk device on host"
+msgstr "დისკის ფიზიკური მოწყობილობა ჰოსტზე"
+
+#: src/components/vm/disks/diskAdd.jsx:430
+msgid "Please choose a storage pool"
+msgstr "აირჩიეთ საცავის პული"
+
+#: src/components/vm/disks/diskAdd.jsx:448
+msgid "Please choose a volume"
+msgstr "აირჩიეთ ტომი"
+
+#: src/components/vm/disks/diskAdd.jsx:437
+msgid "Please enter new volume name"
+msgstr "შეიყვანეთ ახალი ტომის სახელი"
+
+#: src/components/vm/consoles/consoles.jsx:40
+msgid "Please start the virtual machine to access its console."
+msgstr "კონსოლზე წვდომისათვის საჭიროა ვირტუალური მანქანა ჯერ გაუშვათ."
+
+#: src/components/vm/disks/vmDiskColumns.jsx:46
+#: src/components/vm/disks/diskAdd.jsx:150
+#: src/components/vm/disks/mediaEject.jsx:86
+#: src/components/vm/deleteDialog.jsx:71
+#: src/components/vm/overview/bootOrder.jsx:112
+msgid "Pool"
+msgstr "პული"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:151
+msgid "Pool needs to be active to create volume"
+msgstr "ომის შესაქმნელად საჭიროა, რომ პული აქტიური იყოს"
+
+#: src/components/vm/disks/diskAdd.jsx:440
+msgid "Pool type $0 does not support volume creation"
+msgstr "პულის ტიპი ($) მხარს არ უჭერს ტომების შექმნას"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:151
+msgid "Pool type doesn't support volume creation"
+msgstr "პულის ტიპს ტომის შექმნის მხარდაჭერა არ გააჩნია"
+
+#: src/components/storagePools/storagePoolDelete.jsx:94
+msgid "Pool's volumes are used by VMs "
+msgstr "პულის ტომები გამოიყენება ვმ-ების მიერ "
+
+#: src/components/vm/nics/vmNicsCard.jsx:287
+#: src/components/vm/disks/vmDiskColumns.jsx:49
+#: src/components/vm/overview/bootOrder.jsx:115
+#: src/components/vm/overview/bootOrder.jsx:131
+msgid "Port"
+msgstr "პორტი"
+
+#: src/components/vm/overview/vcpuModal.jsx:226
+msgid "Preferred number of sockets to expose to the guest."
+msgstr "სტუმრისათვის გადასაცემი სოკეტების რაოდენობა."
+
+#: src/components/networks/networkOverviewTab.jsx:167
+msgid "Prefix"
+msgstr "პრეფიქსი"
+
+#: src/components/networks/createNetworkDialog.jsx:284
+msgid "Prefix length"
+msgstr "პრეფიქსის სიგრძე"
+
+#: src/components/networks/createNetworkDialog.jsx:98
+msgid "Prefix length should not be empty"
+msgstr "პრეფიქსის სიგრძე ცარიელი არ შეიძლება იყოს"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:211
+msgid ""
+"Previously taken snapshots allow you to revert to an earlier state if "
+"something goes wrong"
+msgstr ""
+"ადრე შექმნილი სწრაფი ასლები საშუალებად გაძლევთ, თუ რამე მოხდა, წინა "
+"მდგომარეობას დაუბრუნდეთ"
+
+#: src/helpers.js:266
+msgid "Private"
+msgstr "პირადი"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:132
+#: src/components/vm/hostdevs/hostDevCard.jsx:242
+#: src/components/vm/hostdevs/hostDevCard.jsx:248
+#: src/components/vm/overview/bootOrder.jsx:144
+#: src/components/vm/overview/bootOrder.jsx:159
+msgid "Product"
+msgstr "პროდუქტი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:615
+msgid "Profile"
+msgstr "პროფილი"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:119
+#: src/components/vm/disks/vmDiskColumns.jsx:45
+#: src/components/vm/overview/bootOrder.jsx:111
+#: src/components/vm/overview/bootOrder.jsx:172
+msgid "Protocol"
+msgstr "პროტოკოლი"
+
+#: src/components/vm/nics/nicBody.jsx:96
+msgid ""
+"Provides a bridge from the guest virtual machine directly onto the LAN. This "
+"needs a bridge device on the host with one or more physical NICs."
+msgstr ""
+"წარმოადგენს ხიდს სტუმრის ვირტუალური მანქანიდან პირდაპირ LAN-ში. საჭიროა "
+"ხიდის მოწყობილობა ჰოსტზე, ერთი ან მეტი ფიზიკური NIC-ით."
+
+#: src/components/vm/nics/nicBody.jsx:87
+msgid ""
+"Provides a connection whose details are described by the named network "
+"definition."
+msgstr "კავშირი, რომლის დეტალებიც ქსელის აღწერაშია."
+
+#: src/components/vm/nics/nicBody.jsx:123
+msgid "Provides a virtual LAN with NAT to the outside world."
+msgstr "NAT-ით ვირტუალური ქსელისთვის გარე სამყაროსთან წვდომა."
+
+#: src/components/networks/networkOverviewTab.jsx:279
+msgid "Range"
+msgstr "დიაპაზონი"
+
+#: src/components/vm/disks/vmDisksCard.jsx:212
+#: src/components/vm/disks/diskEdit.jsx:121
+msgid "Read-only"
+msgstr "მხოლოდ-წასაკითხად"
+
+#: src/components/vm/vmActions.jsx:258
+msgid "Reboot"
+msgstr "გადატვირთვა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:338
+msgid "Remote URL"
+msgstr "დაშორებული URL"
+
+#: src/components/vm/consoles/desktopConsole.jsx:55
+msgid "Remote viewer details"
+msgstr "დაშორებული მაყურებლის დეტალები"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:258
+#: src/components/vm/hostdevs/hostDevCard.jsx:264
+#: src/components/vm/nics/vmNicsCard.jsx:389
+#: src/components/vm/nics/vmNicsCard.jsx:396
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:59
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:68
+#: src/components/vm/disks/vmDiskColumns.jsx:131
+#: src/components/vm/disks/vmDiskColumns.jsx:190
+#: src/components/networks/networkOverviewTab.jsx:70
+msgid "Remove"
+msgstr "წაშლა"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:130
+msgid "Remove disk from VM?"
+msgstr "წავშალო დისკი ვმ-დან?"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:61
+msgid "Remove filesystem?"
+msgstr "წავშალო ფაილური სისტემა?"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:260
+msgid "Remove host device from VM?"
+msgstr "წავშალო ჰოსტის მოწყობილობა ვმ-დან?"
+
+#: src/components/vm/nics/vmNicsCard.jsx:386
+msgid "Remove network interface?"
+msgstr "წავშალო ქსელის ინტერფეისი?"
+
+#: src/components/networks/networkOverviewTab.jsx:63
+msgid "Remove static host from DHCP"
+msgstr "host-ის სტატიკური ჩანაწერების DHCP-დან წაშლა"
+
+#: src/components/vm/vmRenameDialog.jsx:64 src/components/vm/vmActions.jsx:338
+msgid "Rename"
+msgstr "გადარქმევა"
+
+#: src/components/vm/vmRenameDialog.jsx:57
+msgid "Rename VM $0"
+msgstr "ვმ-ის გადარქმევა ($0)"
+
+#: src/components/vm/vmActions.jsx:211
+msgid "Resume"
+msgstr "გაგრძელება"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:161
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:72
+msgid "Revert"
+msgstr "დაბრუნება"
+
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:68
+msgid "Revert to snapshot $0"
+msgstr "სწრაფ ასლზე ($0) დაბრუნება"
+
+#: src/components/vm/snapshots/vmSnapshotsRevertModal.jsx:81
+msgid ""
+"Reverting to this snapshot will take the VM back to the time of the snapshot "
+"and the current state will be lost, along with any data not captured in a "
+"snapshot"
+msgstr ""
+"სწრაფ ასლზე დაბრუნება გადაიყვანს ვმ-ს იმ დროზე, როცა ასლის აღება მოხდა. "
+"ცვლილებები, რომლებიც ვმ-ში მოხდა ასლის აღების შემდეგ, დაიკარგება"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:709
+msgid "Root password"
+msgstr "Root-ის პაროლი"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:98
+msgid "Route to $0"
+msgstr "რაუტი $0-მდე"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:100
+msgid "Routed network"
+msgstr "დარაუტებული ქსელი"
+
+#: src/components/vm/vmActions.jsx:280
+msgid "Run"
+msgstr "გაშვება"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:125
+#: src/components/networks/networkOverviewTab.jsx:124
+msgid "Run when host boots"
+msgstr "ჰოსტის ჩატვირთვისას გაშვება"
+
+#: src/helpers.js:224
+msgid "Running"
+msgstr "გაშვებულია"
+
+#: src/components/vm/consoles/desktopConsole.jsx:52
+msgid "SPICE TLS port"
+msgstr "SPICE-ის TLS პორტი"
+
+#: src/components/vm/consoles/desktopConsole.jsx:48
+msgid "SPICE address"
+msgstr "SPICE-ის მისამართი"
+
+#: src/components/vm/consoles/desktopConsole.jsx:50
+msgid "SPICE port"
+msgstr "SPICE-ის პორტი"
+
+#: src/components/vm/nics/nicEdit.jsx:176
+#: src/components/vm/disks/diskEdit.jsx:265
+#: src/components/vm/overview/firmware.jsx:69
+#: src/components/vm/overview/memoryModal.jsx:154
+#: src/components/vm/overview/bootOrder.jsx:326
+msgid "Save"
+msgstr "შენახვა"
+
+#: src/components/vm/consoles/consoles.jsx:111
+msgid "Select console type"
+msgstr "აირჩიეთ კონსოლის ტიპი"
+
+#: src/components/vm/consoles/vnc.jsx:150
+msgid "Send key"
+msgstr "ღილაკის გაგზავნა"
+
+#: src/components/vm/vmActions.jsx:247
+msgid "Send non-maskable interrupt"
+msgstr "შეუნიღბვადი წყვეტის გაგზავნა"
+
+#: src/components/vm/disks/vmDiskColumns.jsx:106
+msgid "Serial"
+msgstr "სერიული ნომერი"
+
+#: src/components/vm/consoles/consoles.jsx:112
+msgid "Serial console"
+msgstr "სერიული კონსოლი"
+
+#: src/components/vm/consoles/consoles.jsx:115
+msgid "Serial console ($0)"
+msgstr "სერიული კონსოლი ($0)"
+
+#: src/components/networks/createNetworkDialog.jsx:215
+msgid "Set DHCP range"
+msgstr "DHCP-ის დიაპაზონის დაყენება"
+
+#: src/components/vm/nics/nicAdd.jsx:72
+msgid "Set manually"
+msgstr "ხელით მითითება"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1319
+msgid ""
+"Setting the user passwords for unattended installation requires starting the "
+"VM when creating it"
+msgstr ""
+"ავტომატური ინსტალაციისთვის მომხმარებლის პაროლის დაყენება შექმნისას ვმ-ის "
+"ჩართვას მოითხოვს"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:169
+msgid "Share"
+msgstr "გაზიარება"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:163
+msgid "Share a host directory with the guest"
+msgstr "ჰოსტის საქაღალდის სტუმართან გაზიარება"
+
+#: src/components/vm/vmDetailsPage.jsx:204
+msgid "Shared directories"
+msgstr "გაზიარებული საქაღალდეები"
+
+#: src/components/vm/vmDetailsPage.jsx:206
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:180
+msgid "Shared host directories need to be manually mounted inside the VM"
+msgstr "ჰოსტის გაზიარებული საქაღალდე ვმ-ის შიგნით ხელით უნდა მიამაგროთ"
+
+#: src/components/vm/vmMigrateDialog.jsx:102
+msgid "Shared storage"
+msgstr "გაზიარებული საცავი"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:243
+#: src/components/vm/disks/diskAdd.jsx:209
+msgid "Show additional options"
+msgstr "დამატებითი პარამეტრების ჩვენება"
+
+#: src/components/vm/vmActions.jsx:225 src/components/vm/vmActions.jsx:232
+msgid "Shut down"
+msgstr "გამორთვა"
+
+#: src/helpers.js:228
+msgid "Shut off"
+msgstr "გათიშვა"
+
+#: src/components/vm/overview/firmware.jsx:149
+msgid "Shut off the VM in order to edit firmware configuration"
+msgstr "მიკროკოდის კონფიგურაციისთვის საჭიროა ვმ-ის გამორთვა"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:115 src/helpers.js:227
+msgid "Shutting down"
+msgstr "მიმდინარეობს გათიშვა"
+
+#: src/components/storagePools/storageVolumeCreateBody.jsx:86
+#: src/components/storagePools/storagePoolVolumesTab.jsx:79
+#: src/components/storagePools/storagePoolList.jsx:76
+msgid "Size"
+msgstr "ზომა"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:104
+#: src/components/vm/hostdevs/hostDevCard.jsx:106
+#: src/components/vm/hostdevs/hostDevCard.jsx:113
+#: src/components/vm/hostdevs/hostDevCard.jsx:243
+#: src/components/vm/overview/bootOrder.jsx:160
+msgid "Slot"
+msgstr "სლოტი"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:169
+msgid "Snapshot $0 could not be deleted"
+msgstr "სწრაფი ასლის წაშლის შეცდომა: $0"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:170
+msgid ""
+"Snapshot $0 will be deleted from $1. All of its captured content will be "
+"lost."
+msgstr ""
+"სწრაფი ასლი $0 წაიშლება $1-დან. შუალედში შეცვლილი ინფორმაცია დაიკარგება."
+
+#: src/components/vm/snapshots/vmSnapshotsCreateModal.jsx:122
+msgid "Snapshot failed to be created"
+msgstr "სწრაფი ასლის შექმნის შეცდომა"
+
+#: src/components/vm/vmDetailsPage.jsx:192
+msgid "Snapshots"
+msgstr "სწრაფი ასლები"
+
+#: src/components/vm/overview/vcpuModal.jsx:224
+msgid "Sockets"
+msgstr "სოკეტები"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:51
+#: src/components/vm/hostdevs/hostDevCard.jsx:224
+#: src/components/vm/nics/nicBody.jsx:197
+#: src/components/vm/nics/vmNicsCard.jsx:281
+#: src/components/vm/disks/vmDisksCard.jsx:186
+#: src/components/vm/disks/diskAdd.jsx:743
+#: src/components/vm/disks/diskAdd.jsx:779
+msgid "Source"
+msgstr "წყარო"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:56
+msgid "Source format"
+msgstr "წყაროს ფორმატი"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:137
+msgid "Source must not be empty"
+msgstr "წყარო ცარიელი არ შეიძლება იყოს"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:41
+#: src/components/storagePools/storagePoolOverviewTab.jsx:46
+#: src/components/storagePools/createStoragePoolDialog.jsx:174
+#: src/components/storagePools/createStoragePoolDialog.jsx:192
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:48
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:65
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:204
+msgid "Source path"
+msgstr "წყაროს ბილიკი"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:175
+#: src/components/storagePools/createStoragePoolDialog.jsx:195
+msgid "Source path should not be empty"
+msgstr "წყაროს ბილიკი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:214
+msgid "Source should start with http, ftp or nfs protocol"
+msgstr "წყარო უნდა იწყებოდეს http, ftp ან nfs-ით"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:221
+msgid "Source volume group"
+msgstr "წყარო ტომების ჯგუფი"
+
+#: src/components/networks/createNetworkDialog.jsx:219
+msgid "Start"
+msgstr "გაშვება"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:239
+msgid "Start pool when host boots"
+msgstr "პულის გაშვება ჰოსტის ჩატვირთვისას"
+
+#: src/components/networks/createNetworkDialog.jsx:76
+#: src/components/networks/createNetworkDialog.jsx:104
+msgid "Start should not be empty"
+msgstr "დასაწყისი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:237
+msgid "Startup"
+msgstr "გაშვება"
+
+#: src/components/storagePools/storagePoolList.jsx:78
+#: src/components/vms/hostvmslist.jsx:97 src/components/vms/hostvmslist.jsx:140
+#: src/components/vm/nics/vmNicsCard.jsx:330
+#: src/components/vm/overview/vmOverviewCard.jsx:192
+#: src/components/networks/networkList.jsx:77
+msgid "State"
+msgstr "მდგომარეობა"
+
+#: src/components/networks/networkOverviewTab.jsx:287
+msgid "Static host entries"
+msgstr "host-ის სტატიკური ჩანაწერები"
+
+#: src/components/networks/networkOverviewTab.jsx:64
+msgid "Static host from DHCP could not be removed"
+msgstr "host-ის სტატიკური ჩანაწერების DHCP-დან წაშლის შეცდომა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:845
+#: src/components/vm/vmMigrateDialog.jsx:95
+msgid "Storage"
+msgstr "საცავი"
+
+#: src/components/vm/vmMigrateDialog.jsx:117
+msgid "Storage is at a shared location"
+msgstr "საცავი გაზიარებულ ადგილასაა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:876
+msgid "Storage limit"
+msgstr "საცავის ლიმიტი"
+
+#: src/components/storagePools/storagePool.jsx:123
+msgid "Storage pool $0 failed to get activated"
+msgstr "საცავის პულის ($) აქტივაციის შეცდომა"
+
+#: src/components/storagePools/storagePool.jsx:143
+msgid "Storage pool $0 failed to get deactivated"
+msgstr "საცავის პულის ($0) დეაქტივაციის შეცდომა"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:404
+msgid "Storage pool failed to be created"
+msgstr "საცავის პულის შექმნის შეცდომა"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:48
+msgid "Storage pool name"
+msgstr "საცავის პულის სახელი"
+
+#: src/components/storagePools/storagePoolList.jsx:58
+#: src/components/storagePools/storagePoolList.jsx:65
+#: src/components/storagePools/storagePoolList.jsx:72
+#: src/components/create-vm-dialog/createVmDialog.jsx:851
+msgid "Storage pools"
+msgstr "საცავის პულები"
+
+#: src/components/vm/disks/diskAdd.jsx:423
+msgid "Storage pools could not be fetched"
+msgstr "სტორიჯის პულების გამოთხოვნის შეცდომა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:233
+msgid "Storage size must not be 0"
+msgstr "საცავის ზომა 0 არ შეიძლება იყოს"
+
+#: src/components/vm/disks/diskEdit.jsx:44
+msgid "Storage volume"
+msgstr "საცავის ტომი"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:67
+#: src/components/vm/disks/diskAdd.jsx:444
+msgid "Storage volume size must not exceed the storage pool's capacity ($0 $1)"
+msgstr "საცავის ტომის ზომამ საცავის პულის ზომას არ უნდა გადააჭარბოს ($0 $1)"
+
+#: src/components/storagePools/storagePool.jsx:81
+msgid "Storage volumes"
+msgstr "საცავის ტომები"
+
+#: src/components/storagePools/storageVolumeDelete.jsx:46
+msgid "Storage volumes could not be deleted"
+msgstr "საცავის ტომების წაშლის შეცდომა"
+
+#: src/components/vm/vmMigrateDialog.jsx:225
+msgid ""
+"Storage volumes must be shared between this host and the destination host."
+msgstr "საცავის ტომები გაზიარებული უნდა იყოს ამ და სამიზნე ჰოსტებს შორის."
+
+#: src/helpers.js:231
+msgid "Suspended (PM)"
+msgstr "შეჩერებულია (PM)"
+
+#: src/helpers.js:220
+msgid "System"
+msgstr "სისტემა"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:131
+msgid "Table of selectable host devices"
+msgstr "ჰოსტის არჩევადი მოწყობილობების ცხრილი"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:114
+#: src/components/vm/disks/vmDiskColumns.jsx:135
+#: src/components/vm/overview/bootOrder.jsx:166
+msgid "Target"
+msgstr "სამიზნე"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:61
+#: src/components/storagePools/createStoragePoolDialog.jsx:103
+msgid "Target path"
+msgstr "სამიზნე ბილიკი"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:105
+msgid "Target path should not be empty"
+msgstr "სამიზნე ბილიკი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/vm/vmMigrateDialog.jsx:75
+msgid "Temporary"
+msgstr "დროებითი"
+
+#: src/components/vm/vmMigrateDialog.jsx:86
+msgid "Temporary migration"
+msgstr "დროებითი მიგრაცია"
+
+#: src/components/vm/deleteDialog.jsx:84
+msgid "The VM $0 is running and will be forced off before deletion."
+msgstr "ვმ-ი გაშვებულია. წაშლის წინ ის გაითიშება: $0."
+
+#: src/components/vm/nics/vmNicsCard.jsx:397
+#: src/components/vm/disks/vmDiskColumns.jsx:189
+msgid "The VM needs to be running or shut off to detach this device"
+msgstr "მოწყობილობის მოსაძრობად საჭიროა ვმ-ის გამორთვა"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:160
+msgid "The directory on the server being exported"
+msgstr "მიმდინარეობს სერვერის საქაღალდის გატანა"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:206
+msgid "The host path that is to be exported."
+msgstr "ჰოსტის გასატანი ბილიკი."
+
+#: src/components/vm/vmMigrateDialog.jsx:72
+msgid ""
+"The migrated VM configuration is removed from the source host. The "
+"destination host is considered the new home of the VM."
+msgstr ""
+"გადატანილი ვმ-ის კონფიგურაცია იშლება საწყისი ჰოსტიდან. სამიზნე ჰოსტი "
+"განიხილება, როგორც ვმ-ის ახალი სახლი."
+
+#: src/components/vm/disks/diskAdd.jsx:105
+msgid "The pool is empty"
+msgstr "პული ცარიელია"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:773
+msgid "The selected operating system has minimum memory requirement of $0 $1"
+msgstr ""
+"არჩეული ოპერაციული სისტემის მეხსიერების თეორიული მინიმუმი $0 $1-ს შეადგენს"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:823
+msgid ""
+"The selected operating system has minimum storage size requirement of $0 $1"
+msgstr "არჩეული ოპერაციული სისტემის დისკის მინიმალური მოთხოვნაა $0 $1"
+
+#: src/components/networks/networkOverviewTab.jsx:65
+msgid "The static host entry for $0 will be removed:"
+msgstr "სტატიკური ჰოსტის ჩანაწერი $0-სთვის წაიშლება:"
+
+#: src/components/storagePools/storagePoolDelete.jsx:143
+#: src/components/storagePools/storagePoolDelete.jsx:147
+msgid "The storage pool could not be deleted"
+msgstr "საცავის პულის წაშლის შეცდომა"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:226
+msgid "The tag name to be used by the guest to mount this export point."
+msgstr ""
+"ჭდის სახელი, რომელიც სტუმრის მიმართ გატანილი წერტილის მისამაგრებლადაა საჭირო."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:507
+#: src/components/create-vm-dialog/createVmDialog.jsx:520
+#: src/components/create-vm-dialog/createVmDialog.jsx:530
+msgid "Then copy and paste it above."
+msgstr "დააკოპირეთ და ზემოთ ჩასვით."
+
+#: src/components/vm/vmActions.jsx:347
+msgid "This VM is transient. Shut it down if you wish to delete it."
+msgstr "ვმ-ი დროებითია. წასაშლელად გამორთეთ."
+
+#: src/components/vm/disks/vmDiskColumns.jsx:133
+msgid "This disk will be removed from $0:"
+msgstr "$0-დან დისკი წაიშლება:"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:63
+msgid "This filesystem will be removed from $0:"
+msgstr "ფაილური სისტემა წაიშლება $0-დან:"
+
+#: src/components/vm/nics/nicBody.jsx:86
+msgid ""
+"This is the recommended config for general guest connectivity on hosts with "
+"dynamic / wireless networking configs."
+msgstr ""
+"რეკომენდებული კონფიგურაცია Wireless/დინამიკური ქსელის კონფიგურაციის მქონე "
+"ჰოსტებზე გაშვებული სტუმრებისთვის."
+
+#: src/components/vm/nics/nicBody.jsx:95
+msgid ""
+"This is the recommended config for general guest connectivity on hosts with "
+"static wired networking configs."
+msgstr ""
+"რეკომენდებული კონფიგურაცია სტატიკური ქსელის კონფიგურაციის მქონე ჰოსტებზე "
+"გაშვებული სტუმრებისთვის."
+
+#: src/components/vm/nics/nicBody.jsx:101
+msgid ""
+"This is the recommended config for high performance or enhanced security."
+msgstr ""
+"ეს კონფიგურაცია რეკომენდებულია მაღალი წარმადობისა და კარგი უსაფრთხოებისთვის."
+
+#: org.cockpit-project.machines.metainfo.xml:8
+msgid ""
+"This tool manages virtual machines. With it, you can create, monitor, and "
+"control the virtual machines of the libvirt subsystem."
+msgstr ""
+"ეს ხელსაწყო მართავს ვირტუალური მანქანებს. მისი საშუალებით შეგიძლიათ შექმნათ "
+"და აკონტროლოთ libvirt-ის ქვესისტემის ქვეშ არსებული ვირტუალური მანქანები."
+
+#: src/components/vm/disks/diskAdd.jsx:75
+msgid "This volume is already used by $0."
+msgstr "ეს ტომი $0-ის მიერ უკვე გამოიყენება."
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:864
+msgid "This volume is already used by another VM."
+msgstr "ეს ტომი უკვე გამოიყენება სხვა ვმ-ის მიერ."
+
+#: src/components/vm/overview/vcpuModal.jsx:245
+msgid "Threads per core"
+msgstr "ნაკადების რიცხვი თითოეულ ბირთვზე"
+
+#: src/components/vm/overview/firmware.jsx:155
+msgid "Transient VMs don't support editing firmware configuration"
+msgstr ""
+"დროებითი ვმ-ებს მიკროკოდის კონფიგურაციის ჩასწორების მხარდაჭერა არ გააჩნიათ"
+
+#: src/components/libvirtSlate.jsx:36
+msgid "Troubleshoot"
+msgstr "პრობლემების პოვნა"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:76
+#: src/components/storagePools/createStoragePoolDialog.jsx:81
+#: src/components/vm/hostdevs/hostDevAdd.jsx:50
+#: src/components/vm/hostdevs/hostDevCard.jsx:184
+#: src/components/vm/nics/vmNicsCard.jsx:228
+#: src/components/vm/overview/bootOrder.jsx:129
+#: src/components/vm/overview/bootOrder.jsx:142
+#: src/components/vm/overview/bootOrder.jsx:157
+#: src/components/vm/overview/bootOrder.jsx:164
+#: src/components/vm/overview/bootOrder.jsx:171
+#: src/components/vm/overview/bootOrder.jsx:177
+msgid "Type"
+msgstr "ტიპი"
+
+#: src/components/vm/overview/bootOrder.jsx:178
+msgid "Type ID"
+msgstr "ტიპის ID"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:364
+msgid "URL (ISO image or distro install tree)"
+msgstr "URL(ISO გამოსახულების ან დისტრიბუტივის დასაყენებელი ხის)"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:55
+msgid "USB"
+msgstr "USB მოწყობილობა"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:124
+msgid "UUID"
+msgstr "UUID"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:138
+msgid "Undefined"
+msgstr "გაუსაზღვრელი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:266
+msgid "Unique name"
+msgstr "უნიკალური სახელი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:266
+msgid "Unique name, default: $0"
+msgstr "უნიკალური სახელი, ნაგულისხმები: $0"
+
+#: src/components/networks/createNetworkDialog.jsx:130
+msgid "Unique network name"
+msgstr "ქსელის უნიკალური სახელი"
+
+#: src/components/vm/overview/bootOrder.jsx:167
+msgid "Unit"
+msgstr "ერთეული"
+
+#: src/components/vm/nics/vmNicsCard.jsx:264
+msgid "Unknown"
+msgstr "უცნობი"
+
+#: src/components/vm/overview/firmware.jsx:127
+msgid "Unknown firmware"
+msgstr "უცნობი მიკროკოდი"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:97
+#: src/components/vm/hostdevs/hostDevCard.jsx:98
+#: src/components/vm/overview/bootOrder.jsx:148
+#: src/components/vm/overview/bootOrder.jsx:149
+msgid "Unspecified"
+msgstr "მიუთითებელი"
+
+#: src/components/vm/disks/diskEdit.jsx:42
+msgid "Url"
+msgstr "Url"
+
+#: src/components/vm/vmDetailsPage.jsx:145
+msgid "Usage"
+msgstr "გამოყენება"
+
+#: src/components/vm/disks/diskAdd.jsx:751
+#: src/components/vm/disks/diskAdd.jsx:787
+msgid "Use existing"
+msgstr "არსებულის გამოყენება"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:251
+msgid "Use extended attributes on files and directories"
+msgstr "დამატებითი ატრიბუტების გამოყენება ფაილებზე და საქაღალდეებზე"
+
+#: src/components/vm/vmMigrateDialog.jsx:103
+msgid ""
+"Use the same location on both the origin and destination hosts for your "
+"storage. This can be a shared storage pool, NFS, or any other method of "
+"sharing storage."
+msgstr ""
+"საცავისთვის გამოიყენეთ ერთიდაიგივე მდებარეობა საწყის და სამიზნე ჰოსტებზე. "
+"შეიძლება იყოს ზიარი საცავის პული, NFS ან საცავის გაზიარების სხვა ხერხი."
+
+#: src/components/vm/disks/vmDisksCard.jsx:178
+msgid "Used"
+msgstr "გამოყენებულია"
+
+#: src/components/storagePools/storagePoolVolumesTab.jsx:79
+msgid "Used by"
+msgstr "გამოიყენება"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:722
+msgid "User login"
+msgstr "მომხმარებლის შესვლა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:248
+msgid "User login must not be empty when user password is set"
+msgstr "როცა პაროლი დაყენებულია, მომხმარებლის სახელი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:729
+msgid "User password"
+msgstr "მომხმარებლის პაროლი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:245
+msgid "User password must not be empty when user login is set"
+msgstr ""
+"პაროლი მაშინ, როცა მომხმარებლის სახელი დაყენებულია, ცარიელი არ შეიძლება იყოს"
+
+#: src/helpers.js:221
+msgid "User session"
+msgstr "მომხმარებლის სესია"
+
+#: src/components/vm/overview/vcpuModal.jsx:171
+msgid "VCPU settings could not be saved"
+msgstr "VCPU-ის პარამეტრების შენახვის შეცდომა"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:318
+msgid "VM $0 Host Devices"
+msgstr "ვმ $0-ის ჰოსტის მოწყობილობები"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:191
+msgid "VM $0 already exists"
+msgstr "ვმ ($0) უკვე არსებობს"
+
+#: src/app.jsx:236
+msgid "VM $0 does not exist on $1 connection"
+msgstr "ვმ-ი ($0) არ არსებობს ამ ($1) კავშირდზე"
+
+#: src/components/vm/vmActions.jsx:121
+msgid "VM $0 failed to force reboot"
+msgstr "ვმ-ის ($0) ძალით გადატვირთვის შეცდომა"
+
+#: src/components/vm/vmActions.jsx:174
+msgid "VM $0 failed to force shutdown"
+msgstr "ვმ-ის ($0) ძალით გამორთვის შეცდომა"
+
+#: src/components/vm/vmActions.jsx:98
+msgid "VM $0 failed to get installed"
+msgstr "ვმ-ის ($0) დაყენების შეცდომა"
+
+#: src/components/vm/vmActions.jsx:148
+msgid "VM $0 failed to pause"
+msgstr "ვმ-ის ($0) შეჩერების შეცდომა"
+
+#: src/components/vm/vmActions.jsx:109
+msgid "VM $0 failed to reboot"
+msgstr "ვმ-ის ($0) გადატვირთვის შეცდომა"
+
+#: src/components/vm/vmActions.jsx:160
+msgid "VM $0 failed to resume"
+msgstr "ვმ-ის ($0) გაგრძელების შეცდომა"
+
+#: src/components/vm/vmActions.jsx:186
+msgid "VM $0 failed to send NMI"
+msgstr "ვმ-მა ($0) ვერ შეძლო NMI-ის გაგზავნა"
+
+#: src/components/vm/vmActions.jsx:136
+msgid "VM $0 failed to shutdown"
+msgstr "ვმ-ის ($0) გამორთვის შეცდომა"
+
+#: src/components/vm/vmActions.jsx:90
+msgid "VM $0 failed to start"
+msgstr "ვმ-ის ($0) გაშვების შეცდომა"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:106
+msgid "VM state"
+msgstr "ვმ-ის მდგომარეობა"
+
+#: src/components/vm/consoles/desktopConsole.jsx:53
+msgid "VNC TLS port"
+msgstr "VNC-ის TLS პორტი"
+
+#: src/components/vm/consoles/desktopConsole.jsx:49
+msgid "VNC address"
+msgstr "VNC-ის მისამართი"
+
+#: src/components/vm/consoles/consoles.jsx:113
+msgid "VNC console"
+msgstr "VNC-ის კონსოლი"
+
+#: src/components/vm/consoles/desktopConsole.jsx:51
+msgid "VNC port"
+msgstr "VNC-ის პორტი"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:536
+msgid "Valid token"
+msgstr "სწორი კოდი"
+
+#: src/components/vm/hostdevs/hostDevAdd.jsx:132
+#: src/components/vm/hostdevs/hostDevCard.jsx:214
+#: src/components/vm/hostdevs/hostDevCard.jsx:241
+#: src/components/vm/hostdevs/hostDevCard.jsx:247
+#: src/components/vm/overview/bootOrder.jsx:143
+#: src/components/vm/overview/bootOrder.jsx:158
+msgid "Vendor"
+msgstr "მომწოდებელი"
+
+#: src/components/storagePools/storagePoolList.jsx:55
+#: src/components/vms/hostvmslist.jsx:128
+#: src/components/vms/hostvmslist.jsx:135
+#: src/components/vm/vmDetailsPage.jsx:112
+#: src/components/vm/vmDetailsPage.jsx:264
+#: src/components/networks/networkList.jsx:53 src/manifest.json:0
+msgid "Virtual machines"
+msgstr "ვირტუალური მანქანები"
+
+#: src/index.html:5
+msgid "Virtual machines management"
+msgstr "ვირტუალური მანქანების მართვა"
+
+#: src/components/create-vm-dialog/pxe-helpers.js:158
+msgid "Virtual network"
+msgstr "ვირტუალური ქსელი"
+
+#: src/components/networks/createNetworkDialog.jsx:382
+msgid "Virtual network failed to be created"
+msgstr "ვირტუალური ქსელის შექმნის შეცდომა"
+
+#: src/components/libvirtSlate.jsx:41
+msgid "Virtualization service (libvirt) is not active"
+msgstr "ვირტუალიზაციის სერვისი (libvirt) აქტიური არაა"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:862
+#: src/components/vm/disks/vmDiskColumns.jsx:47
+#: src/components/vm/disks/diskAdd.jsx:113
+#: src/components/vm/disks/mediaEject.jsx:90
+#: src/components/vm/deleteDialog.jsx:68
+#: src/components/vm/overview/bootOrder.jsx:113
+msgid "Volume"
+msgstr "ტომი"
+
+#: src/components/storagePools/storageVolumeCreate.jsx:88
+msgid "Volume failed to be created"
+msgstr "ტომის ფაილის შექმნის შეცდომა"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:169
+msgid "Volume group name"
+msgstr "ტომების ჯგუფის სახელი"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:222
+msgid "Volume group name should not be empty"
+msgstr "ტომების ჯგუფის სახელი ცარიელი არ შეიძლება იყოს"
+
+#: src/components/vm/hostdevs/hostDevCard.jsx:120
+#: src/components/vm/overview/bootOrder.jsx:173
+msgid "WWPN"
+msgstr "WWPN"
+
+#: src/components/vm/disks/vmDisksCard.jsx:212
+#: src/components/vm/disks/diskEdit.jsx:130
+msgid "Writeable"
+msgstr "ჩაწერადი"
+
+#: src/components/vm/disks/vmDisksCard.jsx:212
+#: src/components/vm/disks/diskEdit.jsx:139
+msgid "Writeable and shared"
+msgstr "ჩაწერადი და გაზიარებული"
+
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:182
+msgid "You can mount the shared folder using:"
+msgstr "შეგიძლიათ მიამაგროთ გაზიარებული საქაღალდე:"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:194
+msgid "You need to select the most closely matching operating system"
+msgstr "აირჩიეთ ყველაზე ახლოს მდგომი ოპერაციული სისტემა"
+
+#: src/components/storagePools/storagePool.jsx:64
+#: src/components/networks/network.jsx:57
+msgid "active"
+msgstr "აქტიური"
+
+#: src/components/networks/networkOverviewTab.jsx:191
+msgid "add entry"
+msgstr "ელემენტის დამატება"
+
+#: src/helpers.js:251
+msgid "bridge"
+msgstr "ხიდი"
+
+#: src/helpers.js:237
+msgid "cdrom"
+msgstr "CD წამკითხავი"
+
+#: src/components/vm/overview/cpuTypeModal.jsx:52 src/helpers.js:244
+msgid "custom"
+msgstr "ხელით"
+
+#: src/helpers.js:249
+msgid "direct"
+msgstr "პირდაპირი"
+
+#: src/helpers.js:216
+msgid "disabled"
+msgstr "გათიშულია"
+
+#: src/helpers.js:236 src/helpers.js:239
+msgid "disk"
+msgstr "დისკი"
+
+#: src/helpers.js:277
+msgid "down"
+msgstr "დაბლა"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:136
+#: src/components/vm/overview/vmOverviewCard.jsx:147
+#: src/components/vm/overview/vmOverviewCard.jsx:155
+#: src/components/vm/overview/bootOrder.jsx:372
+msgid "edit"
+msgstr "ჩასწორება"
+
+#: src/helpers.js:217
+msgid "enabled"
+msgstr "ჩართულია"
+
+#: src/helpers.js:253
+msgid "ethernet"
+msgstr "Ethernet"
+
+#: src/helpers.js:245
+msgid "host"
+msgstr "ჰოსტი"
+
+#: src/helpers.js:241
+msgid "host device"
+msgstr "ჰოსტის მოწყობილობა"
+
+#: src/helpers.js:246
+msgid "host passthrough"
+msgstr "ჰოსტის გამჭოლი მოწყობილობა"
+
+#: src/helpers.js:254
+msgid "hostdev"
+msgstr "hostdev"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:66
+msgid "iSCSI direct target"
+msgstr "iSCSI target-ის სამიზნე"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:144
+msgid "iSCSI initiator IQN"
+msgstr "iSCSI ინიციატორის IQN"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:60
+msgid "iSCSI target"
+msgstr "iSCSI სამიზნე"
+
+#: src/components/storagePools/createStoragePoolDialog.jsx:163
+msgid "iSCSI target IQN"
+msgstr "iSCSI target-ის IQN"
+
+#: src/components/storagePools/storagePool.jsx:64
+#: src/components/networks/network.jsx:57
+msgid "inactive"
+msgstr "არააქტიური"
+
+#: src/manifest.json:0
+msgid "iso"
+msgstr "iso"
+
+#: src/manifest.json:0
+msgid "libvirt"
+msgstr "libvirt"
+
+#: src/helpers.js:255
+msgid "mcast"
+msgstr "mcast"
+
+#: src/components/vm/vmDetailsPage.jsx:219
+#: src/components/vm/nics/nicBody.jsx:112
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:194
+msgid "more info"
+msgstr "მეტი ინფორმაცია"
+
+#: src/components/vm/vmDetailsPage.jsx:215
+#: src/components/vm/filesystems/vmFilesystemsCard.jsx:190
+msgid "mount point: The mount point inside the guest"
+msgstr "მიმაგრების წერტილი: მიმაგრების წერტილი სტუმრის შიგნით"
+
+#: src/components/vm/vmDetailsPage.jsx:214
+msgid "mount tag: The tag associated to the exported mount point"
+msgstr "მიმაგრების ჭდე: გამოტანილ მიმაგრების წერტილზე მიბმული ჭდე"
+
+#: src/helpers.js:238 src/helpers.js:250
+msgid "network"
+msgstr "ქსელი"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:67
+#: src/components/storagePools/storagePoolOverviewTab.jsx:72
+#: src/components/networks/networkOverviewTab.jsx:115 src/helpers.js:273
+msgid "no"
+msgstr "არა"
+
+#: src/components/vm/snapshots/vmSnapshotsCard.jsx:110
+msgid "no state saved"
+msgstr "მდგომარეობა შენახული არაა"
+
+#: src/components/networks/networkOverviewTab.jsx:295
+msgid "none"
+msgstr "არცერთი"
+
+#: src/manifest.json:0
+msgid "pxe"
+msgstr "pxe"
+
+#: src/manifest.json:0
+msgid "qcow2"
+msgstr "qcow2"
+
+#: src/manifest.json:0
+msgid "qemu"
+msgstr "qemu"
+
+#: src/helpers.js:240
+msgid "redirected device"
+msgstr "გადამისამართებული მოწყობილობა"
+
+#: src/components/networks/networkOverviewTab.jsx:59
+msgid "remove"
+msgstr "წაშლა"
+
+#: src/components/vm/disks/diskAdd.jsx:258
+msgid "serial number"
+msgstr "სერიული ნომერი"
+
+#: src/helpers.js:256
+msgid "server"
+msgstr "სერვერი"
+
+#: src/helpers.js:257
+msgid "udp"
+msgstr "udp"
+
+#: src/helpers.js:276
+msgid "up"
+msgstr "მაღლა"
+
+#: src/helpers.js:252
+msgid "user"
+msgstr "მომხმარებელი"
+
+#: src/components/vm/overview/vcpuModal.jsx:195
+msgid "vCPU count"
+msgstr "vCPU-ების რაოდენობა"
+
+#: src/components/vm/overview/vcpuModal.jsx:208
+msgid "vCPU maximum"
+msgstr "vCPU-ის მაქსიმუმი"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:211
+msgid "vCPUs"
+msgstr "vCPU-ები"
+
+#: src/helpers.js:258
+msgid "vhostuser"
+msgstr "vhostuser"
+
+#: src/components/common/stateIcon.jsx:59
+msgid "view more..."
+msgstr "მეტის ნახვა..."
+
+#: src/components/vm/vmActions.jsx:312
+msgid ""
+"virt-install package needs to be installed on the system in order to clone "
+"VMs"
+msgstr "ვმ-ების ასლების შესაქმნელად საჭიროა პაკეტი virt-install"
+
+#: src/components/create-vm-dialog/createVmDialog.jsx:1397
+msgid ""
+"virt-install package needs to be installed on the system in order to create "
+"new VMs"
+msgstr "ახალი ვმ-ების შესაქმნელად საჭიროა პაკეტი virt-install"
+
+#: src/components/vm/overview/vmOverviewCard.jsx:161
+msgid ""
+"virt-install package needs to be installed on the system in order to edit "
+"this attribute"
+msgstr "ამ ატრიბუტის ჩასასწორებლად საჭიროა დაყენებული იყოს პაკეტი virt-install"
+
+#: src/manifest.json:0
+msgid "vm"
+msgstr "ვმ"
+
+#: src/components/storagePools/storagePoolOverviewTab.jsx:67
+#: src/components/storagePools/storagePoolOverviewTab.jsx:72
+#: src/components/networks/networkOverviewTab.jsx:115 src/helpers.js:272
+msgid "yes"
+msgstr "დიახ"
+
+#~ msgid "Creating VM installation"
+#~ msgstr "ვმ-ის დაყენების შექმნა"
+
+#~ msgid "Virtual Machines"
+#~ msgstr "ვირტუალური მანქანები"
+
+#~ msgid "VM $0 failed to get deleted"
+#~ msgstr "ვმ-ის ($0) წაშლის შეცდომა"
+
+#~ msgid "Domain"
+#~ msgstr "დომენი"
+
+#~ msgid "Function"
+#~ msgstr "ფუნქცია"
+
+#~ msgid "Delete content"
+#~ msgstr "შიგთავსის წაშლა"
+
+#, fuzzy
+#~| msgid "network interface"
+#~ msgid "Delete network interface $0"
+#~ msgstr "ქსელის ინტერფეისი"
+
+#~ msgid "Disk $0 fail to get detached from VM $1"
+#~ msgstr "დისკის ($) ვმ-დან ($1) მოძრობის შეცდომა"
+
+#~ msgid "Session"
+#~ msgstr "სესია"
+
+#~ msgid "$1 host device"
+#~ msgstr "ჰოსტის მოწყობილობა $1"
+
+#~ msgid "snapshot"
+#~ msgstr "სწრაფი ასლი"
+
+#~ msgid "Immediately start VM"
+#~ msgstr "ვმ-ის დაუყოვნებლივი გაშვება"
+
+#~ msgid "Import"
+#~ msgstr "შემოტანა"
+
+#~ msgid "Run unattended installation"
+#~ msgstr "ავტომატური დაყენების გაშვება"
+
+#~ msgid "Set cloud init parameters"
+#~ msgstr "cloud-init-ის პარამეტრების დაყენება"

@@ -1,0 +1,99 @@
+@use "page.scss";
+@use "ct-card.scss";
+/* Imports 'pf-u-pt-md' class used for Expander in Add Disk dialog */
+@use "../node_modules/@patternfly/patternfly/utilities/Spacing/spacing.css";
+
+/* For pf-t-light mixin */
+@import "@patternfly/patternfly/sass-utilities/colors.scss";
+@import "@patternfly/patternfly/sass-utilities/scss-variables.scss";
+@import "@patternfly/patternfly/sass-utilities/mixins.scss";
+@import "@patternfly/patternfly/components/Alert/alert.scss";
+
+/* Utilities */
+@import "@patternfly/patternfly/utilities/Text/text.css";
+
+/* Style the list cards as ct-cards */
+.pf-c-page__main-section > .pf-c-card {
+    @extend .ct-card;
+}
+
+.pf-c-form__group .pf-c-helper-text {
+    margin-top: var(--pf-c-form__helper-text--MarginTop);
+}
+
+/* Create a hybrid popover with an alert style */
+.ct-popover-alert .pf-c-popover__content {
+    @extend .pf-c-alert;
+    @extend .pf-m-danger;
+    display: block;
+    box-shadow: none;
+}
+
+/* Also style the hybrid popover alert title like an alert */
+.ct-popover-alert .pf-c-title {
+    @extend .pf-c-alert__title;
+    font-size: inherit;
+}
+
+.machines-network-source-descr {
+    color: var(--ct-color-subtle-copy);
+    text-align: right;
+    padding: 5px 10px !important;
+}
+
+.machines-network-source-value {
+    padding: 5px 10px !important;
+    text-align: left !important;
+}
+
+.machines-listing-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: -0.25rem 0;
+}
+
+.machines-listing-actions > button {
+    margin: 0.25rem 0 0.25rem 0.5rem;
+}
+
+.machines-listing-actions > .pf-c-dropdown {
+    margin-top: 0.25rem;
+}
+
+.pf-c-dropdown__menu-item.pf-m-danger {
+    color: var(--pf-global--danger-color--200);
+}
+
+.pf-c-table {
+    .btn-group {
+        align-items: center;
+    }
+
+    > tbody > tr:not(.pf-c-table__expandable-row) > [data-label="Actions"] .pf-c-button {
+        // vertical: compensate for padding; fixing alignment
+        // horizontal: add some needed padding
+        margin: -0.25rem 0.25rem;
+    }
+}
+
+.machines-connection-selector > .pf-c-radio:first-child {
+    padding-right: var(--pf-global--spacer--md);
+}
+
+// Limit width for GiB/MiB dropdowns and inputs
+.ct-machines-select-unit, .ct-machines-size-input {
+    max-width: 5rem;
+}
+
+.ct-external-docs-link.pf-c-button.pf-m-link.pf-m-inline {
+  padding-left: var(--pf-global--spacer--sm);
+}
+
+.ct-monospace {
+    font-family: var(--pf-global--FontFamily--redhat--monospace);
+}
+
+// Do not add a box-shadow to a "subsection", while it's technically correct it looks weird.
+.pf-c-page__main-section.pf-m-light.actions-pagesection {
+    box-shadow: none;
+}
